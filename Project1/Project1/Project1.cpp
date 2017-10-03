@@ -2,8 +2,6 @@
 //
 
 
-//test comment - shashank
-
 #include "stdafx.h"
 
 
