@@ -10,6 +10,7 @@
 #include "stdafx.h"
 #include "Project1.h"
 #include "ChildView.h"
+#include "DoubleBufferDC.h"
 
 using namespace Gdiplus;
 
@@ -37,6 +38,7 @@ CChildView::~CChildView()
 
 BEGIN_MESSAGE_MAP(CChildView, CWnd)
 	ON_WM_PAINT()
+	ON_WM_ERASEBKGND()
 END_MESSAGE_MAP()
 
 
@@ -68,11 +70,17 @@ BOOL CChildView::PreCreateWindow(CREATESTRUCT& cs)
 */
 void CChildView::OnPaint() 
 {
-	CPaintDC dc(this); // device context for painting
-	Graphics graphics(dc.m_hDC);    // Create GDI+ graphics context
+	CPaintDC paintDC(this);     // device context for painting
+	CDoubleBufferDC dc(&paintDC); // device context for painting
 
 	// TODO: Add your message handler code here
 	
 	// Do not call CWnd::OnPaint() for painting messages
 }
 
+
+
+BOOL CChildView::OnEraseBkgnd(CDC* pDC)
+{
+	return FALSE;
+}
