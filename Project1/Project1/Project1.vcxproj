@@ -207,6 +207,15 @@
     <None Include="res\Project1.rc2" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="images\arya.png" />
+    <Image Include="images\dave.png" />
+    <Image Include="images\gru.png" />
+    <Image Include="images\jerry.png" />
+    <Image Include="images\juicer.png" />
+    <Image Include="images\mutant.png" />
+    <Image Include="images\new-game.png" />
+    <Image Include="images\pokeball.png" />
+    <Image Include="images\stuart.png" />
     <Image Include="res\Project1.ico" />
     <Image Include="res\Toolbar.bmp" />
   </ItemGroup>

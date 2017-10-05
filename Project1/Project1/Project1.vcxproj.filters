@@ -13,6 +13,9 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Images">
+      <UniqueIdentifier>{09d9be56-ac2d-4096-af4c-5ba45b807e4c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -67,6 +70,33 @@
     </Image>
     <Image Include="res\Toolbar.bmp">
       <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="images\arya.png">
+      <Filter>Images</Filter>
+    </Image>
+    <Image Include="images\dave.png">
+      <Filter>Images</Filter>
+    </Image>
+    <Image Include="images\gru.png">
+      <Filter>Images</Filter>
+    </Image>
+    <Image Include="images\jerry.png">
+      <Filter>Images</Filter>
+    </Image>
+    <Image Include="images\juicer.png">
+      <Filter>Images</Filter>
+    </Image>
+    <Image Include="images\mutant.png">
+      <Filter>Images</Filter>
+    </Image>
+    <Image Include="images\new-game.png">
+      <Filter>Images</Filter>
+    </Image>
+    <Image Include="images\pokeball.png">
+      <Filter>Images</Filter>
+    </Image>
+    <Image Include="images\stuart.png">
+      <Filter>Images</Filter>
     </Image>
   </ItemGroup>
 </Project>
