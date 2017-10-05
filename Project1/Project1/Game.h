@@ -15,6 +15,7 @@ private:
 	float mXOffset = 0;
 	float mYOffset = 0;
 
+	///collection of items
 
 };
 
