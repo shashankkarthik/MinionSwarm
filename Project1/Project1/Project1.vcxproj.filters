@@ -48,9 +48,6 @@
     <ClInclude Include="Minion.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="CMinionMutant.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Villain.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -58,6 +55,21 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="VillainJuicer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="VillainPokeball.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MinionMutant.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MinionStuart.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MinionJerry.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Gru.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -93,6 +105,18 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="VillainJuicer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="VillainPokeball.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MinionStuart.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MinionJerry.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Gru.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

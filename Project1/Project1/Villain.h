@@ -14,5 +14,9 @@ class CVillain :
 public:
 	CVillain();
 	virtual ~CVillain();
+
+private:
+	int mPoints = 0;
+	int mPointMult = 0;
 };
 

@@ -10,6 +10,7 @@
 
 CVillainArya::CVillainArya()
 {
+	
 }
 
 

@@ -183,11 +183,14 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ChildView.h" />
-    <ClInclude Include="CMinionMutant.h" />
+    <ClInclude Include="Gru.h" />
+    <ClInclude Include="MinionJerry.h" />
+    <ClInclude Include="MinionMutant.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="Item.h" />
     <ClInclude Include="MainFrm.h" />
     <ClInclude Include="Minion.h" />
+    <ClInclude Include="MinionStuart.h" />
     <ClInclude Include="Project1.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="stdafx.h" />
@@ -195,14 +198,18 @@
     <ClInclude Include="Villain.h" />
     <ClInclude Include="VillainArya.h" />
     <ClInclude Include="VillainJuicer.h" />
+    <ClInclude Include="VillainPokeball.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ChildView.cpp" />
     <ClCompile Include="CMinionMutant.cpp" />
     <ClCompile Include="Game.cpp" />
+    <ClCompile Include="Gru.cpp" />
     <ClCompile Include="Item.cpp" />
     <ClCompile Include="MainFrm.cpp" />
     <ClCompile Include="Minion.cpp" />
+    <ClCompile Include="MinionJerry.cpp" />
+    <ClCompile Include="MinionStuart.cpp" />
     <ClCompile Include="Project1.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
@@ -213,6 +220,7 @@
     <ClCompile Include="Villain.cpp" />
     <ClCompile Include="VillainArya.cpp" />
     <ClCompile Include="VillainJuicer.cpp" />
+    <ClCompile Include="VillainPokeball.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Project1.rc" />
