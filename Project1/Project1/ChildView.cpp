@@ -73,6 +73,13 @@ void CChildView::OnPaint()
 	CPaintDC paintDC(this);     // device context for painting
 	CDoubleBufferDC dc(&paintDC); // device context for painting
 
+	Graphics graphics(dc.m_hDC);
+
+	CRect rect;
+	GetClientRect(&rect);
+
+	mGame.OnDraw(&graphics, rect.Width(), rect.Height()); //still need mGame object
+
 	// TODO: Add your message handler code here
 	
 	// Do not call CWnd::OnPaint() for painting messages

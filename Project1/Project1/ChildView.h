@@ -14,7 +14,7 @@
 
 
 #pragma once
-
+#include "Game.h"
 
 // CChildView window
 /**
@@ -46,5 +46,8 @@ protected:
 	DECLARE_MESSAGE_MAP()
 public:
 	afx_msg BOOL OnEraseBkgnd(CDC* pDC);
+
+private:
+	CGame mGame;
 };
 
