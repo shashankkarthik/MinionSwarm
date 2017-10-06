@@ -183,6 +183,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ChildView.h" />
+    <ClInclude Include="GameVisitor.h" />
     <ClInclude Include="Gru.h" />
     <ClInclude Include="MinionJerry.h" />
     <ClInclude Include="MinionMutant.h" />
@@ -191,6 +192,7 @@
     <ClInclude Include="MainFrm.h" />
     <ClInclude Include="Minion.h" />
     <ClInclude Include="MinionStuart.h" />
+    <ClInclude Include="NewGame.h" />
     <ClInclude Include="Project1.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="stdafx.h" />
@@ -204,12 +206,14 @@
     <ClCompile Include="ChildView.cpp" />
     <ClCompile Include="CMinionMutant.cpp" />
     <ClCompile Include="Game.cpp" />
+    <ClCompile Include="GameVisitor.cpp" />
     <ClCompile Include="Gru.cpp" />
     <ClCompile Include="Item.cpp" />
     <ClCompile Include="MainFrm.cpp" />
     <ClCompile Include="Minion.cpp" />
     <ClCompile Include="MinionJerry.cpp" />
     <ClCompile Include="MinionStuart.cpp" />
+    <ClCompile Include="NewGame.cpp" />
     <ClCompile Include="Project1.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
