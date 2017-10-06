@@ -72,6 +72,12 @@
     <ClInclude Include="Gru.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="GameVisitor.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="NewGame.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Project1.cpp">
@@ -117,6 +123,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Gru.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GameVisitor.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="NewGame.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

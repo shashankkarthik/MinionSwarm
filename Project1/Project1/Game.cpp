@@ -1,6 +1,8 @@
 #include "stdafx.h"
+#include <memory>
 #include "Game.h"
 
+using namespace std;
 using namespace Gdiplus;
 
 /// Game area width in virtual pixels
@@ -11,6 +13,8 @@ const static int Height = 1100;
 
 CGame::CGame()
 {
+	shared_ptr<CNewGame> newGame(new CNewGame());
+	mNewGameButton = newGame;
 }
 
 
@@ -44,4 +48,14 @@ void CGame::OnDraw(Gdiplus::Graphics *graphics, int width, int height)
 	graphics->ScaleTransform(mScale, mScale);
 
 	// From here on you are drawing virtual pixels
+
+	mNewGameButton->Draw(graphics, Width, Height);
+}
+
+/** Accept a visitor for the collection
+* \param visitor The visitor for the collection
+*/
+void CGame::Accept(CGameVisitor *visitor)
+{
+
 }
