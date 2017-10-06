@@ -8,8 +8,14 @@
 #include "Villain.h"
 
 
-CVillain::CVillain()
+ /**
+ * Constructor
+ * \param aquarium The aquarium we are in
+ * \param filename Filename for the image we use
+ */
+CVillain::CVillain(CGame *game, const std::wstring &filename, int const pointMult) : CItem(game, filename)
 {
+	mPointMult = pointMult;
 }
 
 

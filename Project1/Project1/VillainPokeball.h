@@ -8,11 +8,20 @@
 
 #pragma once
 #include "Villain.h"
+#include "Item.h"
+
 class CVillainPokeball :
 	public CVillain
 {
 public:
-	CVillainPokeball();
+	CVillainPokeball(CGame * game);
+
+	/// Default constructor (disabled)
+	CVillainPokeball() = delete;
+
+	/// Copy constructor (disabled)
+	CVillainPokeball(const CVillainPokeball &) = delete;
+
 	virtual ~CVillainPokeball();
 };
 

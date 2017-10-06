@@ -8,15 +8,30 @@
 
 #pragma once
 #include "Item.h"
-class CVillain :
-	public CItem
+
+ /**
+ * Base class for a Villain
+ * This applies to all of the Villains in the game
+ */
+class CVillain : public CItem
 {
+protected:
+	CVillain(CGame * game, const std::wstring & filename, int const pointMult);
+
 public:
-	CVillain();
+	/// Default constructor (disabled)
+	CVillain() = delete;
+
+	/// Copy constructor (disabled)
+	CVillain(const CVillain &) = delete;	
+	
 	virtual ~CVillain();
 
 private:
+	///Killing points for the villain
 	int mPoints = 0;
+
+	///Point multiplier for the killer
 	int mPointMult = 0;
 };
 

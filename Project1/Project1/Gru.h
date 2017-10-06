@@ -8,11 +8,18 @@
 
 #pragma once
 #include "Item.h"
-class CGru :
-	public CItem
+class CGru : public CItem
 {
+protected:
+	CGru(CGame * game);
+
 public:
-	CGru();
 	virtual ~CGru();
+
+	/// Default constructor (disabled)
+	CGru() = delete;
+
+	/// Copy constructor (disabled)
+	CGru(const CGru &) = delete;
 };
 

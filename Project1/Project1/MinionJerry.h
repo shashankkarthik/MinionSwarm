@@ -12,7 +12,14 @@ class CMinionJerry :
 	public CMinion
 {
 public:
-	CMinionJerry();
+	CMinionJerry(CGame * game);
+
+	/// Default constructor (disabled)
+	CMinionJerry() = delete;
+
+	/// Copy constructor (disabled)
+	CMinionJerry(const CMinionJerry &) = delete;
+
 	virtual ~CMinionJerry();
 };
 

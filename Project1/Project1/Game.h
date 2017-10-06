@@ -1,8 +1,11 @@
 #pragma once
 #include <memory>
 #include <string>
+#include <vector>
 #include "GameVisitor.h"
 #include "NewGame.h"
+
+class CItem;
 
 class CGame
 {
@@ -32,7 +35,7 @@ private:
 
 	/// All of the items to populate our aquarium
 	std::shared_ptr<CNewGame> mNewGameButton;
-	///collection of items
-
+	/// All of the items to populate our aquarium
+	std::vector<std::shared_ptr<CItem> > mGameTiles;
 };
 
