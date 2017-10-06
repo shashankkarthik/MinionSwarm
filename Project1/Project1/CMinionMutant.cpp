@@ -5,7 +5,7 @@
  */
 
 #include "stdafx.h"
-#include "CMinionMutant.h"
+#include "MinionMutant.h"
 
 
 CMinionMutant::CMinionMutant()
