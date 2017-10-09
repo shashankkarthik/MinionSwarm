@@ -4,6 +4,7 @@
 #include <vector>
 #include "GameVisitor.h"
 #include "NewGame.h"
+#include "PlayingArea.h"
 
 class CItem;
 
@@ -15,7 +16,7 @@ public:
 
 	virtual ~CGame();
 
-	void CGame::OnDraw(Gdiplus::Graphics *graphics, int width, int height);
+	virtual void CGame::OnDraw(Gdiplus::Graphics *graphics, int width, int height);
 
 	void Accept(CGameVisitor * visitor);
 
@@ -37,5 +38,7 @@ private:
 	std::shared_ptr<CNewGame> mNewGameButton;
 	/// All of the items to populate our aquarium
 	std::vector<std::shared_ptr<CItem> > mGameTiles;
+	/// The object for the PlayingArea
+	std::shared_ptr<CPlayingArea> mPlayingArea;
 };
 

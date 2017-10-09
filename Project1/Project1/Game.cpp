@@ -21,6 +21,9 @@ CGame::CGame()
 {
 	shared_ptr<CNewGame> newGame(new CNewGame());
 	mNewGameButton = newGame;
+
+	shared_ptr<CPlayingArea> playingArea(new CPlayingArea());
+	mPlayingArea = playingArea;
 }
 
 
@@ -56,6 +59,8 @@ void CGame::OnDraw(Gdiplus::Graphics *graphics, int width, int height)
 	// From here on you are drawing virtual pixels
 
 	mNewGameButton->Draw(graphics, Width, Height);
+
+	mPlayingArea->DrawArea(graphics, Width, Height);
 
 
 	mJuicerImage = unique_ptr<Bitmap>(Bitmap::FromFile(JuicerImageName.c_str()));
