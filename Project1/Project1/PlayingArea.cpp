@@ -25,12 +25,19 @@ CPlayingArea::~CPlayingArea()
 {
 }
 
-void CPlayingArea::DrawArea(Gdiplus::Graphics *graphics, int gameWidth, int gameHeight)
+void CPlayingArea::DrawArea(Gdiplus::Graphics *graphics, int windowWidth, int windowHeight)
 {
 	Pen greenPen(Color(0, 64, 0), 3);
 	graphics->DrawRectangle(&greenPen,
-		float(-(gameWidth - GridSize / 2.0) / 2.0),
-		float((gameWidth/2.0 - (GridSize/2.0))),
-		GridSize, 
+		float((-windowWidth + 500) / 2.0),
+		float((-windowHeight + 100) / 2.0),
+		GridSize,
 		GridSize);
+
+		//Jordan's old code (not working)
+		/*float(-(windowWidth - GridSize / 2.0) / 2.0),
+		float((windowHeight /2.0 - (GridSize/2.0))),
+		GridSize, 
+		GridSize);*/
+
 }

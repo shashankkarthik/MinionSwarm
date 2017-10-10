@@ -86,17 +86,33 @@ void CGame::OnDraw(Gdiplus::Graphics *graphics, int width, int height)
 		msg += AryaImageName;
 		AfxMessageBox(msg.c_str());
 	}
+	/*
+	/**
+* Draw the new game button
+* \param graphics Graphics device to draw on
 
-	DrawTime(graphics, L"0:00");
+	void CNewGame::Draw(Gdiplus::Graphics *graphics, int windowWidth, int windowHeight)
+	{
+		double wid = mButtonImage->GetWidth();
+		double hit = mButtonImage->GetHeight();
+		graphics->DrawImage(mButtonImage.get(),
+			float((-windowWidth + MarginX) / 2.0), float((-windowHeight + MarginY) / 2.0),
+			(float)mButtonImage->GetWidth(), (float)mButtonImage->GetHeight());
+	}
+	*/
 
-	graphics->DrawImage(mJuicerImage.get(), 650, -400);
-	DrawScore(graphics, 666.0f, -250.0f, L"0");
 
-	graphics->DrawImage(mPokeeballImage.get(), 666, -200);
-	DrawScore(graphics, 666.0f, -145, L"0");
+	DrawTime(graphics, float((Width - 250) / 2.0), -float((Height - 200) / 2.0), L"0:00");
 
-	graphics->DrawImage(mAryaImage.get(), 625, -95);
-	DrawScore(graphics, 666.0f, 60, L"0");
+	graphics->DrawImage(mJuicerImage.get(), float((Width - 240) / 2.0) , -float((Height - 300) / 2.0));
+	DrawScore(graphics, float((Width - 200) / 2.0) , -float((Height - 600) / 2.0), L"0");
+
+
+	graphics->DrawImage(mPokeeballImage.get(), float((Width - 200) / 2.0), -float((Height - 700) / 2.0));
+	DrawScore(graphics, float((Width - 200) / 2.0), -float((Height - 800) / 2.0), L"0");
+
+	graphics->DrawImage(mAryaImage.get(), float((Width - 275) / 2.0), -float((Height - 900) / 2.0));
+	DrawScore(graphics, float((Width - 200) / 2.0), -float((Height - 1200) / 2.0), L"0");
 
 
 }
@@ -122,12 +138,12 @@ void CGame::DrawScore(Gdiplus::Graphics * graphics, float xLoc, float yLoc, wstr
 		&greenBrush);
 }
 
-void CGame::DrawTime(Gdiplus::Graphics * graphics, wstring time)
+void CGame::DrawTime(Gdiplus::Graphics * graphics, float xLoc, float yLoc, wstring time)
 {
 	time = time + L"\0";
 	WCHAR* string = (WCHAR *)time.c_str();
 	Gdiplus::Font myFont(L"Arial", 20);
-	RectF layoutRect(650.0f, -450.0f, 80.0f, 50.0f);
+	RectF layoutRect(xLoc, yLoc, 80.0f, 50.0f);
 	StringFormat format;
 	format.SetAlignment(StringAlignmentCenter);
 	SolidBrush greenBrush(Color(255, 0, 255, 0));

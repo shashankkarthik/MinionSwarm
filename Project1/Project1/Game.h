@@ -22,7 +22,7 @@ public:
 
 	void CGame::DrawScore(Gdiplus::Graphics * graphics, float xLoc, float yLoc, std::wstring score);
 
-	void CGame::DrawTime(Gdiplus::Graphics * graphics, std::wstring score);
+	void CGame::DrawTime(Gdiplus::Graphics * graphics, float xLoc, float yLoc, std::wstring score);
 
 
 private:
