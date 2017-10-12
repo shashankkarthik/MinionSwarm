@@ -1,6 +1,8 @@
 #include "stdafx.h"
 #include "Game.h"
 #include "PlayingArea.h"
+#include "ChildView.h"
+#include "Game.h"
 
 using namespace Gdiplus;
 
@@ -14,6 +16,7 @@ const double CPlayingArea::GridRadius = CPlayingArea::GridSize / 2.0;
 /// Do not allow Minions or Gru to come closer than this distance
 /// to the playing area edges (virtual pixels)
 const double CPlayingArea::GridMargin = 50.0;
+
 
 
 CPlayingArea::CPlayingArea()
@@ -31,8 +34,8 @@ void CPlayingArea::DrawArea(Gdiplus::Graphics *graphics, int windowWidth, int wi
 	graphics->DrawRectangle(&greenPen,
 		float((-windowWidth + 500) / 2.0),
 		float((-windowHeight + 100) / 2.0),
-		GridSize,
-		GridSize);
+		float(GridSize),
+		float(GridSize));
 
 		//Jordan's old code (not working)
 		/*float(-(windowWidth - GridSize / 2.0) / 2.0),

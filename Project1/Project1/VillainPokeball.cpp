@@ -11,14 +11,14 @@
 using namespace std;
 using namespace Gdiplus;
 
-/// Fish filename 
+/// image filename 
 const wstring VillainPokeballImageName = L"images/pokeball.png";
 const int pointsMult = 3;
 
 
 
 /** Constructor
-* \param aquarium The aquarium this is a member of
+* \param game The game this is a member of
 */
 CVillainPokeball::CVillainPokeball(CGame *game) : CVillain(game, VillainPokeballImageName, pointsMult)
 {

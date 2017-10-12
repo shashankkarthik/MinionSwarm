@@ -20,6 +20,8 @@ public:
 
 	virtual void CGame::OnDraw(Gdiplus::Graphics *graphics, int width, int height);
 
+	void Add(std::shared_ptr<CItem> item);
+
 	void Accept(CGameVisitor * visitor);
 
 	void Update(double elapsed);
@@ -42,11 +44,12 @@ private:
 	std::unique_ptr<Gdiplus::Bitmap> mPokeeballImage;
 	std::unique_ptr<Gdiplus::Bitmap> mAryaImage;
 
-	/// All of the items to populate our aquarium
+	/// All of the items to populate our game
 	std::shared_ptr<CNewGame> mNewGameButton;
-	/// All of the items to populate our aquarium
+	/// All of the items to populate our game
 	std::vector<std::shared_ptr<CItem> > mGameTiles;
 	/// The object for the PlayingArea
 	std::shared_ptr<CPlayingArea> mPlayingArea;
+
 };
 

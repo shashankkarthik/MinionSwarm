@@ -27,6 +27,8 @@ public:
 	
 	virtual ~CVillain();
 
+	void AddPoints(int points) { mPoints += points * mPointMult; }
+
 private:
 	///Killing points for the villain
 	int mPoints = 0;

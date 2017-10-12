@@ -11,15 +11,26 @@
 #include "Project1.h"
 #include "ChildView.h"
 #include "DoubleBufferDC.h"
+#include "Game.h"
+#include "VillainJuicer.h"
+#include "Villain.h"
+#include "Item.h"
+#include <memory>
+#include "Villain.h"
+#include "Item.h"
+#include "Gru.h"
+#include <string>
 
 using namespace Gdiplus;
-
+using namespace std;
 #ifdef _DEBUG
 #define new DEBUG_NEW
 #endif
 
 /// Frame duration in milliseconds
 const int FrameDuration = 30;
+/// Any item we are currently dragging
+std::shared_ptr<CItem> mGrabbedItem;
 
 // CChildView
 
@@ -28,6 +39,10 @@ const int FrameDuration = 30;
 */
 CChildView::CChildView()
 {
+	auto gru = make_shared<CGru>(&mGame);
+	gru->SetLocation(-300,300);
+	mGame.Add(gru);
+
 }
 
 /**
@@ -86,6 +101,8 @@ void CChildView::OnPaint()
 	GetClientRect(&rect);
 
 	mGame.OnDraw(&graphics, rect.Width(), rect.Height()); //still need mGame object
+
+	//mGame
 
 	// TODO: Add your message handler code here
 	if (mFirstDraw)

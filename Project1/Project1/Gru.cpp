@@ -12,14 +12,13 @@
 using namespace std;
 using namespace Gdiplus;
 
-/// Fish filename 
+/// image filename 
 const wstring GruImageName = L"images/gru.png";
 
 /** Constructor
-* \param aquarium The aquarium this is a member of
+* \param game The game this is a member of
 */
-CGru::CGru(CGame *game) :
-	CItem(game, GruImageName)
+CGru::CGru(CGame *game) : CItem(game, GruImageName)
 {
 }
 
