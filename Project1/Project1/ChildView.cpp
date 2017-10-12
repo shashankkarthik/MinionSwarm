@@ -18,6 +18,8 @@ using namespace Gdiplus;
 #define new DEBUG_NEW
 #endif
 
+/// Frame duration in milliseconds
+const int FrameDuration = 30;
 
 // CChildView
 
@@ -39,6 +41,9 @@ CChildView::~CChildView()
 BEGIN_MESSAGE_MAP(CChildView, CWnd)
 	ON_WM_PAINT()
 	ON_WM_ERASEBKGND()
+	ON_WM_TIMER()
+	ON_WM_LBUTTONDOWN()
+	ON_WM_LBUTTONUP()
 END_MESSAGE_MAP()
 
 
@@ -70,6 +75,8 @@ BOOL CChildView::PreCreateWindow(CREATESTRUCT& cs)
 */
 void CChildView::OnPaint() 
 {
+	// Do not call CWnd::OnPaint() for painting messages
+
 	CPaintDC paintDC(this);     // device context for painting
 	CDoubleBufferDC dc(&paintDC); // device context for painting
 
@@ -81,8 +88,33 @@ void CChildView::OnPaint()
 	mGame.OnDraw(&graphics, rect.Width(), rect.Height()); //still need mGame object
 
 	// TODO: Add your message handler code here
-	
-	// Do not call CWnd::OnPaint() for painting messages
+	if (mFirstDraw)
+	{
+		mFirstDraw = false;
+		SetTimer(1, FrameDuration, nullptr);
+
+		/*
+		* Initialize the elapsed time system
+		*/
+		LARGE_INTEGER time, freq;
+		QueryPerformanceCounter(&time);
+		QueryPerformanceFrequency(&freq);
+
+		mLastTime = time.QuadPart;
+		mTimeFreq = double(freq.QuadPart);
+	}
+
+	/*
+	* Compute the elapsed time since the last draw
+	*/
+	LARGE_INTEGER time;
+	QueryPerformanceCounter(&time);
+	long long diff = time.QuadPart - mLastTime;
+	double elapsed = double(diff) / mTimeFreq;
+	mLastTime = time.QuadPart;
+
+	mGame.Update(elapsed);
+
 }
 
 
@@ -90,4 +122,26 @@ void CChildView::OnPaint()
 BOOL CChildView::OnEraseBkgnd(CDC* pDC)
 {
 	return FALSE;
+}
+
+
+void CChildView::OnTimer(UINT_PTR nIDEvent)
+{
+	// TODO: Add your message handler code here and/or call default
+	Invalidate();
+	CWnd::OnTimer(nIDEvent);
+}
+
+
+void CChildView::OnLButtonDown(UINT nFlags, CPoint point)
+{
+	mGame.HitTest(point.x, point.y);
+}
+
+
+void CChildView::OnLButtonUp(UINT nFlags, CPoint point)
+{
+	// TODO: Add your message handler code here and/or call default
+
+	CWnd::OnLButtonUp(nFlags, point);
 }

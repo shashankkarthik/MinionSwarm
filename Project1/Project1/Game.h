@@ -6,6 +6,8 @@
 #include "NewGame.h"
 #include "PlayingArea.h"
 
+using namespace std;
+
 class CItem;
 
 class CGame
@@ -20,6 +22,12 @@ public:
 
 	void Accept(CGameVisitor * visitor);
 
+	void Update(double elapsed);
+
+	wstring GetTime();
+
+	void HitTest(int x, int y);
+
 	void CGame::DrawScore(Gdiplus::Graphics * graphics, float xLoc, float yLoc, std::wstring score);
 
 	void CGame::DrawTime(Gdiplus::Graphics * graphics, float xLoc, float yLoc, std::wstring score);
@@ -29,7 +37,7 @@ private:
 	float mScale = 0;
 	float mXOffset = 0;
 	float mYOffset = 0;
-
+	double mTimeInSeconds = 0;
 	std::unique_ptr<Gdiplus::Bitmap> mJuicerImage;
 	std::unique_ptr<Gdiplus::Bitmap> mPokeeballImage;
 	std::unique_ptr<Gdiplus::Bitmap> mAryaImage;

@@ -86,23 +86,10 @@ void CGame::OnDraw(Gdiplus::Graphics *graphics, int width, int height)
 		msg += AryaImageName;
 		AfxMessageBox(msg.c_str());
 	}
-	/*
-	/**
-* Draw the new game button
-* \param graphics Graphics device to draw on
 
-	void CNewGame::Draw(Gdiplus::Graphics *graphics, int windowWidth, int windowHeight)
-	{
-		double wid = mButtonImage->GetWidth();
-		double hit = mButtonImage->GetHeight();
-		graphics->DrawImage(mButtonImage.get(),
-			float((-windowWidth + MarginX) / 2.0), float((-windowHeight + MarginY) / 2.0),
-			(float)mButtonImage->GetWidth(), (float)mButtonImage->GetHeight());
-	}
-	*/
+	wstring time = GetTime();
 
-
-	DrawTime(graphics, float((Width - 250) / 2.0), -float((Height - 200) / 2.0), L"0:00");
+	DrawTime(graphics, float((Width - 250) / 2.0), -float((Height - 200) / 2.0), time);
 
 	graphics->DrawImage(mJuicerImage.get(), float((Width - 240) / 2.0) , -float((Height - 300) / 2.0));
 	DrawScore(graphics, float((Width - 200) / 2.0) , -float((Height - 600) / 2.0), L"0");
@@ -164,4 +151,39 @@ void CGame::DrawTime(Gdiplus::Graphics * graphics, float xLoc, float yLoc, wstri
 void CGame::Accept(CGameVisitor *visitor)
 {
 
+}
+
+/** Handle updates for animation
+* \param elapsed The time since the last update
+*/
+void CGame::Update(double elapsed)
+{
+	mTimeInSeconds += elapsed;
+}
+
+wstring CGame::GetTime() {
+	int tempTime = mTimeInSeconds;
+	string minutes = to_string(tempTime / 60);
+	string seconds = to_string(tempTime % 60);
+	if (seconds.length() == 1) {
+		seconds = "0" + seconds;
+	}
+	string stringConvertedTime = minutes + ":" + seconds;
+	std::wstring convertedTime(stringConvertedTime.length(), L' '); // Make room for characters
+
+										   // Copy string to wstring.
+	std::copy(stringConvertedTime.begin(), stringConvertedTime.end(), convertedTime.begin());
+	return convertedTime;
+}
+
+/** Test an x,y click location to see if it clicked
+* on some item in the aquarium.
+* \param x X location
+* \param y Y location
+*/
+void CGame::HitTest(int x, int y)
+{
+	if (mNewGameButton->HitTest(x, y)) {
+		mTimeInSeconds = 0;
+	}
 }
