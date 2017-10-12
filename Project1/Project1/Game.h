@@ -40,5 +40,6 @@ private:
 	std::vector<std::shared_ptr<CItem> > mGameTiles;
 	/// The object for the PlayingArea
 	std::shared_ptr<CPlayingArea> mPlayingArea;
+
 };
 

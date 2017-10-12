@@ -1,6 +1,10 @@
 #include "stdafx.h"
 #include <memory>
 #include "Game.h"
+#include "VillainJuicer.h"
+#include "Villain.h"
+#include "Item.h"
+#include "Gru.h"
 #include <string>
 
 using namespace std;
@@ -24,6 +28,18 @@ CGame::CGame()
 
 	shared_ptr<CPlayingArea> playingArea(new CPlayingArea());
 	mPlayingArea = playingArea;
+
+	//auto juicer = make_shared<CVillainJuicer>(&mGameTiles);
+	//gru->SetLocation(0, 0);
+	//mGameTiles.push_back(gru);
+
+
+	
+	/*
+	auto fish = make_shared<CFishMagikarp>(&mAquarium);
+	fish->SetLocation(InitialX, InitialY);
+	mAquarium.Add(fish);
+	Invalidate();*/
 }
 
 
@@ -114,6 +130,11 @@ void CGame::OnDraw(Gdiplus::Graphics *graphics, int width, int height)
 	graphics->DrawImage(mAryaImage.get(), float((Width - 275) / 2.0), -float((Height - 900) / 2.0));
 	DrawScore(graphics, float((Width - 200) / 2.0), -float((Height - 1200) / 2.0), L"0");
 
+	///after gru is added then I can test this - Moritz
+	/*for (auto item : mGameTiles)
+	{
+		item->Draw(graphics);
+	}*/
 
 }
 

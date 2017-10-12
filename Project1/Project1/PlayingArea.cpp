@@ -31,8 +31,8 @@ void CPlayingArea::DrawArea(Gdiplus::Graphics *graphics, int windowWidth, int wi
 	graphics->DrawRectangle(&greenPen,
 		float((-windowWidth + 500) / 2.0),
 		float((-windowHeight + 100) / 2.0),
-		GridSize,
-		GridSize);
+		float(GridSize),
+		float(GridSize));
 
 		//Jordan's old code (not working)
 		/*float(-(windowWidth - GridSize / 2.0) / 2.0),

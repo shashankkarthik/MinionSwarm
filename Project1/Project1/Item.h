@@ -31,6 +31,24 @@ public:
 	CItem(const CItem &) = delete;
 
 	virtual ~CItem();
+
+
+	/// Set the item location
+	/// \param x X location
+	/// \param y Y location
+	void SetLocation(double x, double y) { mX = x; mY = y; }
+
+	///Draw Image
+	void CItem::Draw(Gdiplus::Graphics *graphics);
+
+	/** The X location of the item
+	* \returns X location in pixels */
+	double GetX() const { return mX; }
+
+	/** The Y location of the item
+	* \returns Y location in pixels */
+	double GetY() const { return mY; }
+
 private:
 	/// The aquarium this item is contained in
 	CGame  *mGameTiles;

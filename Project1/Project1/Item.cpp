@@ -12,7 +12,7 @@ using namespace Gdiplus;
 using namespace std;
 
 /** Constructor
-* \param aquarium The aquarium this item is a member of
+* \param game The game this item is a member of
 */
 CItem::CItem(CGame *game, const std::wstring &filename) : mGameTiles(game)
 {
@@ -31,4 +31,18 @@ CItem::CItem(CGame *game, const std::wstring &filename) : mGameTiles(game)
 */
 CItem::~CItem()
 {
+}
+
+/**
+* Draw our item
+* \param graphics The graphics context to draw on
+*/
+void CItem::Draw(Gdiplus::Graphics *graphics)
+{
+	double wid = mItemImage->GetWidth();
+	double hit = mItemImage->GetHeight();
+	graphics->DrawImage(mItemImage.get(),
+		float(GetX() + wid / 2), float(GetY() - hit / 2),
+		-(float)mItemImage->GetWidth(), (float)mItemImage->GetHeight());
+	
 }

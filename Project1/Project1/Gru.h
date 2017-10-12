@@ -21,5 +21,13 @@ public:
 
 	/// Copy constructor (disabled)
 	CGru(const CGru &) = delete;
+
+	///returns if Gru is alive or not
+	bool IsAlive() { return mAlive; }
+
+private:
+
+	///Gru is alive or not
+	bool mAlive = true;
 };
 

@@ -21,6 +21,10 @@ public:
 
 	/// Copy constructor (disabled)
 	CMinion(const CMinion &) = delete;
+
+	///Get points for the minion
+	int GetPoints() { return mPoints; }
+
 private:
 	/// Fish speed in the X direction
 	double mSpeedX = 0;
