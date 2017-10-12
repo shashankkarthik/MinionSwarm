@@ -10,10 +10,11 @@
 #include "Item.h"
 class CGru : public CItem
 {
-protected:
-	CGru(CGame * game);
 
 public:
+
+	CGru(CGame * game);
+
 	virtual ~CGru();
 
 	/// Default constructor (disabled)

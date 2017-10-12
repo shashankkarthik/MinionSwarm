@@ -29,7 +29,7 @@ private:
 	/// Fish speed in the X direction
 	double mSpeedX = 0;
 
-	/// Fish speed in the Y direction
+	/// image speed in the Y direction
 	double mSpeedY = 0;
 
 	///Points if you kill minion

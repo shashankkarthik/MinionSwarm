@@ -11,13 +11,24 @@
 #include "Project1.h"
 #include "ChildView.h"
 #include "DoubleBufferDC.h"
+#include "Game.h"
+#include "VillainJuicer.h"
+#include "Villain.h"
+#include "Item.h"
+#include <memory>
+#include "Villain.h"
+#include "Item.h"
+#include "Gru.h"
+#include <string>
 
 using namespace Gdiplus;
-
+using namespace std;
 #ifdef _DEBUG
 #define new DEBUG_NEW
 #endif
 
+/// Any item we are currently dragging
+std::shared_ptr<CItem> mGrabbedItem;
 
 // CChildView
 
@@ -26,6 +37,10 @@ using namespace Gdiplus;
 */
 CChildView::CChildView()
 {
+	auto gru = make_shared<CGru>(&mGame);
+	gru->SetLocation(-300,300);
+	mGame.Add(gru);
+
 }
 
 /**
@@ -80,6 +95,8 @@ void CChildView::OnPaint()
 
 	mGame.OnDraw(&graphics, rect.Width(), rect.Height()); //still need mGame object
 
+	//mGame
+
 	// TODO: Add your message handler code here
 	
 	// Do not call CWnd::OnPaint() for painting messages
@@ -91,3 +108,20 @@ BOOL CChildView::OnEraseBkgnd(CDC* pDC)
 {
 	return FALSE;
 }
+
+/**
+* Called when there is a left mouse button press
+* \param nFlags Flags associated with the mouse button press
+* \param point Where the button was pressed
+*/
+void CChildView::OnLButtonDown(UINT nFlags, CPoint point)
+{
+	/* This should be the code once we have the Hit test working
+	mGrabbedItem = mGame.HitTest(point.x, point.y);
+	if (mGrabbedItem != nullptr)
+	{
+
+		//mGame.MoveToBack(mGrabbedItem); //we might not need this depending on the design
+	}*/
+}
+

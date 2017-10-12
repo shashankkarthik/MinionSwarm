@@ -29,17 +29,7 @@ CGame::CGame()
 	shared_ptr<CPlayingArea> playingArea(new CPlayingArea());
 	mPlayingArea = playingArea;
 
-	//auto juicer = make_shared<CVillainJuicer>(&mGameTiles);
-	//gru->SetLocation(0, 0);
-	//mGameTiles.push_back(gru);
 
-
-	
-	/*
-	auto fish = make_shared<CFishMagikarp>(&mAquarium);
-	fish->SetLocation(InitialX, InitialY);
-	mAquarium.Add(fish);
-	Invalidate();*/
 }
 
 
@@ -131,10 +121,10 @@ void CGame::OnDraw(Gdiplus::Graphics *graphics, int width, int height)
 	DrawScore(graphics, float((Width - 200) / 2.0), -float((Height - 1200) / 2.0), L"0");
 
 	///after gru is added then I can test this - Moritz
-	/*for (auto item : mGameTiles)
+	for (auto item : mGameTiles)
 	{
 		item->Draw(graphics);
-	}*/
+	}
 
 }
 
@@ -157,6 +147,15 @@ void CGame::DrawScore(Gdiplus::Graphics * graphics, float xLoc, float yLoc, wstr
 		layoutRect,
 		&format,
 		&greenBrush);
+}
+
+/**
+* Add an item to the game
+* \param item New item to add
+*/
+void CGame::Add(std::shared_ptr<CItem> item)
+{
+	mGameTiles.push_back(item);
 }
 
 void CGame::DrawTime(Gdiplus::Graphics * graphics, float xLoc, float yLoc, wstring time)

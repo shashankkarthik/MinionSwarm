@@ -11,13 +11,13 @@
 using namespace std;
 using namespace Gdiplus;
 
-/// Fish filename 
+/// image filename 
 const wstring MinionMutantImageName = L"images/mutant.png";
 const int points = 5;
 
 
 /** Constructor
-* \param aquarium The aquarium this is a member of
+* \param game The game this is a member of
 */
 CMinionMutant::CMinionMutant(CGame *game) :
 	CMinion(game, MinionMutantImageName, points)

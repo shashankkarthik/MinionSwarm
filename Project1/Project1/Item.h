@@ -19,7 +19,7 @@ class CItem
 protected:
 	/**
 	* Override function
-	* \param aquarium, filename
+	* \param game, filename
 	*/
 	CItem::CItem(CGame *game, const std::wstring &filename);
 
@@ -31,7 +31,6 @@ public:
 	CItem(const CItem &) = delete;
 
 	virtual ~CItem();
-
 
 	/// Set the item location
 	/// \param x X location
@@ -50,14 +49,14 @@ public:
 	double GetY() const { return mY; }
 
 private:
-	/// The aquarium this item is contained in
+	/// The game this item is contained in
 	CGame  *mGameTiles;
 
-	/// The image of this fish
+	/// The image of this item
 	std::unique_ptr<Gdiplus::Bitmap> mItemImage;
 
 
-	// Item location in the aquarium
+	/// Item location in the game
 	double  mX = 0;     ///< X location for the center of the item
 	double  mY = 0;     ///< Y location for the center of the item
 };
