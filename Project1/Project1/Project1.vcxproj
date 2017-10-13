@@ -206,7 +206,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ChildView.cpp" />
-    <ClCompile Include="CMinionMutant.cpp" />
+    <ClCompile Include="MinionMutant.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameVisitor.cpp" />
     <ClCompile Include="Gru.cpp" />

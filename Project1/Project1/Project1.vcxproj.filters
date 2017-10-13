@@ -107,9 +107,6 @@
     <ClCompile Include="Minion.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="CMinionMutant.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Villain.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -141,6 +138,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Scoreboard.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MinionMutant.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

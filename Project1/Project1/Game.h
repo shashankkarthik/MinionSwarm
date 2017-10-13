@@ -20,6 +20,8 @@ public:
 
 	virtual void CGame::OnDraw(Gdiplus::Graphics *graphics, int width, int height);
 
+	void Delete();
+
 	void Add(std::shared_ptr<CItem> item);
 
 	void Accept(CGameVisitor * visitor);

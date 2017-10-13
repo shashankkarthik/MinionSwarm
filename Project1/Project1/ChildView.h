@@ -40,6 +40,8 @@ public:
 public:
 	virtual ~CChildView();
 
+	void ResetScreen();
+
 	// Generated message map functions
 protected:
 	afx_msg void OnPaint();
