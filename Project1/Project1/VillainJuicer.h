@@ -23,5 +23,7 @@ public:
 	CVillainJuicer(const CVillainJuicer &) = delete;
 
 	virtual ~CVillainJuicer();
+
+	virtual void Accept(CGameVisitor * visitor) { visitor->VisitJuicer(this); }
 };
 

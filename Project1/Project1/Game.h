@@ -5,6 +5,7 @@
 #include "GameVisitor.h"
 #include "NewGame.h"
 #include "PlayingArea.h"
+#include "Scoreboard.h"
 
 using namespace std;
 
@@ -32,11 +33,11 @@ public:
 
 	void HitTest(int x, int y);
 
+	void UpdateScoreMap();
+
 	float GetXOffset() { return mXOffset; }
 
 	float GetYOffset() { return mYOffset; }
-
-	void CGame::DrawScore(Gdiplus::Graphics * graphics, float xLoc, float yLoc, std::wstring score);
 
 	void CGame::DrawTime(Gdiplus::Graphics * graphics, float xLoc, float yLoc, std::wstring score);
 
@@ -56,6 +57,8 @@ private:
 	std::vector<std::shared_ptr<CItem> > mGameTiles;
 	/// The object for the PlayingArea
 	std::shared_ptr<CPlayingArea> mPlayingArea;
+	///Scoreboard
+	std::shared_ptr<CScoreboard> mScoreboard;
 
 };
 

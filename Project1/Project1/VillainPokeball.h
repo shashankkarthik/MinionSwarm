@@ -23,5 +23,7 @@ public:
 	CVillainPokeball(const CVillainPokeball &) = delete;
 
 	virtual ~CVillainPokeball();
+
+	virtual void Accept(CGameVisitor * visitor) { visitor->VisitPokeeball(this); }
 };
 

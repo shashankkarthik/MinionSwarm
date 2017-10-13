@@ -26,6 +26,10 @@ public:
 	///returns if Gru is alive or not
 	bool IsAlive() { return mAlive; }
 
+	void KillGru() { mAlive = false; }
+
+	virtual void Accept(CGameVisitor * visitor) { }
+
 private:
 
 	///Gru is alive or not
