@@ -40,6 +40,8 @@ public:
 	///Draw Image
 	virtual void CItem::Draw(Gdiplus::Graphics *graphics);
 
+	bool HitTest(int x, int y);
+
 	/** The X location of the item
 	* \returns X location in pixels */
 	double GetX() const { return mX; }
