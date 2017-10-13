@@ -22,6 +22,10 @@
 #include <string>
 #include "VillainArya.h"
 #include "VillainPokeball.h"
+#include "Minion.h"
+#include "MinionJerry.h"
+#include "MinionStuart.h"
+#include "MinionMutant.h"
 
 using namespace Gdiplus;
 using namespace std;
@@ -56,6 +60,18 @@ CChildView::CChildView()
 	auto villainPokeball = make_shared<CVillainPokeball>(&mGame);
 	villainPokeball->SetLocation(275, -250);
 	mGame.Add(villainPokeball);
+
+	auto minionJerry = make_shared<CMinionJerry>(&mGame);
+	minionJerry->SetLocation(0, 400);
+	mGame.Add(minionJerry);
+
+	auto minionStuart = make_shared<CMinionStuart>(&mGame);
+	minionJerry->SetLocation(-100, -400);
+	mGame.Add(minionStuart);
+
+	auto minionMutant = make_shared<CMinionMutant>(&mGame);
+	minionMutant->SetLocation(200, -400);
+	mGame.Add(minionMutant);
 
 }
 
