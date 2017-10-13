@@ -197,7 +197,7 @@ wstring CGame::GetTime() {
 }
 
 /** Test an x,y click location to see if it clicked
-* on some item in the aquarium.
+* on some item in the PlayingArea.
 * \param x X location
 * \param y Y location
 */
