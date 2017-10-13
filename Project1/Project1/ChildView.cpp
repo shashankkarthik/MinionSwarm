@@ -20,6 +20,7 @@
 #include "Item.h"
 #include "Gru.h"
 #include <string>
+#include "VillainArya.h"
 
 using namespace Gdiplus;
 using namespace std;
@@ -42,6 +43,10 @@ CChildView::CChildView()
 	auto gru = make_shared<CGru>(&mGame);
 	gru->SetLocation(-300,300);
 	mGame.Add(gru);
+
+	auto arya = make_shared<CVillainArya>(&mGame);
+	arya->SetLocation(-150, 150);
+	mGame.Add(arya);
 
 }
 
