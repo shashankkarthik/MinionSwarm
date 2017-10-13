@@ -197,13 +197,15 @@ wstring CGame::GetTime() {
 }
 
 /** Test an x,y click location to see if it clicked
-* on some item in the aquarium.
+* on some item in the PlayingArea.
 * \param x X location
 * \param y Y location
 */
 void CGame::HitTest(int x, int y)
 {
-	if (mNewGameButton->HitTest(x, y)) {
+	float virtualX = (x - mXOffset) / mScale;
+	float virtualY = (y - mYOffset) / mScale;
+	if (mNewGameButton->HitTest(virtualX, virtualY)) {
 		mTimeInSeconds = 0;
 	}
 }

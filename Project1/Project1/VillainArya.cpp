@@ -5,8 +5,9 @@
  */
 
 #include "stdafx.h"
-#include "VillainArya.h"
 #include <string>
+#include "VillainArya.h"
+
 
 using namespace std;
 using namespace Gdiplus;
@@ -20,7 +21,8 @@ const int pointsMult = 1;
 /** Constructor
 * \param game The game this is a member of
 */
-CVillainArya::CVillainArya(CGame *game) : CVillain(game, VillainAryaImageName, pointsMult)
+CVillainArya::CVillainArya(CGame *game) : 
+	CVillain(game, VillainAryaImageName, pointsMult)
 {
 }
 
@@ -31,3 +33,4 @@ CVillainArya::CVillainArya(CGame *game) : CVillain(game, VillainAryaImageName, p
 CVillainArya::~CVillainArya()
 {
 }
+

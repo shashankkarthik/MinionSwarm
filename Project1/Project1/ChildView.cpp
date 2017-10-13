@@ -20,6 +20,8 @@
 #include "Item.h"
 #include "Gru.h"
 #include <string>
+#include "VillainArya.h"
+#include "VillainPokeball.h"
 
 using namespace Gdiplus;
 using namespace std;
@@ -43,6 +45,18 @@ CChildView::CChildView()
 	gru->SetLocation(-300,300);
 	mGame.Add(gru);
 
+	auto villainArya = make_shared<CVillainArya>(&mGame);
+	villainArya->SetLocation(75, 200);
+	mGame.Add(villainArya);
+
+	auto villainJuicer = make_shared<CVillainJuicer>(&mGame);
+	villainJuicer->SetLocation(-200, -250);
+	mGame.Add(villainJuicer);
+
+	auto villainPokeball = make_shared<CVillainPokeball>(&mGame);
+	villainPokeball->SetLocation(275, -250);
+	mGame.Add(villainPokeball);
+
 }
 
 /**
@@ -59,6 +73,7 @@ BEGIN_MESSAGE_MAP(CChildView, CWnd)
 	ON_WM_TIMER()
 	ON_WM_LBUTTONDOWN()
 	ON_WM_LBUTTONUP()
+	ON_WM_MOUSEMOVE()
 END_MESSAGE_MAP()
 
 
@@ -161,4 +176,12 @@ void CChildView::OnLButtonUp(UINT nFlags, CPoint point)
 	// TODO: Add your message handler code here and/or call default
 
 	CWnd::OnLButtonUp(nFlags, point);
+}
+
+
+void CChildView::OnMouseMove(UINT nFlags, CPoint point)
+{
+	// TODO: Add your message handler code here and/or call default
+
+	CWnd::OnMouseMove(nFlags, point);
 }

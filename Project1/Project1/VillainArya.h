@@ -10,10 +10,11 @@
 #include "Villain.h"
 #include "Item.h"
 
-class CVillainArya : public CVillain
+class CVillainArya : 
+	public CVillain
 {
 public:
-	CVillainArya(CGame * game);
+	CVillainArya(CGame *game);
 
 	/// Default constructor (disabled)
 	CVillainArya() = delete;

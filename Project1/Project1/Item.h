@@ -38,7 +38,7 @@ public:
 	void SetLocation(double x, double y) { mX = x; mY = y; }
 
 	///Draw Image
-	void CItem::Draw(Gdiplus::Graphics *graphics);
+	virtual void CItem::Draw(Gdiplus::Graphics *graphics);
 
 	/** The X location of the item
 	* \returns X location in pixels */
