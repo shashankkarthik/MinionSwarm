@@ -44,9 +44,13 @@ CChildView::CChildView()
 	gru->SetLocation(-300,300);
 	mGame.Add(gru);
 
-	auto arya = make_shared<CVillainArya>(&mGame);
-	arya->SetLocation(-150, 150);
-	mGame.Add(arya);
+	auto villainArya = make_shared<CVillainArya>(&mGame);
+	villainArya->SetLocation(75, 200);
+	mGame.Add(villainArya);
+
+	auto villainJuicer = make_shared<CVillainJuicer>(&mGame);
+	villainJuicer->SetLocation(-175, -250);
+	mGame.Add(villainJuicer);
 
 }
 
