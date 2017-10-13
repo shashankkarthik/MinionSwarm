@@ -7,10 +7,16 @@
  */
 
 #pragma once
+
+class CVillain;
+
 class CGameVisitor
 {
 public:
 	CGameVisitor();
 	virtual ~CGameVisitor();
+
+
+	virtual void VisitVillain(CVillain * villain) {};
 };
 

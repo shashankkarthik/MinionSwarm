@@ -1,5 +1,7 @@
 #include "stdafx.h"
 #include "Scoreboard.h"
+#include <map>
+#include <iostream>
 
 
 using namespace std;
@@ -87,6 +89,8 @@ CScoreboard::CScoreboard()
 		AfxMessageBox(msg.c_str());
 	}
 
+	initializeScoreMap();
+
 }
 
 
@@ -102,10 +106,10 @@ CScoreboard::~CScoreboard()
  * \param yLoc Y coordinate to draw at
  * \param score Score to draw
  */
-void CScoreboard::DrawScore(Gdiplus::Graphics * graphics, float xLoc, float yLoc, wstring score)
-{
-	
+void CScoreboard::DrawScore(Gdiplus::Graphics * graphics, float xLoc, float yLoc, int scoreInt)
+{	
 	///Draws rectangle to surround text
+	wstring score = to_wstring(scoreInt);
 	score = score + L"\0";
 	WCHAR* string = (WCHAR *)score.c_str();
 	Gdiplus::Font myFont(L"Arial", ScoreFontSize);
@@ -138,15 +142,28 @@ void CScoreboard::Draw(Graphics * graphics, int Width, int Height)
 
 	
 	graphics->DrawImage(mJuicerImage.get(), float((Width - JuicerImageXPad) / 2.0), -float((Height - JuicerImageYPad) / 2.0));
-	DrawScore(graphics, float((Width - ScoreXPad) / 2.0), -float((Height - JuicerScoreYPad) / 2.0), L"0");
+	DrawScore(graphics, float((Width - ScoreXPad) / 2.0), -float((Height - JuicerScoreYPad) / 2.0), mScoreMap["Juicer"]);
 
 	
 
 	graphics->DrawImage(mPokeeballImage.get(), float((Width - PokeballImageXPad) / 2.0), -float((Height - PokeballImageYPad) / 2.0));
-	DrawScore(graphics, float((Width - ScoreXPad) / 2.0), -float((Height - PokeballScoreYPad) / 2.0), L"0");
+	DrawScore(graphics, float((Width - ScoreXPad) / 2.0), -float((Height - PokeballScoreYPad) / 2.0), mScoreMap["Pokeeball"]);
 
 
 	graphics->DrawImage(mAryaImage.get(), float((Width - AryaImageXPad) / 2.0), -float((Height - AryaImageYPad) / 2.0));
-	DrawScore(graphics, float((Width - ScoreXPad) / 2.0), -float((Height - AryaScoreYPad) / 2.0), L"0");
+	DrawScore(graphics, float((Width - ScoreXPad) / 2.0), -float((Height - AryaScoreYPad) / 2.0), mScoreMap["Arya"]);
 
+}
+
+
+void CScoreboard::initializeScoreMap()
+{
+	mScoreMap["Juicer"] = 0;
+	mScoreMap["Pokeeball"] = 0;
+	mScoreMap["Arya"] = 0;
+}
+
+void CScoreboard::UpdateScoreMap(map<string, int> newScoreMap)
+{
+	mScoreMap = newScoreMap;
 }

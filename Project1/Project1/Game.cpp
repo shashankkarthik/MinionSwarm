@@ -62,12 +62,28 @@ void CGame::OnDraw(Gdiplus::Graphics *graphics, int width, int height)
 
 	// From here on you are drawing virtual pixels
 
+	wstring time = GetTime();
+	DrawTime(graphics, float((Width - 250) / 2.0), -float((Height - 200) / 2.0), time);
+
 	mNewGameButton->Draw(graphics, Width, Height);
 
 	mPlayingArea->DrawArea(graphics, Width, Height);
 
+	map<string, int> testMap;
+	testMap["Juicer"] = 1;
+	testMap["Pokeeball"] = 2;
+	testMap["Arya"] = 3;
+
+	if (time == L"0:05")
+	{
+		mScoreboard->UpdateScoreMap(testMap);
+	}
+
 	mScoreboard->Draw(graphics, Width, Height);
 
+
+
+	
 
 	///after gru is added then I can test this - Moritz
 	for (auto item : mGameTiles)
