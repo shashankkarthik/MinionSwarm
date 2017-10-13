@@ -22,10 +22,6 @@
 #include <string>
 #include "VillainArya.h"
 #include "VillainPokeball.h"
-#include "Minion.h"
-#include "MinionJerry.h"
-#include "MinionStuart.h"
-#include "MinionMutant.h"
 
 using namespace Gdiplus;
 using namespace std;
@@ -45,8 +41,23 @@ std::shared_ptr<CItem> mGrabbedItem;
 */
 CChildView::CChildView()
 {
+	ResetScreen(); //clears the screen and adds the villains and gru
+}
+
+/**
+* Destructor
+*/
+CChildView::~CChildView()
+{
+
+}
+
+void CChildView::ResetScreen()
+{
+	mGame.Delete();
+
 	auto gru = make_shared<CGru>(&mGame);
-	gru->SetLocation(-300,300);
+	gru->SetLocation(-300, 300);
 	mGame.Add(gru);
 
 	auto villainArya = make_shared<CVillainArya>(&mGame);
@@ -60,26 +71,6 @@ CChildView::CChildView()
 	auto villainPokeball = make_shared<CVillainPokeball>(&mGame);
 	villainPokeball->SetLocation(275, -250);
 	mGame.Add(villainPokeball);
-
-	auto minionJerry = make_shared<CMinionJerry>(&mGame);
-	minionJerry->SetLocation(0, 400);
-	mGame.Add(minionJerry);
-
-	auto minionStuart = make_shared<CMinionStuart>(&mGame);
-	minionJerry->SetLocation(-100, -400);
-	mGame.Add(minionStuart);
-
-	auto minionMutant = make_shared<CMinionMutant>(&mGame);
-	minionMutant->SetLocation(200, -400);
-	mGame.Add(minionMutant);
-
-}
-
-/**
-* Destructor
-*/
-CChildView::~CChildView()
-{
 }
 
 

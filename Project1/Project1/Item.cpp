@@ -47,3 +47,33 @@ void CItem::Draw(Gdiplus::Graphics *graphics)
 		-(float)mItemImage->GetWidth(), (float)mItemImage->GetHeight());
 	
 }
+
+bool CItem::HitTest(int x, int y)
+{
+	double width = mItemImage->GetWidth();
+	double height = mItemImage->GetHeight();
+
+	double testX = x - GetX() + width / 2;
+	double testY = y - GetY() + height / 2;
+
+	if (testX < 0 || testY < 0 || testX >= width || testY >= height)
+	{
+		return false;
+	}
+
+	// Test to see if x, y are in the drawn part of the image
+	auto format = mItemImage->GetPixelFormat();
+	if (format == PixelFormat32bppARGB || format == PixelFormat32bppPARGB)
+	{
+		// This image has an alpha map, which implements the 
+		// transparency. If so, we should check to see if we
+		// clicked on a pixel where alpha is not zero, meaning
+		// the pixel shows on the screen.
+		Color color;
+		mItemImage->GetPixel((int)testX, (int)testY, &color);
+		return color.GetAlpha() != 0;
+	}
+	else {
+		return true;
+	}
+}

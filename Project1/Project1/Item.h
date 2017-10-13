@@ -11,6 +11,7 @@
 #pragma once
 #include <memory>
 #include <string>
+#include "GameVisitor.h"
 
 class CGame;
 
@@ -40,6 +41,8 @@ public:
 	///Draw Image
 	virtual void CItem::Draw(Gdiplus::Graphics *graphics);
 
+	bool HitTest(int x, int y);
+
 	/** The X location of the item
 	* \returns X location in pixels */
 	double GetX() const { return mX; }
@@ -47,6 +50,11 @@ public:
 	/** The Y location of the item
 	* \returns Y location in pixels */
 	double GetY() const { return mY; }
+
+	virtual void Accept(CGameVisitor *visitor) = 0;
+
+	//If needed
+	//CGame *GetGameTiles() { return mGameTiles; }
 
 private:
 	/// The game this item is contained in
