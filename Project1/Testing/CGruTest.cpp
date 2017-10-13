@@ -1,6 +1,10 @@
 #include "stdafx.h"
 #include "CppUnitTest.h"
 
+#include "Game.h"
+#include "Item.h"
+#include "Gru.h"
+
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
 namespace Testing
@@ -15,10 +19,44 @@ namespace Testing
 			::SetCurrentDirectory(g_dir);
 		}
 		
-		TEST_METHOD(TestNothing)
+		TEST_METHOD(TestCAquariumConstruct)
 		{
-			// This is an empty test just to ensure the system is working
+			CGame game;
 		}
 
+		TEST_METHOD(TestGruInit)
+		{
+			CGame game;
+			CGru gru(&game);
+		}
+		TEST_METHOD(TestGruSetLocation)
+		{
+			CGame game;
+			CGru gru(&game);
+
+			Assert::IsTrue(gru.GetX() == 0);
+			Assert::IsTrue(gru.GetY() == 0);
+			gru.SetLocation(200, -401);
+			Assert::IsTrue(gru.GetX() == 200);
+			Assert::IsTrue(gru.GetY() == -401);
+			
+
+
+		}
+		TEST_METHOD(TestGruKill)
+		{
+			CGame game;
+			CGru gru(&game);
+
+			Assert::IsTrue(gru.IsAlive() == true);
+			gru.KillGru();
+			Assert::IsTrue(gru.IsAlive() == false);
+
+
+
+		}
+
+
+		
 	};
 }

@@ -52,6 +52,10 @@ public:
 	double GetY() const { return mY; }
 
 	virtual void Accept(CGameVisitor *visitor) = 0;
+
+	//If needed
+	//CGame *GetGameTiles() { return mGameTiles; }
+
 private:
 	/// The game this item is contained in
 	CGame  *mGameTiles;
