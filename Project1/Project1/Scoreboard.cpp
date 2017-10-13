@@ -8,14 +8,58 @@ using namespace Gdiplus;
 /// Juicer filename
 const wstring JuicerImageName = L"images/juicer.png";
 
+/// Juicer X padding
+const int JuicerImageXPad = 240;
+
+/// Juicer Y padding
+const int JuicerImageYPad = 300;
+
+/// Juicer score Y padding
+const int JuicerScoreYPad = 600;
+
+
+
 /// Pokeeball filename
 const wstring PokeeballImageName = L"images/pokeball.png";
+
+/// Pokeeball X Pad
+const int PokeballImageXPad = 200;
+
+/// Pokeball Y Pad
+const int PokeballImageYPad = 700;
+
+/// Pokeball score Y padding
+const int PokeballScoreYPad = 800;
+
+
 
 /// Arya filename
 const wstring AryaImageName = L"images/arya.png";
 
+/// Arya X padding
+const int AryaImageXPad = 275;
+
+/// Arya Y padding
+const int AryaImageYPad = 900;
+
+/// Arya Score Y padding
+const int AryaScoreYPad = 1200;
+
+
+/// Score X padding
+const int ScoreXPad = 200;
+
 /// Font size
-const int scoreFontSize = 16;
+const int ScoreFontSize = 16;
+
+/// Score rect width
+const float RectWidth = 50.0f;
+
+/// Score rect height
+const float RectHeight = 50.0f;
+
+/// Text Color
+const Color TextColor = Color(255, 0, 255, 0);
 
 CScoreboard::CScoreboard()
 {
@@ -64,11 +108,11 @@ void CScoreboard::DrawScore(Gdiplus::Graphics * graphics, float xLoc, float yLoc
 	///Draws rectangle to surround text
 	score = score + L"\0";
 	WCHAR* string = (WCHAR *)score.c_str();
-	Gdiplus::Font myFont(L"Arial", scoreFontSize);
-	RectF layoutRect(xLoc, yLoc, 50.0f, 50.0f);
+	Gdiplus::Font myFont(L"Arial", ScoreFontSize);
+	RectF layoutRect(xLoc, yLoc, RectWidth, RectHeight);
 	StringFormat format;
 	format.SetAlignment(StringAlignmentCenter);
-	SolidBrush greenBrush(Color(255, 0, 255, 0));
+	SolidBrush greenBrush(TextColor);
 
 	///Draws string in rectangle
 	graphics->DrawString(
@@ -93,16 +137,16 @@ void CScoreboard::Draw(Graphics * graphics, int Width, int Height)
 {
 
 	
-	graphics->DrawImage(mJuicerImage.get(), float((Width - 240) / 2.0), -float((Height - 300) / 2.0));
-	DrawScore(graphics, float((Width - 200) / 2.0), -float((Height - 600) / 2.0), L"0");
+	graphics->DrawImage(mJuicerImage.get(), float((Width - JuicerImageXPad) / 2.0), -float((Height - JuicerImageYPad) / 2.0));
+	DrawScore(graphics, float((Width - ScoreXPad) / 2.0), -float((Height - JuicerScoreYPad) / 2.0), L"0");
 
 	
 
-	graphics->DrawImage(mPokeeballImage.get(), float((Width - 200) / 2.0), -float((Height - 700) / 2.0));
-	DrawScore(graphics, float((Width - 200) / 2.0), -float((Height - 800) / 2.0), L"0");
+	graphics->DrawImage(mPokeeballImage.get(), float((Width - PokeballImageXPad) / 2.0), -float((Height - PokeballImageYPad) / 2.0));
+	DrawScore(graphics, float((Width - ScoreXPad) / 2.0), -float((Height - PokeballScoreYPad) / 2.0), L"0");
 
 
-	graphics->DrawImage(mAryaImage.get(), float((Width - 275) / 2.0), -float((Height - 900) / 2.0));
-	DrawScore(graphics, float((Width - 200) / 2.0), -float((Height - 1200) / 2.0), L"0");
+	graphics->DrawImage(mAryaImage.get(), float((Width - AryaImageXPad) / 2.0), -float((Height - AryaImageYPad) / 2.0));
+	DrawScore(graphics, float((Width - ScoreXPad) / 2.0), -float((Height - AryaScoreYPad) / 2.0), L"0");
 
 }
