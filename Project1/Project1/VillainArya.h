@@ -23,5 +23,7 @@ public:
 	CVillainArya(const CVillainArya &) = delete;
 
 	virtual ~CVillainArya();
+
+	virtual void Accept(CGameVisitor * visitor) { visitor->VisitArya(this); }
 };
 

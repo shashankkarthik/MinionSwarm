@@ -11,6 +11,7 @@
 #pragma once
 #include <memory>
 #include <string>
+#include "GameVisitor.h"
 
 class CGame;
 
@@ -50,6 +51,7 @@ public:
 	* \returns Y location in pixels */
 	double GetY() const { return mY; }
 
+	virtual void Accept(CGameVisitor *visitor) = 0;
 private:
 	/// The game this item is contained in
 	CGame  *mGameTiles;

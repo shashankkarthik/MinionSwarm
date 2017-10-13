@@ -84,7 +84,7 @@
     <ClInclude Include="Scoreboard.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="CGetScoreVisitor.h">
+    <ClInclude Include="GetScoreVisitor.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -146,7 +146,7 @@
     <ClCompile Include="MinionMutant.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="CGetScoreVisitor.cpp">
+    <ClCompile Include="GetScoreVisitor.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

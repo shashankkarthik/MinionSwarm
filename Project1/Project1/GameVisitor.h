@@ -8,7 +8,10 @@
 
 #pragma once
 
-class CVillain;
+class CVillainJuicer;
+class CVillainPokeball;
+class CVillainArya;
+
 
 class CGameVisitor
 {
@@ -17,6 +20,8 @@ public:
 	virtual ~CGameVisitor();
 
 
-	virtual void VisitVillain(CVillain * villain) {};
+	virtual void VisitJuicer(CVillainJuicer * Juicer) {};
+	virtual void VisitPokeeball(CVillainPokeball * pokeeball) {};
+	virtual void VisitArya(CVillainArya * arya) {};
 };
 

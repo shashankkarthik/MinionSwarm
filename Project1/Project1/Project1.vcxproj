@@ -183,7 +183,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ChildView.h" />
-    <ClInclude Include="CGetScoreVisitor.h" />
+    <ClInclude Include="GetScoreVisitor.h" />
     <ClInclude Include="GameVisitor.h" />
     <ClInclude Include="Gru.h" />
     <ClInclude Include="MinionJerry.h" />
@@ -207,7 +207,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ChildView.cpp" />
-    <ClCompile Include="CGetScoreVisitor.cpp" />
+    <ClCompile Include="GetScoreVisitor.cpp" />
     <ClCompile Include="MinionMutant.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameVisitor.cpp" />
