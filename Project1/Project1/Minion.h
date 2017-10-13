@@ -26,7 +26,7 @@ public:
 	int GetPoints() { return mPoints; }
 
 private:
-	/// Fish speed in the X direction
+	/// Minion speed in the X direction
 	double mSpeedX = 0;
 
 	/// image speed in the Y direction
