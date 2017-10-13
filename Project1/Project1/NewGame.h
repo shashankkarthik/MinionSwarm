@@ -2,7 +2,7 @@
 #include <memory>
 #include "GameVisitor.h"
 
-class CNewGame : public CGameVisitor
+class CNewGame
 {
 public:
 	CNewGame();

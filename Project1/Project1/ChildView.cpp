@@ -89,6 +89,7 @@ BEGIN_MESSAGE_MAP(CChildView, CWnd)
 	ON_WM_TIMER()
 	ON_WM_LBUTTONDOWN()
 	ON_WM_LBUTTONUP()
+	ON_WM_MOUSEMOVE()
 END_MESSAGE_MAP()
 
 
@@ -191,4 +192,12 @@ void CChildView::OnLButtonUp(UINT nFlags, CPoint point)
 	// TODO: Add your message handler code here and/or call default
 
 	CWnd::OnLButtonUp(nFlags, point);
+}
+
+
+void CChildView::OnMouseMove(UINT nFlags, CPoint point)
+{
+	// TODO: Add your message handler code here and/or call default
+
+	CWnd::OnMouseMove(nFlags, point);
 }
