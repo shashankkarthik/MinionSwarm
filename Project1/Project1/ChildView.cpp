@@ -41,8 +41,23 @@ std::shared_ptr<CItem> mGrabbedItem;
 */
 CChildView::CChildView()
 {
+	ResetScreen(); //clears the screen and adds the villains and gru
+}
+
+/**
+* Destructor
+*/
+CChildView::~CChildView()
+{
+
+}
+
+void CChildView::ResetScreen()
+{
+	mGame.Delete();
+
 	auto gru = make_shared<CGru>(&mGame);
-	gru->SetLocation(-300,300);
+	gru->SetLocation(-300, 300);
 	mGame.Add(gru);
 
 	auto villainArya = make_shared<CVillainArya>(&mGame);
@@ -56,14 +71,6 @@ CChildView::CChildView()
 	auto villainPokeball = make_shared<CVillainPokeball>(&mGame);
 	villainPokeball->SetLocation(275, -250);
 	mGame.Add(villainPokeball);
-
-}
-
-/**
-* Destructor
-*/
-CChildView::~CChildView()
-{
 }
 
 

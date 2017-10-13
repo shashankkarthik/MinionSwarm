@@ -115,6 +115,11 @@ void CGame::OnDraw(Gdiplus::Graphics *graphics, int width, int height)
 
 }
 
+void CGame::Delete()
+{
+	mGameTiles.clear();
+}
+
 
 
 void CGame::DrawScore(Gdiplus::Graphics * graphics, float xLoc, float yLoc, wstring score)
@@ -182,7 +187,7 @@ void CGame::Update(double elapsed)
 }
 
 wstring CGame::GetTime() {
-	int tempTime = mTimeInSeconds;
+	int tempTime = (int)mTimeInSeconds;
 	string minutes = to_string(tempTime / 60);
 	string seconds = to_string(tempTime % 60);
 	if (seconds.length() == 1) {
@@ -205,7 +210,7 @@ void CGame::HitTest(int x, int y)
 {
 	float virtualX = (x - mXOffset) / mScale;
 	float virtualY = (y - mYOffset) / mScale;
-	if (mNewGameButton->HitTest(virtualX, virtualY)) {
+	if (mNewGameButton->HitTest((int)virtualX, (int)virtualY)) {
 		mTimeInSeconds = 0;
 	}
 }
