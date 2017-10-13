@@ -21,6 +21,7 @@
 #include "Gru.h"
 #include <string>
 #include "VillainArya.h"
+#include "VillainPokeball.h"
 
 using namespace Gdiplus;
 using namespace std;
@@ -49,8 +50,12 @@ CChildView::CChildView()
 	mGame.Add(villainArya);
 
 	auto villainJuicer = make_shared<CVillainJuicer>(&mGame);
-	villainJuicer->SetLocation(-175, -250);
+	villainJuicer->SetLocation(-200, -250);
 	mGame.Add(villainJuicer);
+
+	auto villainPokeball = make_shared<CVillainPokeball>(&mGame);
+	villainPokeball->SetLocation(275, -250);
+	mGame.Add(villainPokeball);
 
 }
 
