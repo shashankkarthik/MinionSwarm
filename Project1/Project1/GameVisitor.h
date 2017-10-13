@@ -19,9 +19,13 @@ public:
 	CGameVisitor();
 	virtual ~CGameVisitor();
 
-
+	///Visits juicer object
 	virtual void VisitJuicer(CVillainJuicer * Juicer) {};
+
+	///Visits pokeeball object
 	virtual void VisitPokeeball(CVillainPokeball * pokeeball) {};
+
+	///Visits arya object
 	virtual void VisitArya(CVillainArya * arya) {};
 };
 

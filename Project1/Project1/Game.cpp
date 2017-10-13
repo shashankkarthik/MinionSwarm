@@ -71,15 +71,9 @@ void CGame::OnDraw(Gdiplus::Graphics *graphics, int width, int height)
 
 	mPlayingArea->DrawArea(graphics, Width, Height);
 
-	map<string, int> testMap;
 	
-
-	if (time == L"0:05")
-	{
-		testMap = RetrieveUpdatedScoreMap();
-		mScoreboard->SetScoreMap(testMap);
-	}
-
+	UpdateScoreMap();
+	
 	mScoreboard->Draw(graphics, Width, Height);
 
 
@@ -179,10 +173,11 @@ void CGame::HitTest(int x, int y)
 	}
 }
 
-map<string, int> CGame::RetrieveUpdatedScoreMap()
+void CGame::UpdateScoreMap()
 {
 	CGetScoreVisitor visitor;
 	Accept(&visitor);
 
-	return visitor.GenerateScoreMap();
+	mScoreboard->SetScoreMap(visitor.GenerateScoreMap());
+	
 }

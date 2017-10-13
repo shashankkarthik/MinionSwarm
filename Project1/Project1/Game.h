@@ -33,7 +33,7 @@ public:
 
 	void HitTest(int x, int y);
 
-	map<string, int> RetrieveUpdatedScoreMap();
+	void UpdateScoreMap();
 
 	float GetXOffset() { return mXOffset; }
 
