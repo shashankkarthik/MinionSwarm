@@ -203,7 +203,9 @@ wstring CGame::GetTime() {
 */
 void CGame::HitTest(int x, int y)
 {
-	if (mNewGameButton->HitTest(x, y)) {
+	float virtualX = (x - mXOffset) / mScale;
+	float virtualY = (y - mYOffset) / mScale;
+	if (mNewGameButton->HitTest(virtualX, virtualY)) {
 		mTimeInSeconds = 0;
 	}
 }
