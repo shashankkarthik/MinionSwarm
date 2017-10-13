@@ -9,6 +9,9 @@
 #pragma once
 #include "Item.h"
 
+using namespace Gdiplus;
+using namespace std;
+
  /**
  * Base class for a Villain
  * This applies to all of the Villains in the game
