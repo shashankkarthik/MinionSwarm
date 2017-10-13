@@ -14,7 +14,10 @@ public:
 	virtual	~CScoreboard();
 
 	void Draw(Graphics * graphics, int gameWidth, int gameHeight);
-	void UpdateScoreMap(map<string, int> newScoreMap);
+	
+	map<string, int> GetScoreMap() { return mScoreMap; }
+	void SetScoreMap(map<string, int> newScoreMap) { mScoreMap = newScoreMap; }
+	
 	
 private:
 
@@ -28,8 +31,5 @@ private:
 	unique_ptr<Bitmap> mPokeeballImage;
 	unique_ptr<Bitmap> mAryaImage;
 
-	int mJuicerScore = 0;
-	int mPokeeballScore = 0;
-	int mArayaScore = 0;
 };
 

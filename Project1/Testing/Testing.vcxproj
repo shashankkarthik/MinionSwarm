@@ -99,6 +99,10 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="CScoreboardTest.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="EmptyTest.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>

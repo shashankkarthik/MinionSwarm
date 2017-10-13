@@ -76,7 +76,7 @@ void CGame::OnDraw(Gdiplus::Graphics *graphics, int width, int height)
 
 	if (time == L"0:05")
 	{
-		mScoreboard->UpdateScoreMap(testMap);
+		mScoreboard->SetScoreMap(testMap);
 	}
 
 	mScoreboard->Draw(graphics, Width, Height);

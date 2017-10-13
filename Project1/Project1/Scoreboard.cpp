@@ -112,7 +112,7 @@ void CScoreboard::DrawScore(Gdiplus::Graphics * graphics, float xLoc, float yLoc
 	wstring score = to_wstring(scoreInt);
 	score = score + L"\0";
 	WCHAR* string = (WCHAR *)score.c_str();
-	Gdiplus::Font myFont(L"Arial", ScoreFontSize);
+	Gdiplus::Font myFont(L"Arial", 16);
 	RectF layoutRect(xLoc, yLoc, RectWidth, RectHeight);
 	StringFormat format;
 	format.SetAlignment(StringAlignmentCenter);
@@ -161,9 +161,4 @@ void CScoreboard::initializeScoreMap()
 	mScoreMap["Juicer"] = 0;
 	mScoreMap["Pokeeball"] = 0;
 	mScoreMap["Arya"] = 0;
-}
-
-void CScoreboard::UpdateScoreMap(map<string, int> newScoreMap)
-{
-	mScoreMap = newScoreMap;
 }
