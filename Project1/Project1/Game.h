@@ -5,6 +5,7 @@
 #include "GameVisitor.h"
 #include "NewGame.h"
 #include "PlayingArea.h"
+#include "Scoreboard.h"
 
 using namespace std;
 
@@ -56,6 +57,8 @@ private:
 	std::vector<std::shared_ptr<CItem> > mGameTiles;
 	/// The object for the PlayingArea
 	std::shared_ptr<CPlayingArea> mPlayingArea;
+	///Scoreboard
+	std::shared_ptr<CScoreboard> mScoreboard;
 
 };
 

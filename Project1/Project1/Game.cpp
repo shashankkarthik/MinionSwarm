@@ -16,10 +16,10 @@ const static int Width = 1400;
 /// Game area height in virtual pixels
 const static int Height = 1100;
 
-
+/*
 const wstring JuicerImageName = L"images/juicer.png";
 const wstring PokeeballImageName = L"images/pokeball.png";
-const wstring AryaImageName = L"images/arya.png";
+const wstring AryaImageName = L"images/arya.png";*/
 
 CGame::CGame()
 {
@@ -28,6 +28,9 @@ CGame::CGame()
 
 	shared_ptr<CPlayingArea> playingArea(new CPlayingArea());
 	mPlayingArea = playingArea;
+
+	shared_ptr<CScoreboard> scoreBoard(new CScoreboard());
+	mScoreboard = scoreBoard;
 
 
 }
@@ -68,7 +71,9 @@ void CGame::OnDraw(Gdiplus::Graphics *graphics, int width, int height)
 
 	mPlayingArea->DrawArea(graphics, Width, Height);
 
+	mScoreboard->Draw(graphics, Width, Height);
 
+/*
 	mJuicerImage = unique_ptr<Bitmap>(Bitmap::FromFile(JuicerImageName.c_str()));
 	if (mJuicerImage->GetLastStatus() != Ok)
 	{
@@ -105,7 +110,7 @@ void CGame::OnDraw(Gdiplus::Graphics *graphics, int width, int height)
 	DrawScore(graphics, float((Width - 200) / 2.0), -float((Height - 800) / 2.0), L"0");
 
 	graphics->DrawImage(mAryaImage.get(), float((Width - 275) / 2.0), -float((Height - 900) / 2.0));
-	DrawScore(graphics, float((Width - 200) / 2.0), -float((Height - 1200) / 2.0), L"0");
+	DrawScore(graphics, float((Width - 200) / 2.0), -float((Height - 1200) / 2.0), L"0");*/
 
 	///after gru is added then I can test this - Moritz
 	for (auto item : mGameTiles)
@@ -120,8 +125,7 @@ void CGame::Delete()
 	mGameTiles.clear();
 }
 
-
-
+/*
 void CGame::DrawScore(Gdiplus::Graphics * graphics, float xLoc, float yLoc, wstring score)
 {
 	score = score + L"\0";
@@ -139,7 +143,7 @@ void CGame::DrawScore(Gdiplus::Graphics * graphics, float xLoc, float yLoc, wstr
 		layoutRect,
 		&format,
 		&greenBrush);
-}
+}*/
 
 /**
 * Add an item to the game

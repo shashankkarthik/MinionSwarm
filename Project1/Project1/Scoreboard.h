@@ -4,22 +4,24 @@
 
 using namespace std;
 using namespace Gdiplus;
+
+
 class CScoreboard
 {
 public:
 	CScoreboard();
 	virtual	~CScoreboard();
 	void CScoreboard::DrawScore(Gdiplus::Graphics * graphics, float xLoc, float yLoc, std::wstring score);
-	void CScoreboard::DrawImage(Gdiplus::Graphics * graphics, unique_ptr<Bitmap> image, float xLoc, float yLoc);
+	void Draw(Graphics * graphics, int gameWidth, int gameHeight);
+	
 private:
-	unique_ptr<Gdiplus::Bitmap> mJuicerImage;
-	unique_ptr<Gdiplus::Bitmap> mPokeeballImage;
-	unique_ptr<Gdiplus::Bitmap> mAryaImage;
+
+	unique_ptr<Bitmap> mJuicerImage;
+	unique_ptr<Bitmap> mPokeeballImage;
+	unique_ptr<Bitmap> mAryaImage;
 
 	int mJuicerScore;
 	int mPokeeballScore;
 	int mArayaScore;
-
-
 };
 
