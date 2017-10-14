@@ -4,11 +4,11 @@
 #include "Game.h"
 #include "Item.h"
 #include "Gru.h"
-//#include "ChildView.h"
-//#include "Villain.h"
-//#include "VillainArya.h"
-//#include "VillainJuicer.h"
-//#include "VillainPokeball.h"
+#include "ChildView.h"
+#include "Villain.h"
+#include "VillainArya.h"
+#include "VillainJuicer.h"
+#include "VillainPokeball.h"
 #include "Minion.h"
 #include "MinionJerry.h"
 
@@ -47,6 +47,11 @@ namespace Testing
 			Assert::IsTrue(jerry.GetPoints() == 1);
 		}
 
-
+		TEST_METHOD(TestChildViewConst)
+		{
+			CGame game;
+			CChildView childView;
+			Assert::IsTrue(game.GetSizemGameTiles() == 4);
+		}
 	};
 }

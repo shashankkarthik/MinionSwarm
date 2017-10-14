@@ -39,6 +39,8 @@ public:
 
 	float GetYOffset() { return mYOffset; }
 
+	int GetSizemGameTiles() { return mGameTiles.size(); }
+
 	void CGame::DrawTime(Gdiplus::Graphics * graphics, float xLoc, float yLoc, std::wstring score);
 
 
