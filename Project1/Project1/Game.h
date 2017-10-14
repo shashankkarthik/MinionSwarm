@@ -31,13 +31,11 @@ public:
 
 	wstring GetTime();
 
+	void SetTime(double time) { mTimeInSeconds = time; };
+
 	void HitTest(int x, int y);
 
 	void UpdateScoreMap();
-
-	float GetXOffset() { return mXOffset; }
-
-	float GetYOffset() { return mYOffset; }
 
 	int GetSizemGameTiles() { return mGameTiles.size(); }
 

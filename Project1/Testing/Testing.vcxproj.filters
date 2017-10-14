@@ -41,7 +41,16 @@
     <ClCompile Include="CScoreboardTest.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="CMinionCChildViewTest.cpp">
+    <ClCompile Include="CGameTest.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CNewGameTest.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CMinionTest.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CChildViewTest.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

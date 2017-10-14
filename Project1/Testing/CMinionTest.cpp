@@ -46,12 +46,5 @@ namespace Testing
 
 			Assert::IsTrue(jerry.GetPoints() == 1);
 		}
-
-		TEST_METHOD(TestChildViewConst)
-		{
-			CGame game;
-			CChildView childView;
-			Assert::IsTrue(game.GetSizemGameTiles() == 4);
-		}
 	};
 }

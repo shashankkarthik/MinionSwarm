@@ -91,6 +91,14 @@
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="CChildViewTest.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="CGameTest.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="CGruTest.cpp">
       <SubType>
       </SubType>
@@ -99,7 +107,11 @@
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="CMinionCChildViewTest.cpp">
+    <ClCompile Include="CMinionTest.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="CNewGameTest.cpp">
       <SubType>
       </SubType>
     </ClCompile>
