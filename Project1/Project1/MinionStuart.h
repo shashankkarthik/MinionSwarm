@@ -21,5 +21,7 @@ public:
 	CMinionStuart(const CMinionStuart &) = delete;
 
 	virtual ~CMinionStuart();
+
+	virtual void Accept(CGameVisitor * visitor) { }
 };
 

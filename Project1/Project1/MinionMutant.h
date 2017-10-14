@@ -21,5 +21,7 @@ public:
 	CMinionMutant(const CMinionMutant &) = delete;
 
 	virtual ~CMinionMutant();
+
+	virtual void Accept(CGameVisitor * visitor) { }
 };
 

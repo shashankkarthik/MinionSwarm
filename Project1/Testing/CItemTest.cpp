@@ -23,6 +23,7 @@ namespace Testing
 			CItemMock(CGame *game) :
 				CItem(game, VillainAryaImageName) {}
 
+			virtual void Accept(CGameVisitor *visitor) override {};
 			/** Draw the item
 			* \param graphics The graphics context to draw on */
 			virtual void Draw(Gdiplus::Graphics *graphics) {}
