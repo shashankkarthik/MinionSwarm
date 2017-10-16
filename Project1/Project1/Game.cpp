@@ -128,8 +128,9 @@ void CGame::DrawTime(Gdiplus::Graphics * graphics, float xLoc, float yLoc, wstri
 
 void CGame::SpawnRandomMinion()
 {
-	int x, y = -300;
-	x = rand() % 500;
+	int x, y = -Height;
+	x = rand() % Width;
+	x = x - (Width/2);
 	auto minionJerry = make_shared<CMinionJerry>(this);
 	minionJerry->SetLocation(x, y);
 	Add(minionJerry);
