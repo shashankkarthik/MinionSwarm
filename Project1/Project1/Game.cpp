@@ -141,6 +141,7 @@ void CGame::Accept(CGameVisitor *visitor)
 void CGame::Update(double elapsed)
 {
 	mTimeInSeconds += elapsed;
+	CheckContact();
 }
 
 wstring CGame::GetTime() 
@@ -180,4 +181,24 @@ void CGame::UpdateScoreMap()
 
 	mScoreboard->SetScoreMap(visitor.GenerateScoreMap());
 	
+}
+
+void CGame::CheckContact()
+{
+	for (auto j = mGameTiles.rbegin(); j != mGameTiles.rend(); j++)
+	{
+		for (auto i = mGameTiles.rbegin(); i != mGameTiles.rend(); i++)
+		{
+			if ((*i)->HitTest((*j)->GetX(), (*j)->GetY()) && *i != *j && (*i)->GetLevel() < (*j)->GetLevel())
+			{
+				(*i)->Kill();
+				return;
+			}
+			else if ((*i)->HitTest((*j)->GetX(), (*j)->GetY()) && *i != *j && (*i)->GetLevel() > (*j)->GetLevel())
+			{
+				(*j)->Kill();
+				return;
+			}
+		}
+	}
 }

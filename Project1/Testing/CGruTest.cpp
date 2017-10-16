@@ -49,7 +49,7 @@ namespace Testing
 			CGru gru(&game);
 
 			Assert::IsTrue(gru.IsAlive() == true);
-			gru.KillGru();
+			gru.Kill();
 			Assert::IsTrue(gru.IsAlive() == false);
 
 

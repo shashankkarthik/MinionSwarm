@@ -34,5 +34,7 @@ private:
 
 	///Points if you kill minion
 	int mPoints = 0;
+
+	int mLevel = 1;
 };
 

@@ -42,5 +42,7 @@ private:
 
 	///Point multiplier for the killer
 	int mPointMult = 0;
+
+	int mLevel = 2;
 };
 

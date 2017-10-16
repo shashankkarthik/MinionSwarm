@@ -17,6 +17,8 @@ public:
 
 	virtual ~CGru();
 
+	void Draw(Gdiplus::Graphics * graphics);
+
 	/// Default constructor (disabled)
 	CGru() = delete;
 
@@ -26,7 +28,7 @@ public:
 	///returns if Gru is alive or not
 	bool IsAlive() { return mAlive; }
 
-	void KillGru() { mAlive = false; }
+	void Kill() { mAlive = false; }
 
 	virtual void Accept(CGameVisitor * visitor) { }
 
@@ -34,5 +36,7 @@ private:
 
 	///Gru is alive or not
 	bool mAlive = true;
+
+	std::unique_ptr<Gdiplus::Bitmap> mItemImage;
 };
 

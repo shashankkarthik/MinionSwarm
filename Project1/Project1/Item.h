@@ -40,6 +40,8 @@ public:
 
 	///Draw Image
 	virtual void CItem::Draw(Gdiplus::Graphics *graphics);
+	virtual void CItem::Kill() {};
+	virtual int CItem::GetLevel() { return mLevel; };
 
 	bool HitTest(int x, int y);
 
@@ -62,10 +64,11 @@ private:
 
 	/// The image of this item
 	std::unique_ptr<Gdiplus::Bitmap> mItemImage;
-
+	
 
 	/// Item location in the game
 	double  mX = 0;     ///< X location for the center of the item
 	double  mY = 0;     ///< Y location for the center of the item
+	int mLevel = 0;
 };
 
