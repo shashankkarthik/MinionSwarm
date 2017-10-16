@@ -43,6 +43,8 @@ public:
 
 	void CGame::DrawTime(Gdiplus::Graphics * graphics, float xLoc, float yLoc, std::wstring score);
 
+	void SpawnRandomMinion();
+
 
 private:
 	float mScale = 0;
