@@ -71,6 +71,7 @@ void CChildView::ResetScreen()
 	auto villainPokeball = make_shared<CVillainPokeball>(&mGame);
 	villainPokeball->SetLocation(275, -250);
 	mGame.Add(villainPokeball);
+
 }
 
 

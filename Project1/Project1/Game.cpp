@@ -8,6 +8,8 @@
 #include "CGameVisitor.h"
 #include "GetScoreVisitor.h"
 #include <string>
+#include "Minion.h"
+#include "MinionJerry.h"
 
 using namespace std;
 using namespace Gdiplus;
@@ -122,6 +124,15 @@ void CGame::DrawTime(Gdiplus::Graphics * graphics, float xLoc, float yLoc, wstri
 		&format,
 		&greenBrush);
 
+}
+
+void CGame::SpawnRandomMinion()
+{
+	int x, y = -300;
+	x = rand() % 500;
+	auto minionJerry = make_shared<CMinionJerry>(this);
+	minionJerry->SetLocation(x, y);
+	Add(minionJerry);
 }
 
 /** Accept a visitor for the collection
