@@ -51,6 +51,7 @@ private:
 	float mXOffset = 0;
 	float mYOffset = 0;
 	double mTimeInSeconds = 0;
+	double mNextSpawnTime = 0;
 	std::unique_ptr<Gdiplus::Bitmap> mJuicerImage;
 	std::unique_ptr<Gdiplus::Bitmap> mPokeeballImage;
 	std::unique_ptr<Gdiplus::Bitmap> mAryaImage;

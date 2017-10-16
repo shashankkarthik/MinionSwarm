@@ -10,6 +10,8 @@
 #include <string>
 #include "Minion.h"
 #include "MinionJerry.h"
+#include "MinionStuart.h"
+#include "MinionMutant.h"
 
 using namespace std;
 using namespace Gdiplus;
@@ -79,7 +81,6 @@ void CGame::OnDraw(Gdiplus::Graphics *graphics, int width, int height)
 	mScoreboard->Draw(graphics, Width, Height);
 
 
-
 	
 
 	///after gru is added then I can test this - Moritz
@@ -128,12 +129,25 @@ void CGame::DrawTime(Gdiplus::Graphics * graphics, float xLoc, float yLoc, wstri
 
 void CGame::SpawnRandomMinion()
 {
-	int x, y = -Height;
-	x = rand() % Width;
-	x = x - (Width/2);
-	auto minionJerry = make_shared<CMinionJerry>(this);
-	minionJerry->SetLocation(x, y);
-	Add(minionJerry);
+	int spawner = ((double)rand() / RAND_MAX) * 3;
+	if (spawner == 0) {
+		int x = ((double)rand() / RAND_MAX) * 950;
+		auto minionJerry = make_shared<CMinionJerry>(this);
+		minionJerry->SetLocation((-Width + 550) / 2 + x, -Height / 2);
+		Add(minionJerry);
+	}
+	if (spawner == 1) {
+		int x = ((double)rand() / RAND_MAX) * 950;
+		auto minionStuart = make_shared<CMinionStuart>(this);
+		minionStuart->SetLocation((-Width + 550) / 2 + x, -Height / 2);
+		Add(minionStuart);
+	}
+	if (spawner == 2) {
+		int x = ((double)rand() / RAND_MAX) * 950;
+		auto minionMutant = make_shared<CMinionMutant>(this);
+		minionMutant->SetLocation((-Width + 550) / 2 + x, -Height / 2);
+		Add(minionMutant);
+	}
 }
 
 /** Accept a visitor for the collection
@@ -154,6 +168,11 @@ void CGame::Update(double elapsed)
 {
 	mTimeInSeconds += elapsed;
 	CheckContact();
+	if (mTimeInSeconds >= mNextSpawnTime) {
+		double nextSpawnInterval = ((double)rand() / RAND_MAX) * .5 + .5;
+		mNextSpawnTime = mTimeInSeconds + nextSpawnInterval;
+		SpawnRandomMinion();
+	}
 }
 
 wstring CGame::GetTime() 

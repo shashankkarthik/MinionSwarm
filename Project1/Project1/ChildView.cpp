@@ -42,6 +42,7 @@ std::shared_ptr<CItem> mGrabbedItem;
 CChildView::CChildView()
 {
 	ResetScreen(); //clears the screen and adds the villains and gru
+	srand((unsigned int)time(nullptr));
 }
 
 /**
