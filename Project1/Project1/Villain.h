@@ -36,13 +36,13 @@ public:
 
 	void SetScore(int newScore) { mPoints = newScore; } //For use with new game? Idk i just thought I would leave this here -Shashank
 
+	int GetLevel() { return 2; };
+
 private:
 	///Killing points for the villain
 	int mPoints = 0;
 
 	///Point multiplier for the killer
 	int mPointMult = 0;
-
-	int mLevel = 2;
 };
 

@@ -25,6 +25,7 @@ public:
 	///Get points for the minion
 	int GetPoints() { return mPoints; }
 
+	int GetLevel() { return 1; };
 private:
 	/// Minion speed in the X direction
 	double mSpeedX = 0;
@@ -34,7 +35,5 @@ private:
 
 	///Points if you kill minion
 	int mPoints = 0;
-
-	int mLevel = 1;
 };
 

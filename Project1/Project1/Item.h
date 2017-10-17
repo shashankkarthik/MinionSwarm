@@ -42,7 +42,7 @@ public:
 	///Draw Image
 	virtual void CItem::Draw(Gdiplus::Graphics *graphics);
 	virtual void CItem::Kill() {};
-	virtual int CItem::GetLevel() { return mLevel; };
+	virtual int CItem::GetLevel() { return 0; };
 
 	bool HitTest(int x, int y);
 
@@ -69,7 +69,5 @@ private:
 
 	/// Item location in the game
 	CVector location;
-	
-	int mLevel = 0;
 };
 
