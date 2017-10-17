@@ -178,7 +178,7 @@ void CChildView::OnLButtonDown(UINT nFlags, CPoint point)
 {
 	if (!mGame.HitTestNewGame(point.x, point.y))
 	{
-		mGrabbedItem = mGame.HitTest(point.x, point.y);
+		mGrabbedItem = mGame.HitTestGru(point.x, point.y);
 	};
 }
 
@@ -200,7 +200,7 @@ void CChildView::OnMouseMove(UINT nFlags, CPoint point)
 		// move it while the left button is down.
 		if (nFlags & MK_LBUTTON)
 		{
-			//mGame.
+			//Changes the x and y value and sets location
 			float virtualX = (point.x - mGame.GetmXOffset()) / mGame.GetmScale();
 			float virtualY = (point.y - mGame.GetmYOffset()) / mGame.GetmScale();
 			mGrabbedItem->SetLocation(virtualX, virtualY);

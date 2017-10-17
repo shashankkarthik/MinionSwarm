@@ -197,13 +197,14 @@ wstring CGame::GetTime()
 * \param y Y location
 * \returns Pointer to item we clicked on or nullptr if none.
 */
-std::shared_ptr<CItem> CGame::HitTest(int x, int y)
+std::shared_ptr<CItem> CGame::HitTestGru(int x, int y)
 {
 	float virtualX = (x - mXOffset) / mScale;
 	float virtualY = (y - mYOffset) / mScale;
 	for (auto i = mGameTiles.rbegin(); i != mGameTiles.rend(); i++)
 	{
-		if ((*i)->HitTest(virtualX, virtualY))
+		//to move all pieces, change HitTestGru to HitTest
+		if ((*i)->HitTestGru(virtualX, virtualY))
 		{
 			return *i;
 		}
