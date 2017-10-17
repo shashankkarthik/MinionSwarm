@@ -12,6 +12,7 @@
 #include <memory>
 #include <string>
 #include "GameVisitor.h"
+#include "Vector.h"
 
 class CGame;
 
@@ -36,7 +37,7 @@ public:
 	/// Set the item location
 	/// \param x X location
 	/// \param y Y location
-	void SetLocation(double x, double y) { mX = x; mY = y; }
+	void SetLocation(double x, double y) { location.Set(x, y); }
 
 	///Draw Image
 	virtual void CItem::Draw(Gdiplus::Graphics *graphics);
@@ -47,11 +48,11 @@ public:
 
 	/** The X location of the item
 	* \returns X location in pixels */
-	double GetX() const { return mX; }
+	double GetX() const { return location.X(); }
 
 	/** The Y location of the item
 	* \returns Y location in pixels */
-	double GetY() const { return mY; }
+	double GetY() const { return location.Y(); }
 
 	virtual void Accept(CGameVisitor *visitor) = 0;
 
@@ -67,8 +68,8 @@ private:
 	
 
 	/// Item location in the game
-	double  mX = 0;     ///< X location for the center of the item
-	double  mY = 0;     ///< Y location for the center of the item
+	CVector location;
+	
 	int mLevel = 0;
 };
 

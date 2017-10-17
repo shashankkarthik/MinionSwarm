@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26730.15
+VisualStudioVersion = 15.0.26730.10
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Project1", "Project1\Project1.vcxproj", "{209ADA7D-C7CF-4196-A0F6-26ED3C2547E7}"
 EndProject
@@ -9,6 +9,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Testing", "Testing\Testing.
 	ProjectSection(ProjectDependencies) = postProject
 		{209ADA7D-C7CF-4196-A0F6-26ED3C2547E7} = {209ADA7D-C7CF-4196-A0F6-26ED3C2547E7}
 	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{6DB4C1BE-EEC0-41F8-BE3C-18722F2C0505}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
