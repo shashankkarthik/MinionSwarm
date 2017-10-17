@@ -57,6 +57,9 @@ private:
 	bool mFirstDraw = true;
 	long long mLastTime;    ///< Last time we read the timer
 	double mTimeFreq;       ///< Rate the timer updates
+
+	/// Any item we are currently dragging
+	std::shared_ptr<CItem> mGrabbedItem;
 public:
 	afx_msg void OnTimer(UINT_PTR nIDEvent);
 	afx_msg void OnLButtonDown(UINT nFlags, CPoint point);

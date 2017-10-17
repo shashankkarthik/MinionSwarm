@@ -48,11 +48,11 @@ public:
 
 	/** The X location of the item
 	* \returns X location in pixels */
-	double GetX() const { return location.X(); }
+	const double GetX() const { return location.X(); }
 
 	/** The Y location of the item
 	* \returns Y location in pixels */
-	double GetY() const { return location.Y(); }
+	const double GetY() const { return location.Y(); }
 
 	virtual void Accept(CGameVisitor *visitor) = 0;
 

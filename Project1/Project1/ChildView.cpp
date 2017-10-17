@@ -176,21 +176,44 @@ void CChildView::OnTimer(UINT_PTR nIDEvent)
 
 void CChildView::OnLButtonDown(UINT nFlags, CPoint point)
 {
-	mGame.HitTest(point.x, point.y);
+	if (!mGame.HitTestNewGame(point.x, point.y))
+	{
+		mGrabbedItem = mGame.HitTest(point.x, point.y);
+	};
 }
 
 
 void CChildView::OnLButtonUp(UINT nFlags, CPoint point)
 {
 	// TODO: Add your message handler code here and/or call default
-
-	CWnd::OnLButtonUp(nFlags, point);
+	OnMouseMove(nFlags, point);
+	//CWnd::OnLButtonUp(nFlags, point);
 }
 
 
 void CChildView::OnMouseMove(UINT nFlags, CPoint point)
 {
-	// TODO: Add your message handler code here and/or call default
+	// See if an item is currently being moved by the mouse
+	if (mGrabbedItem != nullptr)
+	{
+		// If an item is being moved, we only continue to 
+		// move it while the left button is down.
+		if (nFlags & MK_LBUTTON)
+		{
+			//mGame.
+			float virtualX = (point.x - mGame.GetmXOffset()) / mGame.GetmScale();
+			float virtualY = (point.y - mGame.GetmYOffset()) / mGame.GetmScale();
+			mGrabbedItem->SetLocation(virtualX, virtualY);
+		}
+		else
+		{
+			// When the left button is released, we release the
+			// item.
+			mGrabbedItem = nullptr;
+		}
 
-	CWnd::OnMouseMove(nFlags, point);
+		// Force the screen to redraw
+		Invalidate();
+	}
+	//CWnd::OnMouseMove(nFlags, point);
 }

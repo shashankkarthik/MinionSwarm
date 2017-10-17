@@ -55,6 +55,34 @@ namespace Testing
 
 
 		}
+		TEST_METHOD(TestGruHitTest)
+		{
+			// Create a fish to test
+			CGame game;
+			CGru gru(&game);
+
+			// Give it a location
+			// Always make the numbers different, in case they are mixed up
+			gru.SetLocation(100, 200);
+
+			// Center of the fish should be a true
+			Assert::IsTrue(gru.HitTest(100, 200));
+
+			// Left of the Gru
+			Assert::IsFalse(gru.HitTest(10, 200));
+
+			// Right of the Gru
+			Assert::IsFalse(gru.HitTest(200, 200));
+
+			// Above the Gru
+			Assert::IsFalse(gru.HitTest(100, 0));
+
+			// Below the Gru
+			Assert::IsFalse(gru.HitTest(100, 300));
+
+			// Of Gru transparent pixel
+			Assert::IsFalse(gru.HitTest(100 - 125 / 2 + 17, 200 - 117 / 2 + 16));
+		}
 
 
 		

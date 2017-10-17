@@ -33,7 +33,9 @@ public:
 
 	void SetTime(double time) { mTimeInSeconds = time; };
 
-	void HitTest(int x, int y);
+	std::shared_ptr<CItem> HitTest(int x, int y);
+
+	bool HitTestNewGame(int x, int y);
 
 	void UpdateScoreMap();
 
@@ -44,6 +46,14 @@ public:
 	void CGame::DrawTime(Gdiplus::Graphics * graphics, float xLoc, float yLoc, std::wstring score);
 
 	void SpawnRandomMinion();
+
+	const float GetmXOffset() { return mXOffset; }
+
+	const float GetmYOffset() { return mYOffset; }
+
+	const float GetmScale() { return mScale; }
+
+
 
 
 private:

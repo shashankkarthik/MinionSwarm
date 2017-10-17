@@ -192,18 +192,42 @@ wstring CGame::GetTime()
 }
 
 /** Test an x,y click location to see if it clicked
+* on some item in the aquarium.
+* \param x X location
+* \param y Y location
+* \returns Pointer to item we clicked on or nullptr if none.
+*/
+std::shared_ptr<CItem> CGame::HitTest(int x, int y)
+{
+	float virtualX = (x - mXOffset) / mScale;
+	float virtualY = (y - mYOffset) / mScale;
+	for (auto i = mGameTiles.rbegin(); i != mGameTiles.rend(); i++)
+	{
+		if ((*i)->HitTest(virtualX, virtualY))
+		{
+			return *i;
+		}
+	}
+
+	return  nullptr;
+}
+
+/** Test an x,y click location to see if it clicked
 * on some item in the PlayingArea.
 * \param x X location
 * \param y Y location
 */
-void CGame::HitTest(int x, int y)
+bool CGame::HitTestNewGame(int x, int y)
 {
 	float virtualX = (x - mXOffset) / mScale;
 	float virtualY = (y - mYOffset) / mScale;
 	if (mNewGameButton->HitTest((int)virtualX, (int)virtualY)) {
 		mTimeInSeconds = 0;
+		return true;
 	}
+	return false;
 }
+
 
 void CGame::UpdateScoreMap()
 {
