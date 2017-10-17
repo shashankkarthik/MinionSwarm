@@ -46,6 +46,8 @@ public:
 
 	bool HitTest(int x, int y);
 
+	virtual bool HitTestGru(int x, int y) { return false; }
+
 	/** The X location of the item
 	* \returns X location in pixels */
 	const double GetX() const { return location.X(); }

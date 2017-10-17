@@ -33,7 +33,7 @@ public:
 
 	void SetTime(double time) { mTimeInSeconds = time; };
 
-	std::shared_ptr<CItem> HitTest(int x, int y);
+	std::shared_ptr<CItem> HitTestGru(int x, int y);
 
 	bool HitTestNewGame(int x, int y);
 

@@ -32,6 +32,9 @@ public:
 
 	virtual void Accept(CGameVisitor * visitor) { }
 
+	virtual bool HitTestGru(int x, int y);
+
+
 private:
 
 	///Gru is alive or not
