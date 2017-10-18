@@ -261,13 +261,32 @@ void CGame::CheckContact()
 			if ((*i)->HitTest((*j)->GetX(), (*j)->GetY()) && *i != *j && (*i)->GetLevel() < (*j)->GetLevel())
 			{
 				(*i)->Kill();
+				if ((*i)->IsAlive()) {
+					DeleteItem(*i);
+				}
 				return;
 			}
 			else if ((*i)->HitTest((*j)->GetX(), (*j)->GetY()) && *i != *j && (*i)->GetLevel() > (*j)->GetLevel())
 			{
 				(*j)->Kill();
+				if ((*j)->IsAlive()) {
+					DeleteItem(*j);
+				}
 				return;
 			}
 		}
+	}
+}
+
+/** Kill the item in need of dying
+*
+* \param item Item who just died
+*/
+void CGame::DeleteItem(std::shared_ptr<CItem> item)
+{
+	auto loc = find(begin(mGameTiles), end(mGameTiles), item);
+	if (loc != end(mGameTiles))
+	{
+		mGameTiles.erase(loc);
 	}
 }

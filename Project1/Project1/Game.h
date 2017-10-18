@@ -41,6 +41,8 @@ public:
 
 	void CheckContact();
 
+	void DeleteItem(std::shared_ptr<CItem> item);
+
 	int GetSizemGameTiles() { return mGameTiles.size(); }
 
 	void CGame::DrawTime(Gdiplus::Graphics * graphics, float xLoc, float yLoc, std::wstring score);
