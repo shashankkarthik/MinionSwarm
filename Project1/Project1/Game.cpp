@@ -133,19 +133,19 @@ void CGame::SpawnRandomMinion()
 	if (spawner == 0) {
 		int x = ((double)rand() / RAND_MAX) * 950;
 		auto minionJerry = make_shared<CMinionJerry>(this);
-		minionJerry->SetLocation((-Width + 550) / 2 + x, -Height / 2);
+		minionJerry->SetLocation((-Width + 550) / 2 + x, (-Height+200) / 2);
 		Add(minionJerry);
 	}
 	if (spawner == 1) {
 		int x = ((double)rand() / RAND_MAX) * 950;
 		auto minionStuart = make_shared<CMinionStuart>(this);
-		minionStuart->SetLocation((-Width + 550) / 2 + x, -Height / 2);
+		minionStuart->SetLocation((-Width + 550) / 2 + x, (-Height + 200) / 2);
 		Add(minionStuart);
 	}
 	if (spawner == 2) {
 		int x = ((double)rand() / RAND_MAX) * 950;
 		auto minionMutant = make_shared<CMinionMutant>(this);
-		minionMutant->SetLocation((-Width + 550) / 2 + x, -Height / 2);
+		minionMutant->SetLocation((-Width + 550) / 2 + x, (-Height + 200) / 2);
 		Add(minionMutant);
 	}
 }
@@ -166,6 +166,15 @@ void CGame::Accept(CGameVisitor *visitor)
 */
 void CGame::Update(double elapsed)
 {
+	for (auto i = mGameTiles.rbegin(); i != mGameTiles.rend(); i++)
+	{
+		if (!(*i)->IsAlive()) {
+			mGameOver = true;
+			if (mFinalTime == 0) {
+				mFinalTime = mTimeInSeconds;
+			}
+		}
+	}
 	mTimeInSeconds += elapsed;
 	CheckContact();
 	if (mTimeInSeconds >= mNextSpawnTime) {
@@ -177,7 +186,7 @@ void CGame::Update(double elapsed)
 
 wstring CGame::GetTime() 
 {
-	int tempTime = (int)mTimeInSeconds;
+	int tempTime = !mGameOver ? (int)mTimeInSeconds : (int)mFinalTime;
 	string minutes = to_string(tempTime / 60);
 	string seconds = to_string(tempTime % 60);
 	if (seconds.length() == 1) {
@@ -224,6 +233,10 @@ bool CGame::HitTestNewGame(int x, int y)
 	float virtualY = (y - mYOffset) / mScale;
 	if (mNewGameButton->HitTest((int)virtualX, (int)virtualY)) {
 		mTimeInSeconds = 0;
+		mResetStatus = true;
+		mNextSpawnTime = 0;
+		mGameOver = false;
+		mFinalTime = 0;
 		return true;
 	}
 	return false;

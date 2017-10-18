@@ -145,6 +145,11 @@ void CChildView::OnPaint()
 		mTimeFreq = double(freq.QuadPart);
 	}
 
+	if (mGame.GetResetStatus()) {
+		ResetScreen();
+		mGame.SetResetStatus(false);
+	}
+
 	/*
 	* Compute the elapsed time since the last draw
 	*/

@@ -52,7 +52,8 @@ public:
 	const float GetmYOffset() { return mYOffset; }
 
 	const float GetmScale() { return mScale; }
-
+	bool GetResetStatus() { return mResetStatus; }
+	void SetResetStatus(bool status) { mResetStatus = status; }
 
 
 
@@ -61,7 +62,10 @@ private:
 	float mXOffset = 0;
 	float mYOffset = 0;
 	double mTimeInSeconds = 0;
+	double mFinalTime = 0;
 	double mNextSpawnTime = 0;
+	bool mResetStatus = false;
+	bool mGameOver = false;
 	std::unique_ptr<Gdiplus::Bitmap> mJuicerImage;
 	std::unique_ptr<Gdiplus::Bitmap> mPokeeballImage;
 	std::unique_ptr<Gdiplus::Bitmap> mAryaImage;

@@ -45,7 +45,7 @@ public:
 	virtual int CItem::GetLevel() { return 0; };
 
 	bool HitTest(int x, int y);
-
+	virtual bool IsAlive() { return true; }
 	virtual bool HitTestGru(int x, int y) { return false; }
 
 	/** The X location of the item
