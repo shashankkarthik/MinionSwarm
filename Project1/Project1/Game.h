@@ -66,7 +66,6 @@ private:
 	double mNextSpawnTime = 0;
 	bool mResetStatus = false;
 	bool mGameOver = false;
-	int mMinionCount = 0;
 	std::unique_ptr<Gdiplus::Bitmap> mJuicerImage;
 	std::unique_ptr<Gdiplus::Bitmap> mPokeeballImage;
 	std::unique_ptr<Gdiplus::Bitmap> mAryaImage;
