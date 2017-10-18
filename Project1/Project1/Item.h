@@ -71,5 +71,8 @@ private:
 
 	/// Item location in the game
 	CVector location;
+
+	/// Velocity in virtual pixels/second
+	CVector mV;
 };
 

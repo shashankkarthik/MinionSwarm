@@ -26,6 +26,7 @@ public:
 	int GetPoints() { return mPoints; }
 
 	int GetLevel() { return 1; };
+
 private:
 	/// Minion speed in the X direction
 	double mSpeedX = 0;
@@ -35,5 +36,17 @@ private:
 
 	///Points if you kill minion
 	int mPoints = 0;
+
+	// Cohesion vector
+	CVector cv;
+
+	// Separation vector
+	CVector sv;
+
+	// Alignment vector
+	CVector av;
+
+	// Gru vector
+	CVector gruV;
 };
 

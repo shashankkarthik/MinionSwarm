@@ -11,6 +11,7 @@
 class CVillainJuicer;
 class CVillainPokeball;
 class CVillainArya;
+class CMinion;
 
 
 class CGameVisitor
@@ -27,5 +28,8 @@ public:
 
 	///Visits arya object
 	virtual void VisitArya(CVillainArya * arya) {};
+
+
+	//virtual CVector GetPositionMinion(CMinion * minion) {};
 };
 

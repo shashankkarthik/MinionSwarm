@@ -6,6 +6,7 @@
 #include "NewGame.h"
 #include "PlayingArea.h"
 #include "Scoreboard.h"
+#include "Vector.h"
 
 using namespace std;
 
@@ -78,6 +79,10 @@ private:
 	std::shared_ptr<CPlayingArea> mPlayingArea;
 	///Scoreboard
 	std::shared_ptr<CScoreboard> mScoreboard;
+
+	///Vector of the center of all the objects
+	CVector cohesionCenter;
+
 
 };
 
