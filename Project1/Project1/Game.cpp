@@ -129,24 +129,27 @@ void CGame::DrawTime(Gdiplus::Graphics * graphics, float xLoc, float yLoc, wstri
 
 void CGame::SpawnRandomMinion()
 {
-	int spawner = ((double)rand() / RAND_MAX) * 3;
-	if (spawner == 0) {
+	int spawner = ((double)rand() / RAND_MAX) * 2;
+	if (spawner == 0 && (mMinionCount % 10 != 0 || mMinionCount == 0)) {
 		int x = ((double)rand() / RAND_MAX) * 950;
 		auto minionJerry = make_shared<CMinionJerry>(this);
 		minionJerry->SetLocation((-Width + 550) / 2 + x, (-Height+200) / 2);
 		Add(minionJerry);
+		mMinionCount++;
 	}
-	if (spawner == 1) {
+	else if (spawner == 1 && (mMinionCount % 10 != 0|| mMinionCount == 0)) {
 		int x = ((double)rand() / RAND_MAX) * 950;
 		auto minionStuart = make_shared<CMinionStuart>(this);
 		minionStuart->SetLocation((-Width + 550) / 2 + x, (-Height + 200) / 2);
 		Add(minionStuart);
+		mMinionCount++;
 	}
-	if (spawner == 2) {
+	else if (mMinionCount % 10 == 0) {
 		int x = ((double)rand() / RAND_MAX) * 950;
 		auto minionMutant = make_shared<CMinionMutant>(this);
 		minionMutant->SetLocation((-Width + 550) / 2 + x, (-Height + 200) / 2);
 		Add(minionMutant);
+		mMinionCount = 0;
 	}
 }
 
