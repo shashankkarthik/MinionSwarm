@@ -7,6 +7,8 @@
 #include "PlayingArea.h"
 #include "Scoreboard.h"
 #include "Vector.h"
+#include <iterator>
+#include <algorithm>
 
 using namespace std;
 
@@ -57,6 +59,9 @@ public:
 	const float GetmScale() { return mScale; }
 	bool GetResetStatus() { return mResetStatus; }
 	void SetResetStatus(bool status) { mResetStatus = status; }
+
+	/// All of the items to populate our game
+	std::vector<std::shared_ptr<CItem> > GetMinions();
 
 
 

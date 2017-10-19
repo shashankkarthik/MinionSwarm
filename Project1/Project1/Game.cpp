@@ -150,6 +150,25 @@ void CGame::SpawnRandomMinion()
 	}
 }
 
+std::vector<std::shared_ptr<CItem>> CGame::GetMinions()
+{
+	/// All of the items to populate our game
+	std::vector<std::shared_ptr<CItem> > mMinionTiles;
+
+	if (mGameOver)
+	{
+		//vector<std::shared_ptr<CItem> > new_(mGameTiles.begin()+2, mGameTiles.end());
+		copy(mGameTiles.begin() + 3, mGameTiles.end(), back_inserter(mMinionTiles));
+	}
+	else
+	{
+		copy(mGameTiles.begin() + 4, mGameTiles.end(), back_inserter(mMinionTiles));
+
+	}
+
+	return mMinionTiles;
+}
+
 /** Accept a visitor for the collection
 * \param visitor The visitor for the collection
 */
@@ -166,8 +185,12 @@ void CGame::Accept(CGameVisitor *visitor)
 */
 void CGame::Update(double elapsed)
 {
+	//make minions move
+	
+
 	for (auto i = mGameTiles.rbegin(); i != mGameTiles.rend(); i++)
 	{
+		
 		if (!(*i)->IsAlive()) {
 			mGameOver = true;
 			if (mFinalTime == 0) {
@@ -213,7 +236,7 @@ std::shared_ptr<CItem> CGame::HitTestGru(int x, int y)
 	for (auto i = mGameTiles.rbegin(); i != mGameTiles.rend(); i++)
 	{
 		//to move all pieces, change HitTestGru to HitTest
-		if ((*i)->HitTestGru(virtualX, virtualY))
+		if ((*i)->HitTest(virtualX, virtualY))
 		{
 			return *i;
 		}
@@ -290,3 +313,4 @@ void CGame::DeleteItem(std::shared_ptr<CItem> item)
 		mGameTiles.erase(loc);
 	}
 }
+

@@ -16,6 +16,12 @@ protected:
 public:
 	virtual ~CMinion();
 
+	void Flock();
+
+	void Update(double elapsed);
+
+	CVector GetCohesion();
+
 	/// Default constructor (disabled)
 	CMinion() = delete;
 
@@ -26,6 +32,9 @@ public:
 	int GetPoints() { return mPoints; }
 
 	int GetLevel() { return 1; };
+
+	virtual void Accept(CGameVisitor * visitor) { visitor->VisitMinion(this); }
+
 
 private:
 	/// Minion speed in the X direction
@@ -48,5 +57,9 @@ private:
 
 	// Gru vector
 	CVector gruV;
+
+	/// Velocity in virtual pixels/second
+	CVector mV;
+
 };
 

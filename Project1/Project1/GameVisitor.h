@@ -29,7 +29,7 @@ public:
 	///Visits arya object
 	virtual void VisitArya(CVillainArya * arya) {};
 
-
-	//virtual CVector GetPositionMinion(CMinion * minion) {};
+	///Visits minion object
+	virtual void VisitMinion(CMinion * minion) {};
 };
 

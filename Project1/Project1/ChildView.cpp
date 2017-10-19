@@ -57,10 +57,6 @@ void CChildView::ResetScreen()
 {
 	mGame.Delete();
 
-	auto gru = make_shared<CGru>(&mGame);
-	gru->SetLocation(-300, 300);
-	mGame.Add(gru);
-
 	auto villainArya = make_shared<CVillainArya>(&mGame);
 	villainArya->SetLocation(75, 200);
 	mGame.Add(villainArya);
@@ -72,6 +68,10 @@ void CChildView::ResetScreen()
 	auto villainPokeball = make_shared<CVillainPokeball>(&mGame);
 	villainPokeball->SetLocation(275, -250);
 	mGame.Add(villainPokeball);
+
+	auto gru = make_shared<CGru>(&mGame);
+	gru->SetLocation(-300, 300);
+	mGame.Add(gru);
 
 }
 

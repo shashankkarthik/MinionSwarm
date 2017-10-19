@@ -56,10 +56,12 @@ public:
 	* \returns Y location in pixels */
 	const double GetY() const { return location.Y(); }
 
+	const CVector GetLocation() { return location; }
+
 	virtual void Accept(CGameVisitor *visitor) = 0;
 
 	//If needed
-	//CGame *GetGameTiles() { return mGameTiles; }
+	CGame *GetGameTiles() { return mGameTiles; }
 
 private:
 	/// The game this item is contained in
@@ -68,11 +70,9 @@ private:
 	/// The image of this item
 	std::unique_ptr<Gdiplus::Bitmap> mItemImage;
 	
-
 	/// Item location in the game
 	CVector location;
 
-	/// Velocity in virtual pixels/second
-	CVector mV;
+
 };
 
