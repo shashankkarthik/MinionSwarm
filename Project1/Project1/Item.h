@@ -66,7 +66,7 @@ public:
 
 	virtual void Move(double elapsed) {};
 
-	virtual void Flock(CVector cohesionCenter) {};
+	virtual void Flock(CVector cohesionCenter, int numberMinions) {};
 
 	///Get points for the minion
 	virtual int GetPoints() { return 0; }

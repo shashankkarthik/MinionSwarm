@@ -16,7 +16,7 @@ protected:
 public:
 	virtual ~CMinion();
 
-	virtual void Flock(CVector cohesionCenter);
+	virtual void Flock(CVector cohesionCenter, int numberMinions);
 
 	void Move(double elapsed);
 

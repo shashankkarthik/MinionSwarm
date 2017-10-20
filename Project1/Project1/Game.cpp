@@ -290,7 +290,7 @@ void CGame::UpdateMinions()
 
 	for (auto i = mGameTiles.rbegin(); i != mGameTiles.rend(); i++)
 	{
-		(*i)->Flock(cohesionCenter);
+		(*i)->Flock(cohesionCenter, numberMinions);
 	}
 
 	
