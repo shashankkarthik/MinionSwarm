@@ -2,11 +2,13 @@
  * \file Gru.cpp
  *
  * \author Hector
+ * Gru class that manages the gru in the game
  */
 
 #include "stdafx.h"
-#include "Gru.h"
 #include <string>
+#include "Gru.h"
+
 
 
 using namespace std;
@@ -86,6 +88,11 @@ void CGru::Draw(Gdiplus::Graphics *graphics)
 	}
 }
 
+/** Test if Gru is hit
+* \param x The x location 
+* \param y The y location
+* \returns bool The true or false if he's touched
+*/
 bool CGru::HitTestGru(int x, int y)
 {
 	double width = mItemImage->GetWidth();
