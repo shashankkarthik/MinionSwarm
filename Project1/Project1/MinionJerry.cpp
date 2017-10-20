@@ -13,14 +13,15 @@ using namespace Gdiplus;
 
 /// image filename 
 const wstring MinionJerryImageName = L"images/jerry.png";
-const int points = 1;
+/// Value of minion
+const int Points = 1;
 
 
 /** Constructor
 * \param game The game this is a member of
 */
 CMinionJerry::CMinionJerry(CGame *game) :
-	CMinion(game, MinionJerryImageName, points)
+	CMinion(game, MinionJerryImageName, Points)
 {
 }
 

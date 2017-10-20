@@ -10,6 +10,26 @@
 #include <vector>
 
 
+/// Cohesion weight
+const int CohesionWeight = 1;
+
+/// Separation weight
+const int SeparationWeight = 3;
+
+/// Alignment weight
+const int AlignmentWeight = 5;
+
+/// Gru weight
+const int GruWeight = 10;
+
+/// Default closest distance
+const double DefaultDistance = 1000000000000;
+
+/// Alignment radius
+const int AlignmentRadius = 200;
+
+/// Prevent divide by zero
+const int PreventDivideByZero = 1;
 
  /**
  * Constructor
@@ -56,11 +76,11 @@ void CMinion::Flock(CVector cohesionCenter, int numberMinions, CVector alignemnt
 
 	if (mGameOver) 
 	{
-		mV = cv * 1 + av * 5 + sv * 3;
+		mV = cv * CohesionWeight + av * AlignmentWeight + sv * SeparationWeight;
 	}
 	else
 	{
-		mV = cv * 1 + av * 5 + gruV * 10 + sv * 3;
+		mV = cv * CohesionWeight + av * AlignmentWeight + gruV * GruWeight + sv * SeparationWeight;
 	}
 	double lengthmv = mV.Length();
 	if (lengthmv > 0)
@@ -72,7 +92,7 @@ void CMinion::Flock(CVector cohesionCenter, int numberMinions, CVector alignemnt
 CVector CMinion::FindClosest(std::vector<CMinion*> minionVector)
 {
 	CVector result;
-	double dist = 1000000000000;
+	double dist = DefaultDistance;
 
 	for (auto minion : minionVector)
 	{
@@ -93,7 +113,7 @@ CVector CMinion::Alignment(std::vector<CMinion *> minionVector)
 	int count = 0;
 	for (auto i = minionVector.begin(); i != minionVector.end(); ++i)
 	{
-		if (GetLocation().Distance((*i)->GetLocation()) < 200)
+		if (GetLocation().Distance((*i)->GetLocation()) < AlignmentRadius)
 		{
 			totalVelocity += (*i)->GetSpeed();
 			count++;
@@ -102,7 +122,7 @@ CVector CMinion::Alignment(std::vector<CMinion *> minionVector)
 	}
 	if (count == 0)
 	{
-		count = 1;
+		count = PreventDivideByZero;
 	}
 	return (totalVelocity / count);
 
@@ -111,8 +131,8 @@ CVector CMinion::Alignment(std::vector<CMinion *> minionVector)
 CVector CMinion::Separation(std::vector<CMinion *> minionVector)
 {
 	CVector SeparationVector;
-	double distance = 99999999999;
-	double temp_dist = 999999999;
+	double distance = DefaultDistance;
+	double temp_dist = DefaultDistance;
 	for (auto i = minionVector.begin(); i != minionVector.end(); ++i)
 	{
 		temp_dist = GetLocation().Distance((*i)->GetLocation());
@@ -130,10 +150,7 @@ CVector CMinion::Separation(std::vector<CMinion *> minionVector)
 
 void CMinion::Move(double elapsed)
 {
-	CVector test;
-	test.Set(1,2);
 	CVector newP = GetLocation() + mV * elapsed * mSpeed;
-	//CVector newP = GetLocation() + test * elapsed * 300;
 
 
 	SetLocation(newP.X(), newP.Y());

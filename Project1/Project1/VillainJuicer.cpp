@@ -13,14 +13,16 @@ using namespace Gdiplus;
 
 /// image filename 
 const wstring VillainJuicerImageName = L"images/juicer.png";
-const int pointsMult = 2;
+
+/// Point multiplier
+const int PointsMult = 2;
 
 
 
 /** Constructor
 * \param game The game this is a member of
 */
-CVillainJuicer::CVillainJuicer(CGame *game) : CVillain(game, VillainJuicerImageName, pointsMult)
+CVillainJuicer::CVillainJuicer(CGame *game) : CVillain(game, VillainJuicerImageName, PointsMult)
 {
 }
 

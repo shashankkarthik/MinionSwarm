@@ -17,7 +17,17 @@ const double CPlayingArea::GridRadius = CPlayingArea::GridSize / 2.0;
 /// to the playing area edges (virtual pixels)
 const double CPlayingArea::GridMargin = 50.0;
 
+/// Green value for color of pen
+const int GreenValue = 64;
 
+///Three for pen
+const int Three = 3;
+
+/// X location of top left corner
+const int GridXLocation = 500;
+
+/// Y location of top left corner
+const int GridYLocation = 100;
 
 CPlayingArea::CPlayingArea()
 {
@@ -30,17 +40,11 @@ CPlayingArea::~CPlayingArea()
 
 void CPlayingArea::DrawArea(Gdiplus::Graphics *graphics, int windowWidth, int windowHeight)
 {
-	Pen greenPen(Color(0, 64, 0), 3);
+	Pen greenPen(Color(0, GreenValue, 0), Three);
 	graphics->DrawRectangle(&greenPen,
-		float((-windowWidth + 500) / 2.0),
-		float((-windowHeight + 100) / 2.0),
+		float((-windowWidth + GridXLocation) / 2.0),
+		float((-windowHeight + GridYLocation) / 2.0),
 		float(GridSize),
 		float(GridSize));
-
-		//Jordan's old code (not working)
-		/*float(-(windowWidth - GridSize / 2.0) / 2.0),
-		float((windowHeight /2.0 - (GridSize/2.0))),
-		GridSize, 
-		GridSize);*/
 
 }

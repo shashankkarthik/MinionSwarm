@@ -24,6 +24,51 @@ const static int Width = 1400;
 /// Game area height in virtual pixels
 const static int Height = 1100;
 
+/// Timer X location
+const int TimerXLocation = 250;
+
+/// Timer Y location
+const int TimerYLocation = 200;
+
+/// X Padding for timer's rectangle
+const float TimerXPadding = 80.0;
+
+/// Y Padding for timer's rectangle
+const float TimerYPadding = 50.0;
+
+/// Maximum color value
+const int MaxColorValue = 255;
+
+/// Maximum Minion type spawn chances
+const int SpawnChances = 10;
+
+/// Maximum Minion Spawn Area
+const int MaxMinionSpawnArea = 950;
+
+/// Jerry spawn chances
+const float JerrySpawnChances = 4.5;
+
+/// Stuart spawn chances
+const float StuartSpawnChances = 9;
+
+/// Minimum X location for minion spawning
+const int MinXLocationMinionSpawn = 550;
+
+/// Minimum Y location for minion spawning
+const int MinYLocationMinionSpawn = 200;
+
+/// Font size for timer
+const int TimerFontSize = 20;
+
+/// Range of spawn interval
+const float SpawnTimeRange = .5;
+
+/// Range of spawn interval
+const float SpawnTimeMin = .5;
+
+/// Time converter
+const int TimeConverter = 60;
+
 CGame::CGame()
 {
 	shared_ptr<CNewGame> newGame(new CNewGame());
@@ -71,7 +116,7 @@ void CGame::OnDraw(Gdiplus::Graphics *graphics, int width, int height)
 	// From here on you are drawing virtual pixels
 
 	wstring time = GetTime();
-	DrawTime(graphics, float((Width - 250) / 2.0), -float((Height - 200) / 2.0), time);
+	DrawTime(graphics, float((Width - TimerXLocation) / 2.0), -float((Height - TimerYLocation) / 2.0), time);
 
 	mNewGameButton->Draw(graphics, Width, Height);
 
@@ -114,11 +159,11 @@ void CGame::DrawTime(Gdiplus::Graphics * graphics, float xLoc, float yLoc, wstri
 {
 	time = time + L"\0";
 	WCHAR* string = (WCHAR *)time.c_str();
-	Gdiplus::Font myFont(L"Arial", 20);
-	RectF layoutRect(xLoc, yLoc, 80.0f, 50.0f);
+	Gdiplus::Font myFont(L"Arial", TimerFontSize);
+	RectF layoutRect(xLoc, yLoc, TimerXPadding, TimerYPadding);
 	StringFormat format;
 	format.SetAlignment(StringAlignmentCenter);
-	SolidBrush greenBrush(Color(255, 0, 255, 0));
+	SolidBrush greenBrush(Color(MaxColorValue, 0, MaxColorValue, 0));
 
 	graphics->DrawString(
 		string,
@@ -132,23 +177,23 @@ void CGame::DrawTime(Gdiplus::Graphics * graphics, float xLoc, float yLoc, wstri
 
 void CGame::SpawnRandomMinion()
 {
-	int spawner = (int)(((double)rand() / RAND_MAX) * 10);
-	if (spawner < 4.5) {
-		int x = (int)(((double)rand() / RAND_MAX) * 950);
+	int spawner = (int)(((double)rand() / RAND_MAX) * SpawnChances);
+	if (spawner < JerrySpawnChances) {
+		int x = (int)(((double)rand() / RAND_MAX) * MaxMinionSpawnArea);
 		auto minionJerry = make_shared<CMinionJerry>(this);
-		minionJerry->SetLocation((-Width + 550) / 2 + x, (-Height+200) / 2);
+		minionJerry->SetLocation((-Width + MinXLocationMinionSpawn) / 2 + x, (-Height+MinYLocationMinionSpawn) / 2);
 		Add(minionJerry);
 	}
-	else if (spawner < 9) {
-		int x = (int)(((double)rand() / RAND_MAX) * 950);
+	else if (spawner < StuartSpawnChances) {
+		int x = (int)(((double)rand() / RAND_MAX) * MaxMinionSpawnArea);
 		auto minionStuart = make_shared<CMinionStuart>(this);
-		minionStuart->SetLocation((-Width + 550) / 2 + x, (-Height + 200) / 2);
+		minionStuart->SetLocation((-Width + MinXLocationMinionSpawn) / 2 + x, (-Height + MinYLocationMinionSpawn) / 2);
 		Add(minionStuart);
 	}
 	else{
-		int x = (int)(((double)rand() / RAND_MAX) * 950);
+		int x = (int)(((double)rand() / RAND_MAX) * MaxMinionSpawnArea);
 		auto minionMutant = make_shared<CMinionMutant>(this);
-		minionMutant->SetLocation((-Width + 550) / 2 + x, (-Height + 200) / 2);
+		minionMutant->SetLocation((-Width + MinXLocationMinionSpawn) / 2 + x, (-Height + MinYLocationMinionSpawn) / 2);
 		Add(minionMutant);
 	}
 }
@@ -205,7 +250,7 @@ void CGame::Update(double elapsed)
 	mTimeInSeconds += elapsed;
 	CheckContact();
 	if (mTimeInSeconds >= mNextSpawnTime) {
-		double nextSpawnInterval = ((double)rand() / RAND_MAX) * .5 + .5;
+		double nextSpawnInterval = ((double)rand() / RAND_MAX) * SpawnTimeRange + SpawnTimeMin;
 		mNextSpawnTime = mTimeInSeconds + nextSpawnInterval;
 		SpawnRandomMinion();
 	}
@@ -214,8 +259,8 @@ void CGame::Update(double elapsed)
 wstring CGame::GetTime() 
 {
 	int tempTime = !mGameOver ? (int)mTimeInSeconds : (int)mFinalTime;
-	string minutes = to_string(tempTime / 60);
-	string seconds = to_string(tempTime % 60);
+	string minutes = to_string(tempTime / TimeConverter);
+	string seconds = to_string(tempTime % TimeConverter);
 	if (seconds.length() == 1) {
 		seconds = "0" + seconds;
 	}

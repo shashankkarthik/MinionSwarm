@@ -11,6 +11,15 @@
 using namespace Gdiplus;
 using namespace std;
 
+/// X Location of top left corner of item holding
+const int HoldingAreaX = 500;
+
+/// Y Location of top left corner of item holding
+const int HoldingAreaY = 100;
+
+/// Grid size (assuming square)
+const int GridSize = 1000;
+
 /** Constructor
 * \param game The game this item is a member of
 */
@@ -79,10 +88,10 @@ bool CItem::HitTest(int x, int y)
 }
 
 void CItem::SetBorders(float x, float y) {
-	mXLeftBorder = float((-x + 500) / 2.0);
-	mYTopBorder = float((-y + 100) / 2.0);
-	mXRightBorder = mXLeftBorder + 1000;
-	mYBottomBorder = mYTopBorder + 1000;
+	mXLeftBorder = float((-x + HoldingAreaX) / 2.0);
+	mYTopBorder = float((-y + HoldingAreaY) / 2.0);
+	mXRightBorder = mXLeftBorder + GridSize;
+	mYBottomBorder = mYTopBorder + GridSize;
 }
 
 void CItem::SetLocation(double x, double y)

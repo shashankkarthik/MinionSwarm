@@ -14,7 +14,9 @@ using namespace Gdiplus;
 
 /// image filename 
 const wstring VillainAryaImageName = L"images/arya.png";
-const int pointsMult = 1;
+
+/// Point multiplier
+const int PointsMult = 1;
 
 
 
@@ -22,7 +24,7 @@ const int pointsMult = 1;
 * \param game The game this is a member of
 */
 CVillainArya::CVillainArya(CGame *game) : 
-	CVillain(game, VillainAryaImageName, pointsMult)
+	CVillain(game, VillainAryaImageName, PointsMult)
 {
 }
 

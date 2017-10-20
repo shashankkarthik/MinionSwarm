@@ -10,6 +10,12 @@
 #include "Item.h"
 #include <vector>
 
+/// Default minion speed
+const int DefaultMinionSpeed = 150;
+
+/// Killing level
+const int KillingLevel = 1;
+
 class CMinion : public CItem
 {
 protected:
@@ -35,7 +41,7 @@ public:
 	///Get points for the minion
 	int GetPoints() { return mPoints; }
 
-	int GetLevel() { return 1; };
+	int GetLevel() { return KillingLevel; };
 
 	CVector GetSpeed() { return mV; }
 
@@ -46,7 +52,7 @@ public:
 
 private:
 	/// Minion speed 
-	double mSpeed = 150;
+	double mSpeed = DefaultMinionSpeed;
 
 	///Points if you kill minion
 	int mPoints = 0;

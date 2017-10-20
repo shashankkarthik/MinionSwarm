@@ -13,14 +13,16 @@ using namespace Gdiplus;
 
 /// image filename 
 const wstring VillainPokeballImageName = L"images/pokeball.png";
-const int pointsMult = 3;
+
+/// Point multiplier
+const int PointsMult = 3;
 
 
 
 /** Constructor
 * \param game The game this is a member of
 */
-CVillainPokeball::CVillainPokeball(CGame *game) : CVillain(game, VillainPokeballImageName, pointsMult)
+CVillainPokeball::CVillainPokeball(CGame *game) : CVillain(game, VillainPokeballImageName, PointsMult)
 {
 }
 

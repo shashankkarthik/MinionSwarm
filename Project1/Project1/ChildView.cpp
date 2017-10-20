@@ -33,6 +33,22 @@ using namespace std;
 const int FrameDuration = 30;
 /// Any item we are currently dragging
 std::shared_ptr<CItem> mGrabbedItem;
+/// Arya's X location
+const int AryaXLocation = 75;
+/// Arya's Y location
+const int AryaYLocation = 200;
+/// Juicer's X location
+const int JuicerXLocation = -200;
+/// Juicer's Y location
+const int JuicerYLocation = -250;
+/// Pokeball's X location
+const int PokeballXLocation = 275;
+/// Pokeball's Y location
+const int PokeballYLocation = -250;
+/// Gru's X location
+const int GruXLocation = -300;
+/// Gru's Y location
+const int GruYLocation = 300;
 
 // CChildView
 
@@ -58,19 +74,19 @@ void CChildView::ResetScreen()
 	mGame.Delete();
 
 	auto villainArya = make_shared<CVillainArya>(&mGame);
-	villainArya->SetLocation(75, 200);
+	villainArya->SetLocation(AryaXLocation, AryaYLocation);
 	mGame.Add(villainArya);
 
 	auto villainJuicer = make_shared<CVillainJuicer>(&mGame);
-	villainJuicer->SetLocation(-200, -250);
+	villainJuicer->SetLocation(JuicerXLocation, JuicerYLocation);
 	mGame.Add(villainJuicer);
 
 	auto villainPokeball = make_shared<CVillainPokeball>(&mGame);
-	villainPokeball->SetLocation(275, -250);
+	villainPokeball->SetLocation(PokeballXLocation, PokeballYLocation);
 	mGame.Add(villainPokeball);
 
 	auto gru = make_shared<CGru>(&mGame);
-	gru->SetLocation(-300, 300);
+	gru->SetLocation(GruXLocation, GruYLocation);
 	mGame.Add(gru);
 
 }

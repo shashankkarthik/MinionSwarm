@@ -12,6 +12,8 @@
 using namespace Gdiplus;
 using namespace std;
 
+/// Killing Level
+const int KillingLevel = 2;
  /**
  * Base class for a Villain
  * This applies to all of the Villains in the game
@@ -36,7 +38,7 @@ public:
 
 	void SetScore(int newScore) { mPoints = newScore; } //For use with new game? Idk i just thought I would leave this here -Shashank
 
-	int GetLevel() { return 2; };
+	int GetLevel() { return KillingLevel; };
 
 private:
 	///Killing points for the villain

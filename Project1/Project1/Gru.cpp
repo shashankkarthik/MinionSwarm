@@ -15,6 +15,22 @@ using namespace Gdiplus;
 /// image filename 
 const wstring GruImageName = L"images/gru.png";
 
+/// Game over text font size
+const int GameOverFontSize = 48;
+
+/// X location of start point for game over txt rectangle
+const float XLocationGameOver = -150;
+
+/// Game over text box width
+const float GameOverWidth = 400;
+
+/// Game over text box height
+const float GameOverHeight = 75;
+
+/// Maximum color value
+const int MaxColorValue = 255;
+
+
 /** Constructor
 * \param game The game this is a member of
 */
@@ -54,11 +70,11 @@ void CGru::Draw(Gdiplus::Graphics *graphics)
 	else{
 		wstring message = L"Gru is Dead!";
 		WCHAR* string = (WCHAR *)message.c_str();
-		Gdiplus::Font myFont(L"Arial", 48);
-		RectF layoutRect(-150, 0, 400.0f, 75.0f);
+		Gdiplus::Font myFont(L"Arial", GameOverFontSize);
+		RectF layoutRect(XLocationGameOver, 0, GameOverWidth, GameOverHeight);
 		StringFormat format;
 		format.SetAlignment(StringAlignmentCenter);
-		SolidBrush yellowBrush(Color(255, 255, 255, 0));
+		SolidBrush yellowBrush(Color(MaxColorValue, MaxColorValue, MaxColorValue, 0));
 
 		graphics->DrawString(
 			string,

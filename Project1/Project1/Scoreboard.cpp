@@ -64,6 +64,37 @@ const float RectHeight = 50.0f;
 /// Text Color
 const Color TextColor = Color(255, 0, 255, 0);
 
+/// Case 3 Arya Extra Y Padding
+const int Case3AryaYPadding = 200;
+
+/// Case 4 Pokeball Extra Y Padding
+const int Case4PokeballYPadding = 400;
+
+/// Case 4 Arya Extra Y Padding
+const int Case4AryaYPadding = 350;
+
+/// Case 6 Pokeball Extra Y Padding
+const int Case6PokeballYPadding = 400;
+
+/// Case 7 Arya Extra Y Padding
+const int Case7AryaYPadding = 600;
+
+/// Config 1
+const int ConfigOne = 1;
+/// Config 2
+const int ConfigTwo = 2;
+/// Config 3
+const int ConfigThree = 3;
+/// Config 4
+const int ConfigFour = 4;
+/// Config 5
+const int ConfigFive = 5;
+/// Config 6
+const int ConfigSix = 6;
+/// Config 7
+const int ConfigSeven = 7;
+
+
 CScoreboard::CScoreboard()
 {
 	mJuicerImage = unique_ptr<Bitmap>(Bitmap::FromFile(JuicerImageName.c_str()));
@@ -117,7 +148,7 @@ void CScoreboard::DrawScore(Gdiplus::Graphics * graphics, float xLoc, float yLoc
 	wstring score = to_wstring(scoreInt);
 	score = score + L"\0";
 	WCHAR* string = (WCHAR *)score.c_str();
-	Gdiplus::Font myFont(L"Arial", 16);
+	Gdiplus::Font myFont(L"Arial", ScoreFontSize);
 	RectF layoutRect(xLoc, yLoc, RectWidth, RectHeight);
 	StringFormat format;
 	format.SetAlignment(StringAlignmentCenter);
@@ -175,15 +206,15 @@ void CScoreboard::Draw(Graphics * graphics, int Width, int Height)
 			graphics->DrawImage(mJuicerImage.get(), float((Width - JuicerImageXPad) / 2.0), -float((Height - JuicerImageYPad) / 2.0));
 			DrawScore(graphics, float((Width - ScoreXPad) / 2.0), -float((Height - JuicerScoreYPad) / 2.0), mScoreMap["Juicer"]);
 
-			graphics->DrawImage(mAryaImage.get(), float((Width - AryaImageXPad) / 2.0), -float((Height - (AryaImageYPad-200)) / 2.0));
-			DrawScore(graphics, float((Width - ScoreXPad) / 2.0), -float((Height - (AryaScoreYPad-200)) / 2.0), mScoreMap["Arya"]);
+			graphics->DrawImage(mAryaImage.get(), float((Width - AryaImageXPad) / 2.0), -float((Height - (AryaImageYPad-Case3AryaYPadding)) / 2.0));
+			DrawScore(graphics, float((Width - ScoreXPad) / 2.0), -float((Height - (AryaScoreYPad-Case3AryaYPadding)) / 2.0), mScoreMap["Arya"]);
 			break;
 		case 4:
-			graphics->DrawImage(mPokeeballImage.get(), float((Width - PokeballImageXPad) / 2.0), -float((Height - (PokeballImageYPad-400)) / 2.0));
-			DrawScore(graphics, float((Width - ScoreXPad) / 2.0), -float((Height - (PokeballScoreYPad-400)) / 2.0), mScoreMap["Pokeeball"]);
+			graphics->DrawImage(mPokeeballImage.get(), float((Width - PokeballImageXPad) / 2.0), -float((Height - (PokeballImageYPad-Case4PokeballYPadding)) / 2.0));
+			DrawScore(graphics, float((Width - ScoreXPad) / 2.0), -float((Height - (PokeballScoreYPad-Case4PokeballYPadding)) / 2.0), mScoreMap["Pokeeball"]);
 
-			graphics->DrawImage(mAryaImage.get(), float((Width - AryaImageXPad) / 2.0), -float((Height - (AryaImageYPad - 350)) / 2.0));
-			DrawScore(graphics, float((Width - ScoreXPad) / 2.0), -float((Height - (AryaScoreYPad - 350)) / 2.0), mScoreMap["Arya"]);
+			graphics->DrawImage(mAryaImage.get(), float((Width - AryaImageXPad) / 2.0), -float((Height - (AryaImageYPad - Case4AryaYPadding)) / 2.0));
+			DrawScore(graphics, float((Width - ScoreXPad) / 2.0), -float((Height - (AryaScoreYPad - Case4AryaYPadding)) / 2.0), mScoreMap["Arya"]);
 			break;
 
 		case 5:
@@ -191,12 +222,12 @@ void CScoreboard::Draw(Graphics * graphics, int Width, int Height)
 			DrawScore(graphics, float((Width - ScoreXPad) / 2.0), -float((Height - JuicerScoreYPad) / 2.0), mScoreMap["Juicer"]);
 			break;
 		case 6:
-			graphics->DrawImage(mPokeeballImage.get(), float((Width - PokeballImageXPad) / 2.0), -float((Height - (PokeballImageYPad - 400)) / 2.0));
-			DrawScore(graphics, float((Width - ScoreXPad) / 2.0), -float((Height - (PokeballScoreYPad - 400)) / 2.0), mScoreMap["Pokeeball"]);
+			graphics->DrawImage(mPokeeballImage.get(), float((Width - PokeballImageXPad) / 2.0), -float((Height - (PokeballImageYPad - Case6PokeballYPadding)) / 2.0));
+			DrawScore(graphics, float((Width - ScoreXPad) / 2.0), -float((Height - (PokeballScoreYPad - Case6PokeballYPadding)) / 2.0), mScoreMap["Pokeeball"]);
 			break;
 		case 7:
-			graphics->DrawImage(mAryaImage.get(), float((Width - AryaImageXPad) / 2.0), -float((Height - (AryaImageYPad - 600)) / 2.0));
-			DrawScore(graphics, float((Width - ScoreXPad) / 2.0), -float((Height - (AryaScoreYPad - 600)) / 2.0), mScoreMap["Arya"]);
+			graphics->DrawImage(mAryaImage.get(), float((Width - AryaImageXPad) / 2.0), -float((Height - (AryaImageYPad - Case7AryaYPadding)) / 2.0));
+			DrawScore(graphics, float((Width - ScoreXPad) / 2.0), -float((Height - (AryaScoreYPad - Case7AryaYPadding)) / 2.0), mScoreMap["Arya"]);
 			break;
 
 
@@ -234,34 +265,34 @@ void CScoreboard::DetermineConfig()
 	switch (mNonZero.size())
 	{
 		case 3:
-			mConfig = 1;
+			mConfig = ConfigOne;
 			break;
 		case 2:
 			if (Find("Juicer") && Find("Pokeeball"))
 			{
-				mConfig = 2;
+				mConfig = ConfigTwo;
 			}
 			else if (Find("Juicer") && Find("Arya"))
 			{
-				mConfig = 3;
+				mConfig = ConfigThree;
 			}
 			else if (Find("Pokeeball") && Find("Arya"))
 			{
-				mConfig = 4;
+				mConfig = ConfigFour;
 			}
 			break;
 		case 1:
 			if (Find("Juicer"))
 			{
-				mConfig = 5;
+				mConfig = ConfigFive;
 			}
 			else if (Find("Pokeeball"))
 			{
-				mConfig = 6;
+				mConfig = ConfigSix;
 			}
 			else if (Find("Arya"))
 			{
-				mConfig = 7;
+				mConfig = ConfigSeven;
 			}
 			break;
 		case 0: 
