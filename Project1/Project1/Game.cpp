@@ -297,7 +297,7 @@ void CGame::UpdateMinions()
 	for (auto i = mGameTiles.rbegin(); i != mGameTiles.rend(); i++)
 	{
 		auto alignemnt = (*i)->Alignment(minionVector);
-		(*i)->Flock(cohesionCenter, numberMinions, alignemnt, mGruLocation, mGameOver);
+		(*i)->Flock(cohesionCenter, numberMinions, alignemnt, mGruLocation, mGameOver, minionVector);
 	}
 }
 

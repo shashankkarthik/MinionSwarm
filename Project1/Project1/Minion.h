@@ -18,7 +18,9 @@ protected:
 public:
 	virtual ~CMinion();
 
-	virtual void Flock(CVector cohesionCenter, int numberMinions, CVector alignemnt, CVector mGruLocation, bool mGameOver);
+	virtual void Flock(CVector cohesionCenter, int numberMinions, CVector alignemnt, CVector mGruLocation, bool mGameOver, std::vector<CMinion*>);
+
+	CVector FindClosest(std::vector<CMinion*> minionVector);
 
 	void Move(double elapsed);
 

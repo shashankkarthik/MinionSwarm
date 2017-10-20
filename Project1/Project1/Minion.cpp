@@ -28,8 +28,17 @@ CMinion::~CMinion()
 {
 }
 //this is flocking
-void CMinion::Flock(CVector cohesionCenter, int numberMinions, CVector alignemnt, CVector mGruLocation, bool mGameOver)
+void CMinion::Flock(CVector cohesionCenter, int numberMinions, CVector alignemnt, CVector mGruLocation, bool mGameOver, std::vector<CMinion*> minionVector)
 {
+	//CVector closest = FindClosest(minionVector);
+
+	//sv.SetX(-1 * (GetLocation().X() - closest.X()));
+	//sv.SetY(-1 * (GetLocation().Y() - closest.Y()));
+	//if (sv.Length() > 0)
+	//{
+	//	sv.Normalize();
+	//}
+
 	av = alignemnt;
 
 	double lengthav = av.Length();
@@ -60,6 +69,24 @@ void CMinion::Flock(CVector cohesionCenter, int numberMinions, CVector alignemnt
 	{
 		mV.Normalize();
 	}
+}
+
+CVector CMinion::FindClosest(std::vector<CMinion*> minionVector)
+{
+	CVector result;
+	double dist = 1000000000000;
+
+	for (auto minion : minionVector)
+	{
+		double temp_dist = minion->GetLocation().Distance(this->GetLocation());
+		if (temp_dist < dist && temp_dist != 0)
+		{
+			dist = temp_dist;
+			result = minion->GetLocation();
+		}
+	}
+
+	return result;
 }
 
 CVector CMinion::Alignment(std::vector<CMinion *> minionVector)
