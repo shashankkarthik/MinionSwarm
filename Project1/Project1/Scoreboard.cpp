@@ -169,6 +169,7 @@ void CScoreboard::Draw(Graphics * graphics, int Width, int Height)
 
 			graphics->DrawImage(mPokeeballImage.get(), float((Width - PokeballImageXPad) / 2.0), -float((Height - PokeballImageYPad) / 2.0));
 			DrawScore(graphics, float((Width - ScoreXPad) / 2.0), -float((Height - PokeballScoreYPad) / 2.0), mScoreMap["Pokeeball"]);
+			break;
 		
 		case 3:
 			graphics->DrawImage(mJuicerImage.get(), float((Width - JuicerImageXPad) / 2.0), -float((Height - JuicerImageYPad) / 2.0));
@@ -176,11 +177,27 @@ void CScoreboard::Draw(Graphics * graphics, int Width, int Height)
 
 			graphics->DrawImage(mAryaImage.get(), float((Width - AryaImageXPad) / 2.0), -float((Height - (AryaImageYPad-200)) / 2.0));
 			DrawScore(graphics, float((Width - ScoreXPad) / 2.0), -float((Height - (AryaScoreYPad-200)) / 2.0), mScoreMap["Arya"]);
+			break;
+		case 4:
+			graphics->DrawImage(mPokeeballImage.get(), float((Width - PokeballImageXPad) / 2.0), -float((Height - (PokeballImageYPad-400)) / 2.0));
+			DrawScore(graphics, float((Width - ScoreXPad) / 2.0), -float((Height - (PokeballScoreYPad-400)) / 2.0), mScoreMap["Pokeeball"]);
 
+			graphics->DrawImage(mAryaImage.get(), float((Width - AryaImageXPad) / 2.0), -float((Height - (AryaImageYPad - 350)) / 2.0));
+			DrawScore(graphics, float((Width - ScoreXPad) / 2.0), -float((Height - (AryaScoreYPad - 350)) / 2.0), mScoreMap["Arya"]);
+			break;
 
 		case 5:
 			graphics->DrawImage(mJuicerImage.get(), float((Width - JuicerImageXPad) / 2.0), -float((Height - JuicerImageYPad) / 2.0));
 			DrawScore(graphics, float((Width - ScoreXPad) / 2.0), -float((Height - JuicerScoreYPad) / 2.0), mScoreMap["Juicer"]);
+			break;
+		case 6:
+			graphics->DrawImage(mPokeeballImage.get(), float((Width - PokeballImageXPad) / 2.0), -float((Height - (PokeballImageYPad - 400)) / 2.0));
+			DrawScore(graphics, float((Width - ScoreXPad) / 2.0), -float((Height - (PokeballScoreYPad - 400)) / 2.0), mScoreMap["Pokeeball"]);
+			break;
+		case 7:
+			graphics->DrawImage(mAryaImage.get(), float((Width - AryaImageXPad) / 2.0), -float((Height - (AryaImageYPad - 600)) / 2.0));
+			DrawScore(graphics, float((Width - ScoreXPad) / 2.0), -float((Height - (AryaScoreYPad - 600)) / 2.0), mScoreMap["Arya"]);
+			break;
 
 
 	}
