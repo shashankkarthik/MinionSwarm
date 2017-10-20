@@ -240,7 +240,7 @@ std::shared_ptr<CItem> CGame::HitTestGru(int x, int y)
 	for (auto i = mGameTiles.rbegin(); i != mGameTiles.rend(); i++)
 	{
 		//to move all pieces, change HitTestGru to HitTest
-		if ((*i)->HitTest((int)virtualX, (int)virtualY))
+		if ((*i)->HitTestGru((int)virtualX, (int)virtualY))
 		{
 			return *i;
 		}
