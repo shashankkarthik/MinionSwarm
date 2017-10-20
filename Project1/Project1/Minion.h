@@ -13,12 +13,12 @@
 class CMinion : public CItem
 {
 protected:
-	CMinion(CGame * game, const std::wstring & filename, int const points);
+	CMinion(CGame * game, const std::wstring & filename, int const points, double speed = 150);
 
 public:
 	virtual ~CMinion();
 
-	virtual void Flock(CVector cohesionCenter, int numberMinions, CVector alignemnt);
+	virtual void Flock(CVector cohesionCenter, int numberMinions, CVector alignemnt, CVector mGruLocation, bool mGameOver);
 
 	void Move(double elapsed);
 
@@ -42,11 +42,8 @@ public:
 
 
 private:
-	/// Minion speed in the X direction
-	double mSpeedX = 0;
-
-	/// image speed in the Y direction
-	double mSpeedY = 0;
+	/// Minion speed 
+	double mSpeed = 150;
 
 	///Points if you kill minion
 	int mPoints = 0;

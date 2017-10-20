@@ -20,7 +20,7 @@ const int points = 5;
 * \param game The game this is a member of
 */
 CMinionMutant::CMinionMutant(CGame *game) :
-	CMinion(game, MinionMutantImageName, points)
+	CMinion(game, MinionMutantImageName, points, 300)
 {
 }
 

@@ -289,10 +289,15 @@ void CGame::UpdateMinions()
 	std::vector<CMinion *> minionVector = visitor.GetMinions();
 	CVector cohesionCenter = totalXY / numberMinions;
 
+	if (mGameOver)
+	{
+		mGruLocation.Set(0, 0);
+	}
+
 	for (auto i = mGameTiles.rbegin(); i != mGameTiles.rend(); i++)
 	{
 		auto alignemnt = (*i)->Alignment(minionVector);
-		(*i)->Flock(cohesionCenter, numberMinions, alignemnt);
+		(*i)->Flock(cohesionCenter, numberMinions, alignemnt, mGruLocation, mGameOver);
 	}
 }
 

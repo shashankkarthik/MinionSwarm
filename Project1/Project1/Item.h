@@ -67,7 +67,7 @@ public:
 
 	virtual void Move(double elapsed) {};
 
-	virtual void Flock(CVector cohesionCenter, int numberMinions, CVector alignemnt) {};
+	virtual void Flock(CVector cohesionCenter, int numberMinions, CVector alignemnt, CVector mGruLocation, bool mGameOver) {};
 
 	virtual CVector Alignment(std::vector<CMinion *> minionVector) { CVector basic; return basic; };
 
