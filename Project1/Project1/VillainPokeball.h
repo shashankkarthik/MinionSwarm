@@ -3,23 +3,24 @@
  *
  * \author Hector
  *
- * PokeBall is a Villain
+ * Class for the Pokeball Villain 
  */
 
 #pragma once
 #include "Villain.h"
 #include "Item.h"
 
+/**
+* The class for the Pokeball villain
+*/
 class CVillainPokeball :
 	public CVillain
 {
 public:
 	CVillainPokeball(CGame * game);
 
-	/// Default constructor (disabled)
 	CVillainPokeball() = delete;
 
-	/// Copy constructor (disabled)
 	CVillainPokeball(const CVillainPokeball &) = delete;
 
 	virtual ~CVillainPokeball();

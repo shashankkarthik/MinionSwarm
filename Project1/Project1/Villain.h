@@ -3,7 +3,7 @@
  *
  * \author Hector
  *
- * Villain 
+ * Villain base class 
  */
 
 #pragma once
@@ -24,10 +24,9 @@ protected:
 	CVillain(CGame * game, const std::wstring & filename, int const pointMult);
 
 public:
-	/// Default constructor (disabled)
+	
 	CVillain() = delete;
 
-	/// Copy constructor (disabled)
 	CVillain(const CVillain &) = delete;	
 	
 	virtual ~CVillain();
