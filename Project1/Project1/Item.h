@@ -37,7 +37,7 @@ public:
 	/// Set the item location
 	/// \param x X location
 	/// \param y Y location
-	void SetLocation(double x, double y) { location.Set(x, y); }
+	void SetLocation(double x, double y);
 
 	///Draw Image
 	virtual void CItem::Draw(Gdiplus::Graphics *graphics);
@@ -62,6 +62,7 @@ public:
 
 	//If needed
 	CGame *GetGameTiles() { return mGameTiles; }
+	void SetBorders(float x, float y);
 
 private:
 	/// The game this item is contained in
@@ -72,7 +73,10 @@ private:
 	
 	/// Item location in the game
 	CVector location;
-
+	float mXLeftBorder = 0;
+	float mYTopBorder = 0;
+	float mXRightBorder = 0;
+	float mYBottomBorder = 0;
 
 };
 

@@ -87,6 +87,7 @@ void CGame::OnDraw(Gdiplus::Graphics *graphics, int width, int height)
 	for (auto item : mGameTiles)
 	{
 		item->Draw(graphics);
+		item->SetBorders(Width, Height);
 	}
 
 }

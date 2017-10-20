@@ -77,3 +77,27 @@ bool CItem::HitTest(int x, int y)
 		return true;
 	}
 }
+
+void CItem::SetBorders(float x, float y) {
+	mXLeftBorder = float((-x + 500) / 2.0);
+	mYTopBorder = float((-y + 100) / 2.0);
+	mXRightBorder = mXLeftBorder + 1000;
+	mYBottomBorder = mYTopBorder + 1000;
+}
+
+void CItem::SetLocation(double x, double y)
+{
+	if (mXLeftBorder != 0 && mYTopBorder != 0) {
+		double wid = mItemImage->GetWidth();
+		double hit = mItemImage->GetHeight();
+		if (x - wid/2 < mXLeftBorder || x + wid/2 > mXRightBorder) {
+			x = GetX();
+		}
+
+		if (y - hit/2 < mYTopBorder || y + hit/2 > mYBottomBorder) {
+			y = GetY();
+		}
+	}
+
+	location.Set(x, y);
+}
