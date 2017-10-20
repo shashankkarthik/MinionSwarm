@@ -30,7 +30,7 @@ public:
 	
 	virtual ~CVillain();
 
-	void AddPoints(int points) { mPoints += points * mPointMult; }
+	virtual void AddPoints(int points) { mPoints += points * mPointMult; }
 
 	int GetScore() { return mPoints; }
 
