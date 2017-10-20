@@ -276,27 +276,36 @@ void CGame::UpdateScoreMap()
 	
 }
 
+
 void CGame::CheckContact()
 {
-	for (auto j = mGameTiles.rbegin(); j != mGameTiles.rend(); j++)
+	//UpdateMinions();
+	if (!mGameOver)
 	{
-		for (auto i = mGameTiles.rbegin(); i != mGameTiles.rend(); i++)
+		for (auto j = mGameTiles.rbegin(); j != mGameTiles.rend(); j++)
 		{
-			if ((*i)->HitTest((*j)->GetX(), (*j)->GetY()) && *i != *j && (*i)->GetLevel() < (*j)->GetLevel())
+			for (auto i = mGameTiles.rbegin(); i != mGameTiles.rend(); i++)
 			{
-				(*i)->Kill();
-				if ((*i)->IsAlive()) {
-					DeleteItem(*i);
+				if ((*i)->HitTest((*j)->GetX(), (*j)->GetY()) && *i != *j && (*i)->GetLevel() < (*j)->GetLevel())
+				{
+					(*i)->Kill();
+					if ((*i)->IsAlive()) {
+						(*j)->AddPoints((*i)->GetPoints());
+						DeleteItem(*i);
+						UpdateScoreMap();
+					}
+					return;
 				}
-				return;
-			}
-			else if ((*i)->HitTest((*j)->GetX(), (*j)->GetY()) && *i != *j && (*i)->GetLevel() > (*j)->GetLevel())
-			{
-				(*j)->Kill();
-				if ((*j)->IsAlive()) {
-					DeleteItem(*j);
+				else if ((*i)->HitTest((*j)->GetX(), (*j)->GetY()) && *i != *j && (*i)->GetLevel() > (*j)->GetLevel())
+				{
+					(*j)->Kill();
+					if ((*j)->IsAlive()) {
+						(*i)->AddPoints((*j)->GetPoints());
+						DeleteItem(*j);
+						UpdateScoreMap();
+					}
+					return;
 				}
-				return;
 			}
 		}
 	}

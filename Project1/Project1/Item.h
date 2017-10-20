@@ -64,6 +64,15 @@ public:
 	CGame *GetGameTiles() { return mGameTiles; }
 	void SetBorders(float x, float y);
 
+	virtual void Update(double elapsed) {};
+
+	virtual void Flock() {};
+
+	///Get points for the minion
+	virtual int GetPoints() { return 0; }
+
+	virtual void AddPoints(int points) {};
+
 private:
 	/// The game this item is contained in
 	CGame  *mGameTiles;
