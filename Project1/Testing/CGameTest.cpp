@@ -3,6 +3,8 @@
 
 #include "Game.h"
 #include "Gru.h"
+#include "Minion.h"
+#include "MinionJerry.h"
 #include <string>
 
 using namespace std;
@@ -98,5 +100,45 @@ namespace Testing
 			wstring expectedTime2 = L"0:45";
 			Assert::AreEqual(expectedTime2, game.GetTime());
 		}
+
+		TEST_METHOD(TestCGameSpawnMinion)
+		{
+			CGame game;
+			Assert::AreEqual(0, game.GetSizemGameTiles());
+
+			game.SpawnRandomMinion();
+			Assert::AreEqual(1, game.GetSizemGameTiles());
+
+			game.SpawnRandomMinion();
+			Assert::AreEqual(2, game.GetSizemGameTiles());
+
+			game.Delete();
+			Assert::AreEqual(0, game.GetSizemGameTiles());
+
+			game.SpawnRandomMinion();
+			Assert::AreEqual(1, game.GetSizemGameTiles());
+		}
+
+		TEST_METHOD(TestCGameDeleteItem)
+		{
+			CGame game;
+			Assert::AreEqual(0, game.GetSizemGameTiles());
+
+			std::shared_ptr<CGru> gru;
+			game.Add(gru);
+			std::shared_ptr<CGru> gru1;
+			game.Add(gru1);
+			std::shared_ptr<CMinionJerry> jerry;
+			game.Add(jerry);
+
+			Assert::AreEqual(3, game.GetSizemGameTiles());
+			game.DeleteItem(gru);
+			Assert::AreEqual(2, game.GetSizemGameTiles());
+			game.DeleteItem(gru1);
+			Assert::AreEqual(1, game.GetSizemGameTiles());
+			game.DeleteItem(jerry);
+			Assert::AreEqual(0, game.GetSizemGameTiles());
+		}
+
 	};
 }
