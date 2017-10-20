@@ -2,6 +2,7 @@
 #include "Scoreboard.h"
 #include <map>
 #include <iostream>
+#include <vector>
 
 
 using namespace std;
@@ -89,7 +90,11 @@ CScoreboard::CScoreboard()
 		AfxMessageBox(msg.c_str());
 	}
 
-	initializeScoreMap();
+	InitializeScoreMap();
+	mConfig = 0;
+
+	
+	
 
 }
 
@@ -139,26 +144,131 @@ void CScoreboard::DrawScore(Gdiplus::Graphics * graphics, float xLoc, float yLoc
  */
 void CScoreboard::Draw(Graphics * graphics, int Width, int Height) 
 {
+	DetermineConfig();
+	switch (mConfig)
+	{
+		case 0:
+			break;
+		case 1:
+			graphics->DrawImage(mJuicerImage.get(), float((Width - JuicerImageXPad) / 2.0), -float((Height - JuicerImageYPad) / 2.0));
+			DrawScore(graphics, float((Width - ScoreXPad) / 2.0), -float((Height - JuicerScoreYPad) / 2.0), mScoreMap["Juicer"]);
 
+
+			graphics->DrawImage(mPokeeballImage.get(), float((Width - PokeballImageXPad) / 2.0), -float((Height - PokeballImageYPad) / 2.0));
+			DrawScore(graphics, float((Width - ScoreXPad) / 2.0), -float((Height - PokeballScoreYPad) / 2.0), mScoreMap["Pokeeball"]);
+
+
+			graphics->DrawImage(mAryaImage.get(), float((Width - AryaImageXPad) / 2.0), -float((Height - AryaImageYPad) / 2.0));
+			DrawScore(graphics, float((Width - ScoreXPad) / 2.0), -float((Height - AryaScoreYPad) / 2.0), mScoreMap["Arya"]);
+			
+			break;
+		case 2:
+			graphics->DrawImage(mJuicerImage.get(), float((Width - JuicerImageXPad) / 2.0), -float((Height - JuicerImageYPad) / 2.0));
+			DrawScore(graphics, float((Width - ScoreXPad) / 2.0), -float((Height - JuicerScoreYPad) / 2.0), mScoreMap["Juicer"]);
+
+
+			graphics->DrawImage(mPokeeballImage.get(), float((Width - PokeballImageXPad) / 2.0), -float((Height - PokeballImageYPad) / 2.0));
+			DrawScore(graphics, float((Width - ScoreXPad) / 2.0), -float((Height - PokeballScoreYPad) / 2.0), mScoreMap["Pokeeball"]);
+		
+		case 3:
+			graphics->DrawImage(mJuicerImage.get(), float((Width - JuicerImageXPad) / 2.0), -float((Height - JuicerImageYPad) / 2.0));
+			DrawScore(graphics, float((Width - ScoreXPad) / 2.0), -float((Height - JuicerScoreYPad) / 2.0), mScoreMap["Juicer"]);
+
+			graphics->DrawImage(mAryaImage.get(), float((Width - AryaImageXPad) / 2.0), -float((Height - (AryaImageYPad-200)) / 2.0));
+			DrawScore(graphics, float((Width - ScoreXPad) / 2.0), -float((Height - (AryaScoreYPad-200)) / 2.0), mScoreMap["Arya"]);
+
+
+		case 5:
+			graphics->DrawImage(mJuicerImage.get(), float((Width - JuicerImageXPad) / 2.0), -float((Height - JuicerImageYPad) / 2.0));
+			DrawScore(graphics, float((Width - ScoreXPad) / 2.0), -float((Height - JuicerScoreYPad) / 2.0), mScoreMap["Juicer"]);
+
+
+	}
 	
-	graphics->DrawImage(mJuicerImage.get(), float((Width - JuicerImageXPad) / 2.0), -float((Height - JuicerImageYPad) / 2.0));
-	DrawScore(graphics, float((Width - ScoreXPad) / 2.0), -float((Height - JuicerScoreYPad) / 2.0), mScoreMap["Juicer"]);
-
 	
-
-	graphics->DrawImage(mPokeeballImage.get(), float((Width - PokeballImageXPad) / 2.0), -float((Height - PokeballImageYPad) / 2.0));
-	DrawScore(graphics, float((Width - ScoreXPad) / 2.0), -float((Height - PokeballScoreYPad) / 2.0), mScoreMap["Pokeeball"]);
-
-
-	graphics->DrawImage(mAryaImage.get(), float((Width - AryaImageXPad) / 2.0), -float((Height - AryaImageYPad) / 2.0));
-	DrawScore(graphics, float((Width - ScoreXPad) / 2.0), -float((Height - AryaScoreYPad) / 2.0), mScoreMap["Arya"]);
 
 }
 
 
-void CScoreboard::initializeScoreMap()
+void CScoreboard::InitializeScoreMap()
 {
 	mScoreMap["Juicer"] = 0;
 	mScoreMap["Pokeeball"] = 0;
 	mScoreMap["Arya"] = 0;
 }
+
+
+void  CScoreboard::GenerateNonZero()
+{	
+	mNonZero.clear();
+	for (auto const& villain : mScoreMap)
+	{
+		if (villain.second > 0)
+		{
+			mNonZero.push_back(villain.first);
+		}
+	}
+}
+
+
+void CScoreboard::DetermineConfig()
+{
+	GenerateNonZero();
+	switch (mNonZero.size())
+	{
+		case 3:
+			mConfig = 1;
+			break;
+		case 2:
+			if (Find("Juicer") && Find("Pokeeball"))
+			{
+				mConfig = 2;
+			}
+			else if (Find("Juicer") && Find("Arya"))
+			{
+				mConfig = 3;
+			}
+			else if (Find("Pokeeball") && Find("Arya"))
+			{
+				mConfig = 4;
+			}
+			break;
+		case 1:
+			if (Find("Juicer"))
+			{
+				mConfig = 5;
+			}
+			else if (Find("Pokeeball"))
+			{
+				mConfig = 6;
+			}
+			else if (Find("Arya"))
+			{
+				mConfig = 7;
+			}
+			break;
+		case 0: 
+			mConfig = 0;
+			break;
+	}
+	
+	
+	
+}
+
+
+
+bool CScoreboard::Find(string x)
+{
+	
+	
+	if (find(mNonZero.begin(),mNonZero.end(), x) != mNonZero.end()) 
+	{
+		return true;
+	}
+	else {
+		return false;
+	}
+}
+
+

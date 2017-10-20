@@ -2,6 +2,7 @@
 #include <memory>
 #include <string>
 #include <map>
+#include <vector>
 
 using namespace std;
 using namespace Gdiplus;
@@ -21,7 +22,10 @@ public:
 	
 private:
 
-	void initializeScoreMap();
+	void InitializeScoreMap();
+	void GenerateNonZero();
+	void DetermineConfig();
+	bool Find(string x);
 	void DrawScore(Gdiplus::Graphics * graphics, float xLoc, float yLoc, int scoreInt);
 
 
@@ -30,6 +34,10 @@ private:
 	unique_ptr<Bitmap> mJuicerImage;
 	unique_ptr<Bitmap> mPokeeballImage;
 	unique_ptr<Bitmap> mAryaImage;
+
+	vector<string> mNonZero;
+
+	int mConfig;
 
 };
 
