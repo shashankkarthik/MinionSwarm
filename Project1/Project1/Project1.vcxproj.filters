@@ -93,6 +93,9 @@
     <ClInclude Include="GameVisitorMinion.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="GruLocationVisitor.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Project1.cpp">
@@ -159,6 +162,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="GameVisitorMinion.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GruLocationVisitor.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

@@ -44,6 +44,8 @@ public:
 
 	void UpdateMinions();
 
+	void UpdateGruLocation();
+
 	void CheckContact();
 
 	void DeleteItem(std::shared_ptr<CItem> item);
@@ -91,6 +93,9 @@ private:
 
 	///Vector of the center of all the objects
 	CVector cohesionCenter;
+
+	///Vector containing Gru's X and Y coordinates
+	CVector mGruLocation;
 
 
 };

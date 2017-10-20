@@ -8,6 +8,7 @@
 #include "CGameVisitor.h"
 #include "GetScoreVisitor.h"
 #include "GameVisitorMinion.h"
+#include "GruLocationVisitor.h"
 #include <string>
 #include "Minion.h"
 #include "MinionJerry.h"
@@ -292,15 +293,24 @@ void CGame::UpdateMinions()
 	{
 		(*i)->Flock(cohesionCenter, numberMinions);
 	}
+}
 
-	
+void CGame::UpdateGruLocation()
+{
+	CGruLocationVisitor visitor;
+	Accept(&visitor);
 
+	double x = visitor.GetGruLocation().X();
+	double y = visitor.GetGruLocation().Y();
+
+	mGruLocation.Set(x, y);
 }
 
 
 void CGame::CheckContact()
 {
 	UpdateMinions();
+	UpdateGruLocation();
 	if (!mGameOver)
 	{
 		for (auto j = mGameTiles.rbegin(); j != mGameTiles.rend(); j++)

@@ -15,6 +15,7 @@ class CMinion;
 class CMinionJerry;
 class CMinionStuart;
 class CMinionMutant;
+class CGru;
 
 
 class CGameVisitor
@@ -38,6 +39,8 @@ public:
 	virtual void VisitMinionMutant(CMinionMutant * minion) {};
 
 	virtual void VisitMinionStuart(CMinionStuart * minion) {};
+
+	virtual void VisitGru(CGru * gru) {};
 
 };
 

@@ -187,6 +187,7 @@
     <ClInclude Include="GetScoreVisitor.h" />
     <ClInclude Include="GameVisitor.h" />
     <ClInclude Include="Gru.h" />
+    <ClInclude Include="GruLocationVisitor.h" />
     <ClInclude Include="MinionJerry.h" />
     <ClInclude Include="MinionMutant.h" />
     <ClInclude Include="Game.h" />
@@ -211,6 +212,7 @@
     <ClCompile Include="GameVisitorMinion.cpp" />
     <ClCompile Include="ChildView.cpp" />
     <ClCompile Include="GetScoreVisitor.cpp" />
+    <ClCompile Include="GruLocationVisitor.cpp" />
     <ClCompile Include="MinionMutant.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameVisitor.cpp" />

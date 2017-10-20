@@ -30,9 +30,11 @@ public:
 
 	void Kill() { mAlive = false; }
 
-	virtual void Accept(CGameVisitor * visitor) { }
+	virtual void Accept(CGameVisitor * visitor) { visitor->VisitGru(this); }
 
 	virtual bool HitTestGru(int x, int y);
+
+	
 
 
 private:
