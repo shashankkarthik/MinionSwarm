@@ -13,8 +13,7 @@
 /// Default minion speed
 const int DefaultMinionSpeed = 150;
 
-/// Killing level
-const int KillingLevel = 1;
+
 
 class CMinion : public CItem
 {
@@ -51,6 +50,9 @@ public:
 
 
 private:
+	/// Killing level
+	const int KillingLevel = 1;
+
 	/// Minion speed 
 	double mSpeed = DefaultMinionSpeed;
 
