@@ -16,9 +16,9 @@ protected:
 public:
 	virtual ~CMinion();
 
-	void Flock();
+	virtual void Flock(CVector cohesionCenter);
 
-	void Update(double elapsed);
+	void Move(double elapsed);
 
 	CVector GetCohesion();
 

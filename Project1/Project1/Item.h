@@ -64,9 +64,9 @@ public:
 	CGame *GetGameTiles() { return mGameTiles; }
 	void SetBorders(float x, float y);
 
-	virtual void Update(double elapsed) {};
+	virtual void Move(double elapsed) {};
 
-	virtual void Flock() {};
+	virtual void Flock(CVector cohesionCenter) {};
 
 	///Get points for the minion
 	virtual int GetPoints() { return 0; }

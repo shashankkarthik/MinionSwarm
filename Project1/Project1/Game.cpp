@@ -192,6 +192,7 @@ void CGame::Update(double elapsed)
 
 	for (auto i = mGameTiles.rbegin(); i != mGameTiles.rend(); i++)
 	{
+		(*i)->Move(elapsed);
 		
 		if (!(*i)->IsAlive()) {
 			mGameOver = true;
@@ -282,9 +283,17 @@ void CGame::UpdateMinions()
 	CGameVisitorMinion visitor;
 	Accept(&visitor);
 
-	auto test = visitor.NumberMinions();
-	auto test1 = visitor.CohesionCenter();
-	auto test2 = visitor.GetMinions();
+	auto numberMinions = visitor.NumberMinions();
+	auto totalXY = visitor.CohesionCenter();
+	auto minionVector = visitor.GetMinions();
+	CVector cohesionCenter = totalXY / numberMinions;
+
+	for (auto i = mGameTiles.rbegin(); i != mGameTiles.rend(); i++)
+	{
+		(*i)->Flock(cohesionCenter);
+	}
+
+	
 
 }
 

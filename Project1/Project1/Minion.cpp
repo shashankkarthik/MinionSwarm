@@ -25,9 +25,9 @@ CMinion::~CMinion()
 {
 }
 //this is flocking
-void CMinion::Flock()
+void CMinion::Flock(CVector cohesionCenter)
 {
-	cv = GetCohesion() - GetLocation();
+	cv = cohesionCenter - GetLocation();
 	double l = cv.Length();
 	if (l > 0)
 	{
@@ -42,12 +42,11 @@ void CMinion::Flock()
 	mV.Normalize();
 }
 
-void CMinion::Update(double elapsed)
+void CMinion::Move(double elapsed)
 {
-	Flock();
 	CVector test;
 	test.Set(1,2);
-	//CVector newP = GetLocation() + mV * elapsed * 300;
+//	CVector newP = GetLocation() + mV * elapsed;
 	CVector newP = GetLocation() + test * elapsed * 300;
 
 
