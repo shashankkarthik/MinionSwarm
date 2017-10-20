@@ -18,7 +18,7 @@ protected:
 public:
 	virtual ~CMinion();
 
-	virtual void Flock(CVector cohesionCenter, int numberMinions, CVector alignemnt, CVector mGruLocation, bool mGameOver, std::vector<CMinion*>);
+	virtual void Flock(CVector cohesionCenter, int numberMinions, CVector alignemnt, CVector mGruLocation, bool mGameOver, CVector Separation);
 
 	CVector FindClosest(std::vector<CMinion*> minionVector);
 
@@ -40,7 +40,8 @@ public:
 	CVector GetSpeed() { return mV; }
 
 	virtual CVector Alignment(std::vector<CMinion *> minionVector);
-
+	
+	virtual CVector Separation(std::vector<CMinion *> minionVector);
 
 
 private:
