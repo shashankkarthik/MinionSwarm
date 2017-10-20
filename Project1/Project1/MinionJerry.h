@@ -8,16 +8,18 @@
 
 #pragma once
 #include "Minion.h"
+
+/**
+* Class for the Minion Jerry
+*/
 class CMinionJerry :
 	public CMinion
 {
 public:
 	CMinionJerry(CGame * game);
 
-	/// Default constructor (disabled)
 	CMinionJerry() = delete;
 
-	/// Copy constructor (disabled)
 	CMinionJerry(const CMinionJerry &) = delete;
 
 	virtual ~CMinionJerry();

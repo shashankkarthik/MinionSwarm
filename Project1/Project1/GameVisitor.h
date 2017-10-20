@@ -17,7 +17,9 @@ class CMinionStuart;
 class CMinionMutant;
 class CGru;
 
-
+/**
+* Game visitor that is the base visitor class
+*/
 class CGameVisitor
 {
 public:

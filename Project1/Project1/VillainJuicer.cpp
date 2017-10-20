@@ -2,11 +2,13 @@
  * \file VillainJuicer.cpp
  *
  * \author Hector
+ * Juicer villain class
  */
 
 #include "stdafx.h"
-#include "VillainJuicer.h"
 #include <string>
+#include "VillainJuicer.h"
+
 
 using namespace std;
 using namespace Gdiplus;

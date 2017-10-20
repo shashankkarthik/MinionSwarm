@@ -1,19 +1,31 @@
+/**
+ * \file Game.h
+ *
+ * \author Team Hector
+ *
+ * The class that manages the entire game
+ */
+
 #pragma once
 #include <memory>
 #include <string>
 #include <vector>
+#include <iterator>
+#include <algorithm>
 #include "GameVisitor.h"
 #include "NewGame.h"
 #include "PlayingArea.h"
 #include "Scoreboard.h"
 #include "Vector.h"
-#include <iterator>
-#include <algorithm>
+
 
 using namespace std;
 
 class CItem;
 
+/**
+* The class that manages the entire game
+*/
 class CGame
 {
 public:
@@ -67,19 +79,39 @@ public:
 	/// All of the items to populate our game
 	std::vector<std::shared_ptr<CItem> > GetMinions();
 
-
-
 private:
+
+	/// Virtual pixel scale
 	float mScale = 0;
+
+	/// X offset for virtual pixels
 	float mXOffset = 0;
+
+	/// Y offset for virtual pixels
 	float mYOffset = 0;
+
+	/// Time ofr the clock
 	double mTimeInSeconds = 0;
+
+	/// Final time
 	double mFinalTime = 0;
+
+	/// Spawn time for the minions
 	double mNextSpawnTime = 0;
+
+	/// Reset game flag
 	bool mResetStatus = false;
+
+	/// Game over flag
 	bool mGameOver = false;
+
+	/// Juicer image for score
 	std::unique_ptr<Gdiplus::Bitmap> mJuicerImage;
+
+	/// Pokeeball image for score
 	std::unique_ptr<Gdiplus::Bitmap> mPokeeballImage;
+
+	/// Arya image for the score
 	std::unique_ptr<Gdiplus::Bitmap> mAryaImage;
 
 	/// All of the items to populate our game
