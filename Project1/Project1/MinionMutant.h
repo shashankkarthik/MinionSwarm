@@ -22,6 +22,6 @@ public:
 
 	virtual ~CMinionMutant();
 
-	virtual void Accept(CGameVisitor * visitor) { }
+	virtual void Accept(CGameVisitor * visitor) { visitor->VisitMinionMutant(this); }
 };
 

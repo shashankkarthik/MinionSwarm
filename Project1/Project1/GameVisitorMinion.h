@@ -2,7 +2,10 @@
 #include "GameVisitor.h"
 #include "Vector.h"
 #include "Game.h"
-#include "Minion.h"
+#include "MinionJerry.h"
+#include "MinionMutant.h"
+#include "MinionStuart.h"
+
 class CGameVisitorMinion :
 	public CGameVisitor
 {
@@ -10,13 +13,17 @@ public:
 	CGameVisitorMinion();
 	~CGameVisitorMinion();
 
-	void VisitMinion(CMinion * Minion);
+	void VisitMinionJerry(CMinionJerry * minion);
+	void VisitMinionMutant(CMinionMutant * minion);
+	void VisitMinionStuart(CMinionStuart * minion);
 
 	/** Get the number of buildings
 	* \returns CVector of buildings */
 	CVector CohesionCenter() { return mCohesionCenter; }
 
 	int NumberMinions() { return mNumMinions; }
+
+	std::vector<CMinion* > GetMinions() { return mMinionTiles; }
 
 private:
 	/// Buildings counter

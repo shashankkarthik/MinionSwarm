@@ -42,6 +42,8 @@ public:
 
 	void UpdateScoreMap();
 
+	void UpdateMinions();
+
 	void CheckContact();
 
 	void DeleteItem(std::shared_ptr<CItem> item);

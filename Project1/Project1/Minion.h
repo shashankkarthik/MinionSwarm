@@ -33,7 +33,6 @@ public:
 
 	int GetLevel() { return 1; };
 
-	virtual void Accept(CGameVisitor * visitor) { visitor->VisitMinion(this); }
 
 
 private:

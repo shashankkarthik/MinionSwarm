@@ -7,6 +7,7 @@
 #include "Gru.h"
 #include "CGameVisitor.h"
 #include "GetScoreVisitor.h"
+#include "GameVisitorMinion.h"
 #include <string>
 #include "Minion.h"
 #include "MinionJerry.h"
@@ -276,10 +277,21 @@ void CGame::UpdateScoreMap()
 	
 }
 
+void CGame::UpdateMinions()
+{
+	CGameVisitorMinion visitor;
+	Accept(&visitor);
+
+	auto test = visitor.NumberMinions();
+	auto test1 = visitor.CohesionCenter();
+	auto test2 = visitor.GetMinions();
+
+}
+
 
 void CGame::CheckContact()
 {
-	//UpdateMinions();
+	UpdateMinions();
 	if (!mGameOver)
 	{
 		for (auto j = mGameTiles.rbegin(); j != mGameTiles.rend(); j++)
