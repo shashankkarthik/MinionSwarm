@@ -8,6 +8,8 @@
 
 #pragma once
 #include "Item.h"
+#include <vector>
+
 class CMinion : public CItem
 {
 protected:
@@ -16,7 +18,7 @@ protected:
 public:
 	virtual ~CMinion();
 
-	virtual void Flock(CVector cohesionCenter, int numberMinions);
+	virtual void Flock(CVector cohesionCenter, int numberMinions, CVector alignemnt);
 
 	void Move(double elapsed);
 
@@ -32,6 +34,10 @@ public:
 	int GetPoints() { return mPoints; }
 
 	int GetLevel() { return 1; };
+
+	CVector GetSpeed() { return mV; }
+
+	virtual CVector Alignment(std::vector<CMinion *> minionVector);
 
 
 

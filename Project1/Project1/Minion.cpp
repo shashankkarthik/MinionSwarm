@@ -7,6 +7,8 @@
 #include "stdafx.h"
 #include "Minion.h"
 #include "GameVisitorMinion.h"
+#include <vector>
+
 
 
  /**
@@ -25,8 +27,15 @@ CMinion::~CMinion()
 {
 }
 //this is flocking
-void CMinion::Flock(CVector cohesionCenter, int numberMinions)
+void CMinion::Flock(CVector cohesionCenter, int numberMinions, CVector alignemnt)
 {
+	av = alignemnt;
+
+	double lengthav = av.Length();
+	if (lengthav > 0)
+	{
+		av.Normalize();
+	}
 	cv = cohesionCenter - GetLocation();
 	double l = cv.Length();
 	if (l > 0)
@@ -38,12 +47,33 @@ void CMinion::Flock(CVector cohesionCenter, int numberMinions)
 
 
 
-	mV = cv * 1; //+ sv * 3 + av * 5 + gruV * 10;
+	mV = cv * 1 + av * 5; //+ sv * 3 + av * 5 + gruV * 10;
 	double lengthmv = mV.Length();
 	if (lengthmv > 0)
 	{
 		mV.Normalize();
-	}	
+	}
+}
+
+CVector CMinion::Alignment(std::vector<CMinion *> minionVector)
+{
+	CVector totalVelocity;
+	int count = 0;
+	for (auto i = minionVector.begin(); i != minionVector.end(); ++i)
+	{
+		if (GetLocation().Distance((*i)->GetLocation()) < 200)
+		{
+			totalVelocity += (*i)->GetSpeed();
+			count++;
+		}
+
+	}
+	if (count == 0)
+	{
+		count = 1;
+	}
+	return (totalVelocity / count);
+
 }
 
 void CMinion::Move(double elapsed)
