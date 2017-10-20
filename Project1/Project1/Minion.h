@@ -7,14 +7,15 @@
  */
 
 #pragma once
-#include "Item.h"
 #include <vector>
+#include "Item.h"
 
 /// Default minion speed
 const int DefaultMinionSpeed = 150;
 
-
-
+/**
+*Base class for the minions
+*/
 class CMinion : public CItem
 {
 protected:

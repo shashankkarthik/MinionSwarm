@@ -8,6 +8,10 @@
 
 #pragma once
 #include "Item.h"
+
+/**
+* The Gru class that manages Gru in the game
+*/
 class CGru : public CItem
 {
 
@@ -34,14 +38,12 @@ public:
 
 	virtual bool HitTestGru(int x, int y);
 
-	
-
-
 private:
 
-	///Gru is alive or not
+	/// Gru is alive or not
 	bool mAlive = true;
 
+	/// Gru's image 
 	std::unique_ptr<Gdiplus::Bitmap> mItemImage;
 };
 

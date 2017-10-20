@@ -1,18 +1,29 @@
+/**
+ * \file GameVisitorMinion.cpp
+ *
+ * \author Team Hector
+ * Concrete visitor that updates the minions to move/destoryed
+ */
+
 #include "stdafx.h"
 #include "GameVisitorMinion.h"
 
-
+/**
+* Constructor
+*/
 CGameVisitorMinion::CGameVisitorMinion()
 {
 }
 
-
+/**
+* Constructor
+*/
 CGameVisitorMinion::~CGameVisitorMinion()
 {
 }
 
-/** Visit a CTileBuilding object
-* \param building Building we are visiting */
+/** Visit a CItem object
+* \param minion Minion we are visiting */
 void CGameVisitorMinion::VisitMinionJerry(CMinionJerry *minion)
 {
 	mNumMinions++;
@@ -20,8 +31,8 @@ void CGameVisitorMinion::VisitMinionJerry(CMinionJerry *minion)
 	mMinionTiles.push_back(minion);
 }
 
-/** Visit a CTileBuilding object
-* \param building Building we are visiting */
+/** Visit a CItem object
+* \param minion Minion we are visiting */
 void CGameVisitorMinion::VisitMinionStuart(CMinionStuart *minion)
 {
 	mNumMinions++;
@@ -29,8 +40,8 @@ void CGameVisitorMinion::VisitMinionStuart(CMinionStuart *minion)
 	mMinionTiles.push_back(minion);
 }
 
-/** Visit a CTileBuilding object
-* \param building Building we are visiting */
+/** Visit a CItem object
+* \param minion Minion we are visiting */
 void CGameVisitorMinion::VisitMinionMutant(CMinionMutant *minion)
 {
 	mNumMinions++;

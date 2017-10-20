@@ -1,14 +1,26 @@
+/**
+ * \file GetScoreVisitor.cpp
+ *
+ * \author Team Hector
+ * The visitor that manages the score
+ */
+
 #include "stdafx.h"
 #include "GetScoreVisitor.h"
 #include "VillainJuicer.h"
 #include "VillainPokeball.h"
 #include "VillainArya.h"
 
+/**
+* Constructor
+*/
 CGetScoreVisitor::CGetScoreVisitor()
 {
 }
 
-
+/**
+* Destructor
+*/
 CGetScoreVisitor::~CGetScoreVisitor()
 {
 }

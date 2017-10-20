@@ -1,8 +1,16 @@
+/**
+ * \file Scoreboard.cpp
+ *
+ * \author Team Hector
+ * Scoreboard class that manages and draws score
+ */
+
 #include "stdafx.h"
-#include "Scoreboard.h"
 #include <map>
 #include <iostream>
 #include <vector>
+#include "Scoreboard.h"
+
 
 
 using namespace std;
@@ -94,7 +102,9 @@ const int ConfigSix = 6;
 /// Config 7
 const int ConfigSeven = 7;
 
-
+/**
+*  Constructor that intializes the images
+*/
 CScoreboard::CScoreboard()
 {
 	mJuicerImage = unique_ptr<Bitmap>(Bitmap::FromFile(JuicerImageName.c_str()));
@@ -129,7 +139,9 @@ CScoreboard::CScoreboard()
 
 }
 
-
+/**
+* Destructor
+*/
 CScoreboard::~CScoreboard()
 {
 }
@@ -140,7 +152,7 @@ CScoreboard::~CScoreboard()
  * \param graphics Graphics devices to draw on
  * \param xLoc X coordinate to draw at
  * \param yLoc Y coordinate to draw at
- * \param score Score to draw
+ * \param scoreInt Score to draw
  */
 void CScoreboard::DrawScore(Gdiplus::Graphics * graphics, float xLoc, float yLoc, int scoreInt)
 {	
@@ -237,7 +249,9 @@ void CScoreboard::Draw(Graphics * graphics, int Width, int Height)
 
 }
 
-
+/**
+* Initializes the scores
+*/
 void CScoreboard::InitializeScoreMap()
 {
 	mScoreMap["Juicer"] = 0;
@@ -245,7 +259,9 @@ void CScoreboard::InitializeScoreMap()
 	mScoreMap["Arya"] = 0;
 }
 
-
+/**
+* Draws the scores in order they kill
+*/
 void  CScoreboard::GenerateNonZero()
 {	
 	mNonZero.clear();
@@ -258,7 +274,9 @@ void  CScoreboard::GenerateNonZero()
 	}
 }
 
-
+/**
+* Determines the configuration of the score order
+*/
 void CScoreboard::DetermineConfig()
 {
 	GenerateNonZero();
@@ -299,17 +317,13 @@ void CScoreboard::DetermineConfig()
 			mConfig = 0;
 			break;
 	}
-	
-	
-	
 }
 
-
-
+/**
+* Finds the object in the score
+*/
 bool CScoreboard::Find(string x)
 {
-	
-	
 	if (find(mNonZero.begin(),mNonZero.end(), x) != mNonZero.end()) 
 	{
 		return true;

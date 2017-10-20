@@ -11,12 +11,17 @@
 #pragma once
 #include <memory>
 #include <string>
+#include <vector>
 #include "GameVisitor.h"
 #include "Vector.h"
-#include <vector>
 
-class CGame;
 
+class CGame; // forward reference 
+
+
+/**
+* Base class for the Items in the game (Minion, villain, and Gru).
+*/
 class CItem
 {
 protected:
@@ -79,6 +84,7 @@ public:
 	virtual void AddPoints(int points) {};
 
 private:
+
 	/// The game this item is contained in
 	CGame  *mGameTiles;
 
@@ -87,9 +93,17 @@ private:
 	
 	/// Item location in the game
 	CVector location;
+
+	/// Left border location
 	float mXLeftBorder = 0;
+
+	/// Top border location
 	float mYTopBorder = 0;
+
+	/// Right border location
 	float mXRightBorder = 0;
+
+	/// Bottom border location
 	float mYBottomBorder = 0;
 
 };

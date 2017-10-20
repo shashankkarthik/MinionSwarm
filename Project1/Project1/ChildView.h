@@ -9,14 +9,10 @@
 * window, the menu bar, and the status bar.
 */
 
-// ChildView.h : interface of the CChildView class
-//
-
-
 #pragma once
 #include "Game.h"
 
-// CChildView window
+
 /**
 * The child window our program draws in.
 */

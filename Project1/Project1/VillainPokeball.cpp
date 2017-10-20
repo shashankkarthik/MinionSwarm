@@ -2,11 +2,14 @@
  * \file VillainPokeball.cpp
  *
  * \author Hector
+ * 
+ * Class for the Pokeball villain
  */
 
 #include "stdafx.h"
-#include "VillainPokeball.h"
 #include <string>
+#include "VillainPokeball.h"
+
 
 using namespace std;
 using namespace Gdiplus;

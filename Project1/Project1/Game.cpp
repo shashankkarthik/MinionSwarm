@@ -1,5 +1,13 @@
+/**
+ * \file Game.cpp
+ *
+ * \author Team Hector
+ * Class that manages the entire game
+ */
+
 #include "stdafx.h"
 #include <memory>
+#include <string>
 #include "Game.h"
 #include "VillainJuicer.h"
 #include "Villain.h"
@@ -9,7 +17,6 @@
 #include "GetScoreVisitor.h"
 #include "GameVisitorMinion.h"
 #include "GruLocationVisitor.h"
-#include <string>
 #include "Minion.h"
 #include "MinionJerry.h"
 #include "MinionStuart.h"
@@ -69,6 +76,9 @@ const float SpawnTimeMin = .5;
 /// Time converter
 const int TimeConverter = 60;
 
+/**
+* Constructor
+*/
 CGame::CGame()
 {
 	shared_ptr<CNewGame> newGame(new CNewGame());
@@ -79,11 +89,11 @@ CGame::CGame()
 
 	shared_ptr<CScoreboard> scoreBoard(new CScoreboard());
 	mScoreboard = scoreBoard;
-
-
 }
 
-
+/**
+* Destructor
+*/
 CGame::~CGame()
 {
 }
@@ -139,6 +149,9 @@ void CGame::OnDraw(Gdiplus::Graphics *graphics, int width, int height)
 
 }
 
+/**
+* Delete the game item
+*/
 void CGame::Delete()
 {
 	mGameTiles.clear();
@@ -155,6 +168,12 @@ void CGame::Add(std::shared_ptr<CItem> item)
 	mGameTiles.push_back(item);
 }
 
+/** Creates the time and draws it
+* \param graphics The graphic device to draw with
+* \param xLoc The x location for the clock on the screen
+* \param yLoc The y location for the clcok on the screnn
+* \prarm time The time to display
+*/
 void CGame::DrawTime(Gdiplus::Graphics * graphics, float xLoc, float yLoc, wstring time)
 {
 	time = time + L"\0";
@@ -172,9 +191,12 @@ void CGame::DrawTime(Gdiplus::Graphics * graphics, float xLoc, float yLoc, wstri
 		layoutRect,
 		&format,
 		&greenBrush);
-
 }
 
+
+/**
+* Spawns a random minion
+*/
 void CGame::SpawnRandomMinion()
 {
 	int spawner = (int)(((double)rand() / RAND_MAX) * SpawnChances);
@@ -198,6 +220,10 @@ void CGame::SpawnRandomMinion()
 	}
 }
 
+/**
+* A function to return the items in the game
+* \returns A vector that contains the items in the game
+*/
 std::vector<std::shared_ptr<CItem>> CGame::GetMinions()
 {
 	/// All of the items to populate our game
@@ -256,6 +282,10 @@ void CGame::Update(double elapsed)
 	}
 }
 
+/**
+* Converts the time to seconds then returns the format as string
+* \returns A string formatted as a time
+*/
 wstring CGame::GetTime() 
 {
 	int tempTime = !mGameOver ? (int)mTimeInSeconds : (int)mFinalTime;
@@ -314,7 +344,9 @@ bool CGame::HitTestNewGame(int x, int y)
 	return false;
 }
 
-
+/**
+* Updates the score map
+*/
 void CGame::UpdateScoreMap()
 {
 	CGetScoreVisitor visitor;
@@ -324,6 +356,9 @@ void CGame::UpdateScoreMap()
 	
 }
 
+/**
+* Makes the minions move
+*/
 void CGame::UpdateMinions()
 {
 	CGameVisitorMinion visitor;
@@ -347,6 +382,9 @@ void CGame::UpdateMinions()
 	}
 }
 
+/**
+* Tracks the Gru's location
+*/
 void CGame::UpdateGruLocation()
 {
 	CGruLocationVisitor visitor;
@@ -358,7 +396,9 @@ void CGame::UpdateGruLocation()
 	mGruLocation.Set(x, y);
 }
 
-
+/**
+* Checks if Gru is dead
+*/
 void CGame::CheckContact()
 {
 	UpdateMinions();

@@ -8,16 +8,18 @@
 
 #pragma once
 #include "Minion.h"
+
+/**
+* Class that describes the Stuart Minion
+*/
 class CMinionStuart :
 	public CMinion
 {
 public:
 	CMinionStuart(CGame * game);
 
-		/// Default constructor (disabled)
 	CMinionStuart() = delete;
 
-		/// Copy constructor (disabled)
 	CMinionStuart(const CMinionStuart &) = delete;
 
 	virtual ~CMinionStuart();
