@@ -11,6 +11,7 @@
 #include "VillainPokeball.h"
 #include "Minion.h"
 #include "MinionJerry.h"
+#include "GameVisitorMinion.h"
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
