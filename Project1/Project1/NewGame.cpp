@@ -36,8 +36,8 @@ CNewGame::~CNewGame()
 */
 void CNewGame::Draw(Gdiplus::Graphics *graphics, int windowWidth, int windowHeight)
 {
-	mX = (-windowWidth + MarginX) / 2.0;
-	mY = (-windowHeight + MarginY) / 2.0;
+	mX = (float)((-(float)windowWidth + MarginX) / 2.0);
+	mY = (float)((-(float)windowHeight + MarginY) / 2.0);
 	graphics->DrawImage(mButtonImage.get(),
 		mX, mY,
 		(float)mButtonImage->GetWidth(), (float)mButtonImage->GetHeight());

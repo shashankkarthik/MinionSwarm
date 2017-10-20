@@ -90,12 +90,20 @@ void CItem::SetLocation(double x, double y)
 	if (mXLeftBorder != 0 && mYTopBorder != 0) {
 		double wid = mItemImage->GetWidth();
 		double hit = mItemImage->GetHeight();
-		if (x - wid/2 < mXLeftBorder || x + wid/2 > mXRightBorder) {
-			x = GetX();
+		if (x - wid / 2 < mXLeftBorder)
+		{
+			x = mXLeftBorder + wid / 2;
+		}
+		else if(x + wid/2 > mXRightBorder) {
+			x = mXRightBorder - wid / 2;
 		}
 
-		if (y - hit/2 < mYTopBorder || y + hit/2 > mYBottomBorder) {
-			y = GetY();
+		if (y - hit / 2 < mYTopBorder)
+		{
+			y = mYTopBorder + hit / 2;
+		}
+		else if(y + hit / 2 > mYBottomBorder) {
+			y = mYBottomBorder - hit / 2;
 		}
 	}
 

@@ -88,7 +88,7 @@ void CGame::OnDraw(Gdiplus::Graphics *graphics, int width, int height)
 	for (auto item : mGameTiles)
 	{
 		item->Draw(graphics);
-		item->SetBorders(Width, Height);
+		item->SetBorders((float)Width, (float)Height);
 	}
 
 }
@@ -131,21 +131,21 @@ void CGame::DrawTime(Gdiplus::Graphics * graphics, float xLoc, float yLoc, wstri
 
 void CGame::SpawnRandomMinion()
 {
-	int spawner = ((double)rand() / RAND_MAX) * 10;
+	int spawner = (int)(((double)rand() / RAND_MAX) * 10);
 	if (spawner < 4.5) {
-		int x = ((double)rand() / RAND_MAX) * 950;
+		int x = (int)(((double)rand() / RAND_MAX) * 950);
 		auto minionJerry = make_shared<CMinionJerry>(this);
 		minionJerry->SetLocation((-Width + 550) / 2 + x, (-Height+200) / 2);
 		Add(minionJerry);
 	}
 	else if (spawner < 9) {
-		int x = ((double)rand() / RAND_MAX) * 950;
+		int x = (int)(((double)rand() / RAND_MAX) * 950);
 		auto minionStuart = make_shared<CMinionStuart>(this);
 		minionStuart->SetLocation((-Width + 550) / 2 + x, (-Height + 200) / 2);
 		Add(minionStuart);
 	}
 	else{
-		int x = ((double)rand() / RAND_MAX) * 950;
+		int x = (int)(((double)rand() / RAND_MAX) * 950);
 		auto minionMutant = make_shared<CMinionMutant>(this);
 		minionMutant->SetLocation((-Width + 550) / 2 + x, (-Height + 200) / 2);
 		Add(minionMutant);
@@ -239,7 +239,7 @@ std::shared_ptr<CItem> CGame::HitTestGru(int x, int y)
 	for (auto i = mGameTiles.rbegin(); i != mGameTiles.rend(); i++)
 	{
 		//to move all pieces, change HitTestGru to HitTest
-		if ((*i)->HitTest(virtualX, virtualY))
+		if ((*i)->HitTest((int)virtualX, (int)virtualY))
 		{
 			return *i;
 		}
@@ -307,7 +307,7 @@ void CGame::CheckContact()
 		{
 			for (auto i = mGameTiles.rbegin(); i != mGameTiles.rend(); i++)
 			{
-				if ((*i)->HitTest((*j)->GetX(), (*j)->GetY()) && *i != *j && (*i)->GetLevel() < (*j)->GetLevel())
+				if ((*i)->HitTest((int)((*j)->GetX()), int((*j)->GetY())) && *i != *j && (*i)->GetLevel() < (*j)->GetLevel())
 				{
 					(*i)->Kill();
 					if ((*i)->IsAlive()) {
@@ -317,7 +317,7 @@ void CGame::CheckContact()
 					}
 					return;
 				}
-				else if ((*i)->HitTest((*j)->GetX(), (*j)->GetY()) && *i != *j && (*i)->GetLevel() > (*j)->GetLevel())
+				else if ((*i)->HitTest((int)((*j)->GetX()), (int)((*j)->GetY())) && *i != *j && (*i)->GetLevel() > (*j)->GetLevel())
 				{
 					(*j)->Kill();
 					if ((*j)->IsAlive()) {
